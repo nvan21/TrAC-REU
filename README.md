@@ -1,1 +1,2 @@
 # SHAC
+Implementation of the [Short Horizon Actor Critic](https://arxiv.org/pdf/2204.07137) algorithm on the Hopper environment. Will be ported to the F1 tenth simulator once I get a working version which will hopefully make debugging easier for the sim.
