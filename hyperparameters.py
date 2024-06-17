@@ -25,6 +25,7 @@ class Config:
     gamma = 0.99
     num_steps = 32  # this is the length of the trajectory (h in the paper)
     num_envs = 64  # this is the number of parallel envs (N in the paper)
+    max_epochs = 2000
 
     # Device to use for tensor storage
     device = device("cuda" if cuda.is_available() else "cpu")
@@ -33,4 +34,4 @@ class Config:
 class HopperConfig(Config):
     actor_units = [128, 128]
 
-    num_envs = 256
+    num_envs = 4
