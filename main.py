@@ -1,28 +1,27 @@
 from hyperparameters import HopperConfig
 from actor import StochasticActor
 from critic import Critic
+from shac import SHAC
 
 import torch
 
-obs_dim = 10
-act_dim = 5
+import gymnasium as gym
 
 config = HopperConfig()
-actor = StochasticActor(
-    obs_dim=obs_dim,
-    act_dim=act_dim,
-    units=config.actor_units,
-    activation_fn=config.actor_activation,
-    device=config.device,
-)
-critic = Critic(
-    obs_dim=obs_dim,
-    units=config.critic_units,
-    activation_fn=config.critic_activation,
-    device=config.device,
-)
 
-obs = torch.rand(10).unsqueeze(0).to(config.device)
-actions = actor(obs)
-value = critic(obs)
-print(actions, value)
+envs = gym.make_vec("Hopper-v4", num_envs=config.num_envs)
+obs_dim = envs.single_observation_space.shape[0]
+act_dim = envs.single_action_space.shape[0]
+
+envs = gym.wrappers.NormalizeObservation(envs)
+envs = gym.wrappers.NormalizeReward(envs)
+
+shac = SHAC(config=config)
+shac.create_models(act_dim=act_dim, obs_dim=obs_dim)
+
+obs, _ = envs.reset()
+print(obs.shape)
+
+actions = shac.get_action(obs)
+value = shac.get_value(obs)
+print(actions.shape, value.shape)

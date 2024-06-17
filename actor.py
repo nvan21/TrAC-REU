@@ -18,14 +18,14 @@ class StochasticActor(nn.Module):
         modules = []
 
         for in_dim, out_dim in zip(layers, layers[1:]):
-            modules.append(nn.Linear(in_dim, out_dim))
+            modules.append(nn.Linear(in_dim, out_dim, dtype=torch.float32))
             modules.append(activation_fn)
-            modules.append(nn.LayerNorm(out_dim))
+            modules.append(nn.LayerNorm(out_dim, dtype=torch.float32))
 
         self.mu_network = nn.Sequential(*modules[:-2]).to(device)
-        self.logstd_layer = nn.Parameter(torch.ones(act_dim, device=device) * -1)
-        print(f"actor {self.mu_network}")
-        print(self.logstd_layer)
+        self.logstd_layer = nn.Parameter(torch.ones(act_dim, device=device) * -1).to(
+            device
+        )
 
     def forward(self, obs):
         # Get the predicted mean and standard deviation of the state

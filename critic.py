@@ -22,7 +22,6 @@ class Critic(nn.Module):
 
         # Get rid of the last two items in the list because the last layer only needs the linear connection
         self.critic = nn.Sequential(*modules[:-2]).to(device)
-        print(f"critic {self.critic}")
 
     def forward(self, obs):
         return self.critic(obs)
