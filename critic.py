@@ -23,5 +23,16 @@ class Critic(nn.Module):
         # Get rid of the last two items in the list because the last layer only needs the linear connection
         self.critic = nn.Sequential(*modules[:-2]).to(device)
 
+        # The learning rate will be updated every backwards pass, so there's no need to set it here
+        self.optimizer = torch.optim.Adam(self.parameters())
+
     def forward(self, obs):
         return self.critic(obs)
+
+    def backward(self, loss: torch.Tensor, learning_rate: float) -> None:
+        for param_group in self.optimizer.param_groups:
+            param_group["lr"] = learning_rate
+
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()

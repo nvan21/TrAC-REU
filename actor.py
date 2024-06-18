@@ -10,6 +10,7 @@ class StochasticActor(nn.Module):
         act_dim: int,
         units: list,
         device: torch.device,
+        lr: float,
         activation_fn,
     ):
         super(StochasticActor, self).__init__()
@@ -27,6 +28,9 @@ class StochasticActor(nn.Module):
             device
         )
 
+        # The learning rate will be updated every backwards pass, so there's no need to set it here
+        self.optimizer = torch.optim.Adam(self.parameters())
+
     def forward(self, obs):
         # Get the predicted mean and standard deviation of the state
         mu = self.mu_network(obs)
@@ -38,3 +42,11 @@ class StochasticActor(nn.Module):
         actions = torch.tanh(actions)
 
         return actions
+
+    def backward(self, loss: torch.Tensor, learning_rate: float) -> None:
+        for param_group in self.optimizer.param_groups:
+            param_group["lr"] = learning_rate
+
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()
