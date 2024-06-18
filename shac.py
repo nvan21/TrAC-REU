@@ -1,6 +1,7 @@
 from actor import StochasticActor
 from critic import Critic
 from hyperparameters import Config
+import utils
 
 import torch
 import numpy as np
@@ -43,6 +44,9 @@ class SHAC:
         self.rewards_buf = torch.zeros(
             (config.num_steps, config.num_envs), dtype=torch.float32
         ).to(self.device)
+
+        # Rollout tracking metrics
+        self.episode_length = 0
 
     def create_models(
         self,
@@ -93,7 +97,9 @@ class SHAC:
 
     def train(self):
         states, _ = self.envs.reset()
-        self.rollout(states)
+        actor_loss = self.rollout(states)
+
+        print(actor_loss)
 
     def rollout(self, states: np.ndarray):
         gamma = torch.ones(self.config.num_envs, dtype=torch.float32).to(self.device)
@@ -112,17 +118,17 @@ class SHAC:
                 actions.detach().cpu().numpy()
             )
 
-            # Add the states and rewards to the replay buffer (used for critic training)
-            self.states_buf[step] = torch.tensor(states, dtype=torch.float32).to(
-                self.device
-            )
-            self.rewards_buf[step] = torch.tensor(rewards, dtype=torch.float32).to(
-                self.device
+            states, rewards, dones, truncateds = utils.np_to_tensor(
+                device=self.device, arrays=[states, rewards, dones, truncateds]
             )
 
+            # Add the states and rewards to the replay buffer (used for critic training)
+            self.states_buf[step] = states
+            self.rewards_buf[step] = rewards
+
             # Get the IDs of all the environments that terminated/truncated this step
-            done_ids = np.flatnonzero(dones)
-            truncated_ids = np.flatnonzero(truncateds)
+            done_ids = torch.nonzero(dones, as_tuple=False).squeeze(-1)
+            truncated_ids = torch.nonzero(truncateds, as_tuple=False).squeeze(-1)
 
             # Calculate gamma for the next step and reset gamma for the terminated environments
             gamma = gamma * self.config.gamma
@@ -130,10 +136,12 @@ class SHAC:
             # Naively get the critic values for all states
             next_values[step + 1, :] = self.get_target_critic_value(states).squeeze(-1)
 
+            # for id in done_ids:
+            #     if id in truncated_ids:
+            #         # Change the next value of truncated states to use their final observation rather than the reset observation
+            #         next_values[step + 1, id] = self.get_target_critic_value()
             # Change the next value of terminal states to 0
             next_values[step + 1, done_ids] = 0.0
-
-            print(truncated_ids)
             # Change the next value of truncated states to use their final observation rather than the reset observation
             if ("final_observation") in info and len(truncated_ids) != 0:
                 # Mask out the None values to get the final states
@@ -145,9 +153,36 @@ class SHAC:
                     final_states
                 )
 
+            # Calculate the discounted reward at the next step
+            running_rewards[step + 1, :] = running_rewards[step, :] + gamma * rewards
+            print(f"step: {step}, next value shape: {next_values.shape}")
+
+            # Calculate the actor loss for all of the done environments
+            if step < self.config.num_steps - 1:
+                next_value = (
+                    self.config.gamma
+                    * gamma[done_ids]
+                    * next_values[step + 1, done_ids]
+                )
+                actor_loss = (
+                    actor_loss
+                    + (running_rewards[step + 1, done_ids] + next_value).sum()
+                )
+            else:
+                # Terminate all of the episodes at the end of the horizon
+                next_value = self.config.gamma * gamma * next_values[step + 1, :]
+                actor_loss = (
+                    actor_loss + (running_rewards[step + 1, :] + next_value).sum()
+                )
+
             # Reset gamma and running reward for done environments
             gamma[done_ids] = 1.0
             running_rewards[step + 1, done_ids] = 0.0
+
+        # Take the average of the actor loss to get the actor loss per timestep
+        actor_loss /= -self.config.num_envs * self.config.num_steps
+
+        return actor_loss
 
     def learning_rate_scheduler(self, lr: float, decay: str) -> list:
         if decay == "constant":
