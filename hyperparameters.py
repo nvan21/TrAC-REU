@@ -35,3 +35,4 @@ class HopperConfig(Config):
     actor_units = [128, 128]
 
     num_envs = 4
+    num_steps = 16

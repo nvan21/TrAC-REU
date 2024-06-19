@@ -26,4 +26,7 @@ def np_to_tensor(
         if isinstance(array, np.ndarray):
             tensors.append(torch.tensor(array, dtype=dtype).to(device))
 
+    if len(tensors) == 1:
+        tensors = tensors[0]
+
     return tensors

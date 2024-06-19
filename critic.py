@@ -26,7 +26,10 @@ class Critic(nn.Module):
         # The learning rate will be updated every backwards pass, so there's no need to set it here
         self.optimizer = torch.optim.Adam(self.parameters())
 
-    def forward(self, obs):
+    def __call__(self, obs: torch.Tensor) -> torch.Tensor:
+        return self.forward(obs)
+
+    def forward(self, obs: torch.Tensor) -> torch.Tensor:
         return self.critic(obs)
 
     def backward(self, loss: torch.Tensor, learning_rate: float) -> None:

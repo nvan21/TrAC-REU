@@ -7,6 +7,8 @@ import torch
 import numpy as np
 from gymnasium.vector import VectorEnv
 
+from typing import Tuple
+
 
 class SHAC:
     def __init__(self, config: Config, envs: VectorEnv):
@@ -44,6 +46,9 @@ class SHAC:
         self.rewards_buf = torch.zeros(
             (config.num_steps, config.num_envs), dtype=torch.float32
         ).to(self.device)
+        self.done_mask = torch.zeros(
+            (config.num_steps, config.num_envs), dtype=torch.float32
+        ).to(self.device)
 
         # Rollout tracking metrics
         self.episode_length = 0
@@ -77,46 +82,59 @@ class SHAC:
 
         self.hard_network_update()
 
-    def get_action(self, obs) -> torch.Tensor:
-        if type(obs) is np.ndarray:
-            obs = torch.tensor(obs, dtype=torch.float32).to(self.device)
+    def compute_actor_loss(self, rets: torch.Tensor):
+        """
+        Takes in the GAE returns and calculates the actor loss
+        """
+        rets *= self.done_mask
 
-        return self.actor(obs)
+        return rets.sum() / (-self.config.num_envs * self.config.num_steps)
 
-    def get_critic_value(self, obs) -> torch.Tensor:
-        if type(obs) is np.ndarray:
-            obs = torch.tensor(obs, dtype=torch.float32).to(self.device)
-
-        return self.critic(obs)
-
-    def get_target_critic_value(self, obs) -> torch.Tensor:
-        if type(obs) is np.ndarray:
-            obs = torch.tensor(obs, dtype=torch.float32).to(self.device)
-
-        return self.target_critic(obs)
+    def compute_critic_loss(self, rets: torch.Tensor):
+        pass
 
     def train(self):
         states, _ = self.envs.reset()
-        actor_loss = self.rollout(states)
+        states = utils.np_to_tensor(device=self.device, arrays=[states])
 
-        print(actor_loss)
+        for epoch in range(1):  # self.config.max_epochs):
+            rets, states = self.rollout(states)
+            actor_loss = self.compute_actor_loss(rets)
 
-    def rollout(self, states: np.ndarray):
+            # TODO: Implement critic loss
+            critic_loss = self.compute_critic_loss()
+
+            # Get the updated learning rates
+            actor_lr = self.actor_lr_schedule[epoch]
+            critic_lr = self.critic_lr_schedule[epoch]
+
+            # Backpropogate the network losses
+            self.actor.backward(loss=actor_loss, learning_rate=actor_lr)
+            self.critic.backward(loss=critic_loss, learning_rate=critic_lr)
+
+            print(actor_loss)
+            print(critic_loss)
+
+    def rollout(self, states: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
+        """
+        Performs num_steps rollouts. It takes in the intial states and then returns the GAE returns
+        and the final states of each environment.
+        """
         gamma = torch.ones(self.config.num_envs, dtype=torch.float32).to(self.device)
-        next_values = torch.zeros(
-            (self.config.num_steps + 1, self.config.num_envs), dtype=torch.float32
-        ).to(self.device)
-        running_rewards = torch.zeros(
-            (self.config.num_steps + 1, self.config.num_envs), dtype=torch.float32
-        ).to(self.device)
 
-        actor_loss = torch.tensor(0.0, dtype=torch.float32).to(self.device)
+        terminal_values = torch.zeros(
+            (self.config.num_steps + 1, self.config.num_envs), dtype=torch.float32
+        ).to(self.device)
+        rets = torch.zeros(
+            (self.config.num_steps + 1, self.config.num_envs), dtype=torch.float32
+        ).to(self.device)
+        done_mask = torch.zeros(
+            (self.config.num_steps, self.config.num_envs), dtype=torch.float32
+        ).to(self.device)
 
         for step in range(self.config.num_steps):
-            actions = self.get_action(states)
-            states, rewards, dones, truncateds, info = self.envs.step(
-                actions.detach().cpu().numpy()
-            )
+            actions = self.actor(states).detach().cpu().numpy()
+            states, rewards, dones, truncateds, info = self.envs.step(actions)
 
             states, rewards, dones, truncateds = utils.np_to_tensor(
                 device=self.device, arrays=[states, rewards, dones, truncateds]
@@ -130,59 +148,46 @@ class SHAC:
             done_ids = torch.nonzero(dones, as_tuple=False).squeeze(-1)
             truncated_ids = torch.nonzero(truncateds, as_tuple=False).squeeze(-1)
 
-            # Calculate gamma for the next step and reset gamma for the terminated environments
-            gamma = gamma * self.config.gamma
-
-            # Naively get the critic values for all states
-            next_values[step + 1, :] = self.get_target_critic_value(states).squeeze(-1)
-
-            # for id in done_ids:
-            #     if id in truncated_ids:
-            #         # Change the next value of truncated states to use their final observation rather than the reset observation
-            #         next_values[step + 1, id] = self.get_target_critic_value()
-            # Change the next value of terminal states to 0
-            next_values[step + 1, done_ids] = 0.0
             # Change the next value of truncated states to use their final observation rather than the reset observation
             if ("final_observation") in info and len(truncated_ids) != 0:
-                # Mask out the None values to get the final states
-                final_states = info["final_observation"]
-                final_states[final_states == None] = 0
-                final_states = np.nonzero(final_states)
-
-                next_values[step + 1, truncated_ids] = self.get_target_critic_value(
-                    final_states
+                # Mask out the None values to get the truncated states
+                truncated_states = info["final_observation"]
+                truncated_states[truncated_states == None] = 0
+                truncated_states = utils.np_to_tensor(
+                    device=self.device, arrays=[truncated_states]
                 )
+                truncated_states = torch.nonzero(truncated_states, as_tuple=False)
 
-            # Calculate the discounted reward at the next step
-            running_rewards[step + 1, :] = running_rewards[step, :] + gamma * rewards
-            print(f"step: {step}, next value shape: {next_values.shape}")
+                # Updated the next values to accurately reflect the final observation of the truncated state
+                terminal_values[step + 1, truncated_ids] = self.target_critic(
+                    truncated_states
+                ).squeeze(-1)
 
-            # Calculate the actor loss for all of the done environments
-            if step < self.config.num_steps - 1:
-                next_value = (
-                    self.config.gamma
-                    * gamma[done_ids]
-                    * next_values[step + 1, done_ids]
-                )
-                actor_loss = (
-                    actor_loss
-                    + (running_rewards[step + 1, done_ids] + next_value).sum()
-                )
-            else:
-                # Terminate all of the episodes at the end of the horizon
-                next_value = self.config.gamma * gamma * next_values[step + 1, :]
-                actor_loss = (
-                    actor_loss + (running_rewards[step + 1, :] + next_value).sum()
-                )
+            # Update the done mask for the terminated environments
+            self.done_mask[step, done_ids] = 1.0
 
-            # Reset gamma and running reward for done environments
+            # Get the estimated value of all states for the last timestep in the trajectory
+            if step == self.config.num_steps - 1:
+                terminal_values[step + 1, :] = self.target_critic(states).squeeze(-1)
+
+            # Update the returns - the terminal values will be 0 unless it's the last timestep in the trajectory
+            rets[step + 1, :] = (
+                rets[step, :]
+                + rewards * gamma
+                + self.config.gamma * gamma * terminal_values[step + 1, :]
+            )
+            # Calculate gamma for the next step
+            gamma = gamma * self.config.gamma
+
+            # Reset gamma and returns for done environments
             gamma[done_ids] = 1.0
-            running_rewards[step + 1, done_ids] = 0.0
+            rets[step + 1, done_ids] = 0.0
 
-        # Take the average of the actor loss to get the actor loss per timestep
-        actor_loss /= -self.config.num_envs * self.config.num_steps
+        # Get rid of the first row since it's no longer needed
+        rets = rets[1:, :]
+        self.done_mask[-1, :] = 1.0
 
-        return actor_loss
+        return rets, states
 
     def learning_rate_scheduler(self, lr: float, decay: str) -> list:
         if decay == "constant":
