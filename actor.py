@@ -40,10 +40,10 @@ class StochasticActor(nn.Module):
 
         # Sample actions from the corresponding normal distribution, and then apply tanh squashing function
         dist = Normal(mu, std)
-        actions = dist.rsample()
-        actions = torch.tanh(actions)
+        action = dist.rsample()
+        action = torch.tanh(action)
 
-        return actions
+        return action
 
     def backward(self, loss: torch.Tensor, learning_rate: float) -> None:
         for param_group in self.optimizer.param_groups:

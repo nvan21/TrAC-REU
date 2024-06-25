@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "/work/flemingc/nvan21/projects/shac/main.py", line 45, in <module>
+    action = shac.actor(state).detach().cpu().numpy()
+             ^^^^^^^^^^^^^^^^^
+  File "/work/flemingc/nvan21/projects/shac/actor.py", line 34, in __call__
+    return self.forward(obs)
+           ^^^^^^^^^^^^^^^^^
+  File "/work/flemingc/nvan21/projects/shac/actor.py", line 38, in forward
+    mu = self.mu_network(obs)
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/work/flemingc/nvan21/miniconda3/envs/shac/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/flemingc/nvan21/miniconda3/envs/shac/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/flemingc/nvan21/miniconda3/envs/shac/lib/python3.12/site-packages/torch/nn/modules/container.py", line 217, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/work/flemingc/nvan21/miniconda3/envs/shac/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1532, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/flemingc/nvan21/miniconda3/envs/shac/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1541, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/flemingc/nvan21/miniconda3/envs/shac/lib/python3.12/site-packages/torch/nn/modules/linear.py", line 116, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (1x11 and 3x128)

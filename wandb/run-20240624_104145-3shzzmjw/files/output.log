@@ -1,0 +1,3896 @@
+Epoch: (0)
+Timestep: 512
+actor loss: 5.788809299468994
+critic loss: 4679.30419921875
+Epoch: (1)
+Timestep: 1024
+actor loss: 5.795209884643555
+critic loss: 4537.44970703125
+Epoch: (2)
+Timestep: 1536
+actor loss: 5.7564697265625
+critic loss: 4305.05029296875
+Epoch: (3)
+Timestep: 2048
+actor loss: 6.259932518005371
+critic loss: 4412.1708984375
+Epoch: (4)
+Timestep: 2560
+actor loss: 5.641331672668457
+critic loss: 3991.843505859375
+Epoch: (5)
+Timestep: 3072
+actor loss: 5.999760150909424
+critic loss: 4252.00732421875
+Epoch: (6)
+Timestep: 3584
+actor loss: 6.01376485824585
+critic loss: 4462.82421875
+Epoch: (7)
+Timestep: 4096
+actor loss: 6.359174728393555
+critic loss: 4771.40087890625
+Epoch: (8)
+Timestep: 4608
+actor loss: 6.251859664916992
+critic loss: 4652.0791015625
+Epoch: (9)
+Timestep: 5120
+actor loss: 6.413535118103027
+critic loss: 4750.80078125
+Epoch: (10)
+Timestep: 5632
+actor loss: 6.363607406616211
+critic loss: 4816.47607421875
+Epoch: (11)
+Timestep: 6144
+actor loss: 6.063685894012451
+critic loss: 4633.37890625
+Epoch: (12)
+Timestep: 6656
+actor loss: 5.703495979309082
+critic loss: 4054.7080078125
+Epoch: (13)
+Timestep: 7168
+actor loss: 5.35026741027832
+critic loss: 3523.9873046875
+Epoch: (14)
+Timestep: 7680
+actor loss: 5.393393516540527
+critic loss: 3444.6220703125
+Epoch: (15)
+Timestep: 8192
+actor loss: 5.699470043182373
+critic loss: 3827.8037109375
+Epoch: (16)
+Timestep: 8704
+actor loss: 5.396616458892822
+critic loss: 3481.6435546875
+Epoch: (17)
+Timestep: 9216
+actor loss: 5.413875579833984
+critic loss: 3549.875244140625
+Epoch: (18)
+Timestep: 9728
+actor loss: 4.596314430236816
+critic loss: 2797.976806640625
+Epoch: (19)
+Timestep: 10240
+actor loss: 6.0865092277526855
+critic loss: 4131.53466796875
+Epoch: (20)
+Timestep: 10752
+actor loss: 6.224604606628418
+critic loss: 4357.6650390625
+Epoch: (21)
+Timestep: 11264
+actor loss: 5.945138454437256
+critic loss: 4374.2978515625
+Epoch: (22)
+Timestep: 11776
+actor loss: 5.649514198303223
+critic loss: 3927.7490234375
+Epoch: (23)
+Timestep: 12288
+actor loss: 6.555837631225586
+critic loss: 4577.80419921875
+Epoch: (24)
+Timestep: 12800
+actor loss: 5.867907524108887
+critic loss: 4226.3505859375
+Epoch: (25)
+Timestep: 13312
+actor loss: 6.7328386306762695
+critic loss: 5617.0009765625
+Epoch: (26)
+Timestep: 13824
+actor loss: 6.892578125
+critic loss: 5476.22607421875
+Epoch: (27)
+Timestep: 14336
+actor loss: 6.983460426330566
+critic loss: 5576.02294921875
+Epoch: (28)
+Timestep: 14848
+actor loss: 6.924471378326416
+critic loss: 5583.8818359375
+Epoch: (29)
+Timestep: 15360
+actor loss: 6.690840721130371
+critic loss: 5369.5029296875
+Epoch: (30)
+Timestep: 15872
+actor loss: 6.647615432739258
+critic loss: 5206.8056640625
+Epoch: (31)
+Timestep: 16384
+actor loss: 6.292776107788086
+critic loss: 4284.53857421875
+Epoch: (32)
+Timestep: 16896
+actor loss: 5.864506721496582
+critic loss: 3924.1826171875
+Epoch: (33)
+Timestep: 17408
+actor loss: 6.1328277587890625
+critic loss: 4120.12548828125
+Epoch: (34)
+Timestep: 17920
+actor loss: 5.918237209320068
+critic loss: 3946.116943359375
+Epoch: (35)
+Timestep: 18432
+actor loss: 5.970658302307129
+critic loss: 4008.9462890625
+Epoch: (36)
+Timestep: 18944
+actor loss: 5.747175216674805
+critic loss: 3802.21484375
+Epoch: (37)
+Timestep: 19456
+actor loss: 5.720285415649414
+critic loss: 3695.050537109375
+Epoch: (38)
+Timestep: 19968
+actor loss: 6.203076362609863
+critic loss: 4194.1630859375
+Epoch: (39)
+Timestep: 20480
+actor loss: 5.898672103881836
+critic loss: 4004.4951171875
+Epoch: (40)
+Timestep: 20992
+actor loss: 5.9061384201049805
+critic loss: 4008.960693359375
+Epoch: (41)
+Timestep: 21504
+actor loss: 6.137255668640137
+critic loss: 4098.9072265625
+Epoch: (42)
+Timestep: 22016
+actor loss: 5.781254291534424
+critic loss: 3823.9580078125
+Epoch: (43)
+Timestep: 22528
+actor loss: 5.714865207672119
+critic loss: 3509.6884765625
+Epoch: (44)
+Timestep: 23040
+actor loss: 6.244319915771484
+critic loss: 3933.894287109375
+Epoch: (45)
+Timestep: 23552
+actor loss: 6.640824317932129
+critic loss: 4582.59375
+Epoch: (46)
+Timestep: 24064
+actor loss: 5.996148586273193
+critic loss: 4184.59716796875
+Epoch: (47)
+Timestep: 24576
+actor loss: 6.233814716339111
+critic loss: 4332.5830078125
+Epoch: (48)
+Timestep: 25088
+actor loss: 6.248719692230225
+critic loss: 4240.33154296875
+Epoch: (49)
+Timestep: 25600
+actor loss: 5.9930877685546875
+critic loss: 4028.3271484375
+Epoch: (50)
+Timestep: 26112
+actor loss: 6.228708744049072
+critic loss: 4600.25439453125
+Epoch: (51)
+Timestep: 26624
+actor loss: 6.091609001159668
+critic loss: 4154.05419921875
+Epoch: (52)
+Timestep: 27136
+actor loss: 6.442336559295654
+critic loss: 4319.41796875
+Epoch: (53)
+Timestep: 27648
+actor loss: 6.299123764038086
+critic loss: 4389.46142578125
+Epoch: (54)
+Timestep: 28160
+actor loss: 6.371525764465332
+critic loss: 4564.30029296875
+Epoch: (55)
+Timestep: 28672
+actor loss: 6.158623218536377
+critic loss: 4223.94189453125
+Epoch: (56)
+Timestep: 29184
+actor loss: 6.418351173400879
+critic loss: 4528.64501953125
+Epoch: (57)
+Timestep: 29696
+actor loss: 6.135185718536377
+critic loss: 4241.28125
+Epoch: (58)
+Timestep: 30208
+actor loss: 6.285799026489258
+critic loss: 4265.27783203125
+Epoch: (59)
+Timestep: 30720
+actor loss: 6.2930755615234375
+critic loss: 4369.5263671875
+Epoch: (60)
+Timestep: 31232
+actor loss: 5.868692874908447
+critic loss: 4111.11328125
+Epoch: (61)
+Timestep: 31744
+actor loss: 6.037057876586914
+critic loss: 4025.80078125
+Epoch: (62)
+Timestep: 32256
+actor loss: 6.320371627807617
+critic loss: 4210.46826171875
+Epoch: (63)
+Timestep: 32768
+actor loss: 5.419896602630615
+critic loss: 3713.7353515625
+Epoch: (64)
+Timestep: 33280
+actor loss: 5.340024471282959
+critic loss: 3605.238037109375
+Epoch: (65)
+Timestep: 33792
+actor loss: 5.511303901672363
+critic loss: 3463.3173828125
+Epoch: (66)
+Timestep: 34304
+actor loss: 5.9545793533325195
+critic loss: 3915.371337890625
+Epoch: (67)
+Timestep: 34816
+actor loss: 5.486456871032715
+critic loss: 3652.511474609375
+Epoch: (68)
+Timestep: 35328
+actor loss: 5.482607841491699
+critic loss: 3237.296630859375
+Epoch: (69)
+Timestep: 35840
+actor loss: 6.996463775634766
+critic loss: 4751.90625
+Epoch: (70)
+Timestep: 36352
+actor loss: 6.465951919555664
+critic loss: 4486.7060546875
+Epoch: (71)
+Timestep: 36864
+actor loss: 6.674087047576904
+critic loss: 4688.9775390625
+Epoch: (72)
+Timestep: 37376
+actor loss: 6.576676845550537
+critic loss: 4513.82373046875
+Epoch: (73)
+Timestep: 37888
+actor loss: 6.446931838989258
+critic loss: 4457.42626953125
+Epoch: (74)
+Timestep: 38400
+actor loss: 6.556282997131348
+critic loss: 4566.2177734375
+Epoch: (75)
+Timestep: 38912
+actor loss: 5.560340881347656
+critic loss: 3598.648681640625
+Epoch: (76)
+Timestep: 39424
+actor loss: 5.7183098793029785
+critic loss: 3260.592529296875
+Epoch: (77)
+Timestep: 39936
+actor loss: 6.0425238609313965
+critic loss: 3711.7919921875
+Epoch: (78)
+Timestep: 40448
+actor loss: 5.453921318054199
+critic loss: 3577.980224609375
+Epoch: (79)
+Timestep: 40960
+actor loss: 5.307607650756836
+critic loss: 3175.515380859375
+Epoch: (80)
+Timestep: 41472
+actor loss: 5.806573867797852
+critic loss: 3478.0751953125
+Epoch: (81)
+Timestep: 41984
+actor loss: 6.643981456756592
+critic loss: 4786.53076171875
+Epoch: (82)
+Timestep: 42496
+actor loss: 6.953001976013184
+critic loss: 4829.05859375
+Epoch: (83)
+Timestep: 43008
+actor loss: 6.862094879150391
+critic loss: 4837.84619140625
+Epoch: (84)
+Timestep: 43520
+actor loss: 7.208959579467773
+critic loss: 5184.2734375
+Epoch: (85)
+Timestep: 44032
+actor loss: 6.739792823791504
+critic loss: 4896.2138671875
+Epoch: (86)
+Timestep: 44544
+actor loss: 6.59941291809082
+critic loss: 4624.1875
+Epoch: (87)
+Timestep: 45056
+actor loss: 6.331272125244141
+critic loss: 4326.1611328125
+Epoch: (88)
+Timestep: 45568
+actor loss: 6.883660316467285
+critic loss: 5116.1591796875
+Epoch: (89)
+Timestep: 46080
+actor loss: 6.931227684020996
+critic loss: 5120.9228515625
+Epoch: (90)
+Timestep: 46592
+actor loss: 6.765387535095215
+critic loss: 5012.3720703125
+Epoch: (91)
+Timestep: 47104
+actor loss: 7.291606426239014
+critic loss: 5318.5439453125
+Epoch: (92)
+Timestep: 47616
+actor loss: 7.189115524291992
+critic loss: 5346.34619140625
+Epoch: (93)
+Timestep: 48128
+actor loss: 6.056069850921631
+critic loss: 3974.8115234375
+Epoch: (94)
+Timestep: 48640
+actor loss: 6.22809362411499
+critic loss: 3834.621337890625
+Epoch: (95)
+Timestep: 49152
+actor loss: 5.983878135681152
+critic loss: 3712.660888671875
+Epoch: (96)
+Timestep: 49664
+actor loss: 5.720285892486572
+critic loss: 3747.0546875
+Epoch: (97)
+Timestep: 50176
+actor loss: 5.8895769119262695
+critic loss: 3687.76171875
+Epoch: (98)
+Timestep: 50688
+actor loss: 6.5730881690979
+critic loss: 4078.0556640625
+Epoch: (99)
+Timestep: 51200
+actor loss: 5.797328948974609
+critic loss: 3871.3291015625
+Epoch: (100)
+Timestep: 51712
+actor loss: 5.885187149047852
+critic loss: 4170.0732421875
+Epoch: (101)
+Timestep: 52224
+actor loss: 6.068619728088379
+critic loss: 4101.1201171875
+Epoch: (102)
+Timestep: 52736
+actor loss: 6.51289701461792
+critic loss: 4401.43798828125
+Epoch: (103)
+Timestep: 53248
+actor loss: 6.355454444885254
+critic loss: 4409.27294921875
+Epoch: (104)
+Timestep: 53760
+actor loss: 5.896849632263184
+critic loss: 4059.288818359375
+Epoch: (105)
+Timestep: 54272
+actor loss: 6.2043561935424805
+critic loss: 4176.16455078125
+Epoch: (106)
+Timestep: 54784
+actor loss: 5.903102874755859
+critic loss: 3601.6435546875
+Epoch: (107)
+Timestep: 55296
+actor loss: 5.950400352478027
+critic loss: 3619.234130859375
+Epoch: (108)
+Timestep: 55808
+actor loss: 6.111950397491455
+critic loss: 3778.207275390625
+Epoch: (109)
+Timestep: 56320
+actor loss: 6.057784557342529
+critic loss: 3758.218505859375
+Epoch: (110)
+Timestep: 56832
+actor loss: 6.310456275939941
+critic loss: 3960.109619140625
+Epoch: (111)
+Timestep: 57344
+actor loss: 5.769904613494873
+critic loss: 3707.086181640625
+Epoch: (112)
+Timestep: 57856
+actor loss: 6.541637420654297
+critic loss: 4439.44921875
+Epoch: (113)
+Timestep: 58368
+actor loss: 6.262171745300293
+critic loss: 4290.45654296875
+Epoch: (114)
+Timestep: 58880
+actor loss: 6.207985877990723
+critic loss: 4214.73828125
+Epoch: (115)
+Timestep: 59392
+actor loss: 6.3510661125183105
+critic loss: 4167.79345703125
+Epoch: (116)
+Timestep: 59904
+actor loss: 6.39129638671875
+critic loss: 4061.55078125
+Epoch: (117)
+Timestep: 60416
+actor loss: 6.315003395080566
+critic loss: 4122.8828125
+Epoch: (118)
+Timestep: 60928
+actor loss: 6.212312698364258
+critic loss: 4031.902587890625
+Epoch: (119)
+Timestep: 61440
+actor loss: 7.048184871673584
+critic loss: 4569.80517578125
+Epoch: (120)
+Timestep: 61952
+actor loss: 6.951918601989746
+critic loss: 4839.58056640625
+Epoch: (121)
+Timestep: 62464
+actor loss: 6.535278797149658
+critic loss: 4447.8046875
+Epoch: (122)
+Timestep: 62976
+actor loss: 7.033867835998535
+critic loss: 4762.47705078125
+Epoch: (123)
+Timestep: 63488
+actor loss: 6.6590986251831055
+critic loss: 4564.94482421875
+Epoch: (124)
+Timestep: 64000
+actor loss: 6.407848358154297
+critic loss: 4385.2177734375
+Epoch: (125)
+Timestep: 64512
+actor loss: 6.712976932525635
+critic loss: 4748.0283203125
+Epoch: (126)
+Timestep: 65024
+actor loss: 6.544546604156494
+critic loss: 4443.7822265625
+Epoch: (127)
+Timestep: 65536
+actor loss: 7.048696994781494
+critic loss: 4714.9140625
+Epoch: (128)
+Timestep: 66048
+actor loss: 6.369565010070801
+critic loss: 4367.921875
+Epoch: (129)
+Timestep: 66560
+actor loss: 6.447425365447998
+critic loss: 4286.6572265625
+Epoch: (130)
+Timestep: 67072
+actor loss: 6.562263488769531
+critic loss: 4231.3349609375
+Epoch: (131)
+Timestep: 67584
+actor loss: 5.60554838180542
+critic loss: 3365.909912109375
+Epoch: (132)
+Timestep: 68096
+actor loss: 6.312718868255615
+critic loss: 3767.347900390625
+Epoch: (133)
+Timestep: 68608
+actor loss: 6.395179748535156
+critic loss: 3894.042724609375
+Epoch: (134)
+Timestep: 69120
+actor loss: 6.382209777832031
+critic loss: 3964.5380859375
+Epoch: (135)
+Timestep: 69632
+actor loss: 6.161459922790527
+critic loss: 3770.9765625
+Epoch: (136)
+Timestep: 70144
+actor loss: 6.221341133117676
+critic loss: 3830.2080078125
+Epoch: (137)
+Timestep: 70656
+actor loss: 6.380279064178467
+critic loss: 4269.7978515625
+Epoch: (138)
+Timestep: 71168
+actor loss: 6.6635589599609375
+critic loss: 4637.55029296875
+Epoch: (139)
+Timestep: 71680
+actor loss: 6.815885066986084
+critic loss: 4556.7587890625
+Epoch: (140)
+Timestep: 72192
+actor loss: 6.7094926834106445
+critic loss: 4636.49267578125
+Epoch: (141)
+Timestep: 72704
+actor loss: 6.956225395202637
+critic loss: 4843.6044921875
+Epoch: (142)
+Timestep: 73216
+actor loss: 6.560064315795898
+critic loss: 4390.30419921875
+Epoch: (143)
+Timestep: 73728
+actor loss: 6.332986831665039
+critic loss: 3815.941162109375
+Epoch: (144)
+Timestep: 74240
+actor loss: 6.652758598327637
+critic loss: 4177.5478515625
+Epoch: (145)
+Timestep: 74752
+actor loss: 6.405417442321777
+critic loss: 4179.97265625
+Epoch: (146)
+Timestep: 75264
+actor loss: 6.369454860687256
+critic loss: 4039.5771484375
+Epoch: (147)
+Timestep: 75776
+actor loss: 6.275382041931152
+critic loss: 3892.3974609375
+Epoch: (148)
+Timestep: 76288
+actor loss: 6.622570991516113
+critic loss: 4212.8291015625
+Epoch: (149)
+Timestep: 76800
+actor loss: 5.779592514038086
+critic loss: 3675.6103515625
+Epoch: (150)
+Timestep: 77312
+actor loss: 6.1215386390686035
+critic loss: 4032.8857421875
+Epoch: (151)
+Timestep: 77824
+actor loss: 6.088878154754639
+critic loss: 3751.972412109375
+Epoch: (152)
+Timestep: 78336
+actor loss: 6.495659828186035
+critic loss: 3853.1630859375
+Epoch: (153)
+Timestep: 78848
+actor loss: 6.1222124099731445
+critic loss: 3653.1025390625
+Epoch: (154)
+Timestep: 79360
+actor loss: 5.82484245300293
+critic loss: 3383.726806640625
+Epoch: (155)
+Timestep: 79872
+actor loss: 6.326483249664307
+critic loss: 3703.690673828125
+Epoch: (156)
+Timestep: 80384
+actor loss: 6.245372772216797
+critic loss: 3921.054931640625
+Epoch: (157)
+Timestep: 80896
+actor loss: 6.2533698081970215
+critic loss: 3953.734130859375
+Epoch: (158)
+Timestep: 81408
+actor loss: 6.716559886932373
+critic loss: 4258.07861328125
+Epoch: (159)
+Timestep: 81920
+actor loss: 6.457554340362549
+critic loss: 3997.609130859375
+Epoch: (160)
+Timestep: 82432
+actor loss: 6.365226745605469
+critic loss: 4134.63232421875
+Epoch: (161)
+Timestep: 82944
+actor loss: 5.906460285186768
+critic loss: 3910.741943359375
+Epoch: (162)
+Timestep: 83456
+actor loss: 6.865790843963623
+critic loss: 4565.36767578125
+Epoch: (163)
+Timestep: 83968
+actor loss: 6.544217109680176
+critic loss: 4442.0205078125
+Epoch: (164)
+Timestep: 84480
+actor loss: 6.634389400482178
+critic loss: 4425.4609375
+Epoch: (165)
+Timestep: 84992
+actor loss: 6.500472068786621
+critic loss: 4107.1474609375
+Epoch: (166)
+Timestep: 85504
+actor loss: 6.737772464752197
+critic loss: 4252.4326171875
+Epoch: (167)
+Timestep: 86016
+actor loss: 6.596956253051758
+critic loss: 4179.49560546875
+Epoch: (168)
+Timestep: 86528
+actor loss: 6.024506568908691
+critic loss: 3440.402587890625
+Epoch: (169)
+Timestep: 87040
+actor loss: 6.228862762451172
+critic loss: 3454.558349609375
+Epoch: (170)
+Timestep: 87552
+actor loss: 5.873563766479492
+critic loss: 3403.754150390625
+Epoch: (171)
+Timestep: 88064
+actor loss: 5.946268081665039
+critic loss: 3469.0849609375
+Epoch: (172)
+Timestep: 88576
+actor loss: 6.052230358123779
+critic loss: 3514.57177734375
+Epoch: (173)
+Timestep: 89088
+actor loss: 6.219997882843018
+critic loss: 3601.456787109375
+Epoch: (174)
+Timestep: 89600
+actor loss: 5.948197841644287
+critic loss: 3551.14208984375
+Epoch: (175)
+Timestep: 90112
+actor loss: 6.365525245666504
+critic loss: 4206.00390625
+Epoch: (176)
+Timestep: 90624
+actor loss: 6.777698516845703
+critic loss: 4303.3193359375
+Epoch: (177)
+Timestep: 91136
+actor loss: 6.387436866760254
+critic loss: 4111.84326171875
+Epoch: (178)
+Timestep: 91648
+actor loss: 6.3415422439575195
+critic loss: 4026.284423828125
+Epoch: (179)
+Timestep: 92160
+actor loss: 6.381522178649902
+critic loss: 4003.4189453125
+Epoch: (180)
+Timestep: 92672
+actor loss: 6.5755615234375
+critic loss: 4101.08935546875
+Epoch: (181)
+Timestep: 93184
+actor loss: 6.571022033691406
+critic loss: 4124.05419921875
+Epoch: (182)
+Timestep: 93696
+actor loss: 6.702661514282227
+critic loss: 4243.1162109375
+Epoch: (183)
+Timestep: 94208
+actor loss: 6.492031097412109
+critic loss: 4108.1953125
+Epoch: (184)
+Timestep: 94720
+actor loss: 6.824280738830566
+critic loss: 4339.9541015625
+Epoch: (185)
+Timestep: 95232
+actor loss: 6.661337852478027
+critic loss: 4277.97998046875
+Epoch: (186)
+Timestep: 95744
+actor loss: 6.7901787757873535
+critic loss: 4426.8388671875
+Epoch: (187)
+Timestep: 96256
+actor loss: 6.605562210083008
+critic loss: 4237.22607421875
+Epoch: (188)
+Timestep: 96768
+actor loss: 6.0535478591918945
+critic loss: 3670.636474609375
+Epoch: (189)
+Timestep: 97280
+actor loss: 6.312954902648926
+critic loss: 3819.535400390625
+Epoch: (190)
+Timestep: 97792
+actor loss: 6.180135726928711
+critic loss: 3743.757568359375
+Epoch: (191)
+Timestep: 98304
+actor loss: 6.470279693603516
+critic loss: 3860.2529296875
+Epoch: (192)
+Timestep: 98816
+actor loss: 6.0765886306762695
+critic loss: 3624.992431640625
+Epoch: (193)
+Timestep: 99328
+actor loss: 5.730442523956299
+critic loss: 3049.075439453125
+Epoch: (194)
+Timestep: 99840
+actor loss: 6.248761177062988
+critic loss: 3195.941162109375
+Epoch: (195)
+Timestep: 100352
+actor loss: 6.164525985717773
+critic loss: 3387.788818359375
+Epoch: (196)
+Timestep: 100864
+actor loss: 5.624478340148926
+critic loss: 3081.07470703125
+Epoch: (197)
+Timestep: 101376
+actor loss: 5.753200531005859
+critic loss: 3040.523193359375
+Epoch: (198)
+Timestep: 101888
+actor loss: 6.1617889404296875
+critic loss: 3291.238037109375
+Epoch: (199)
+Timestep: 102400
+actor loss: 5.601375579833984
+critic loss: 3032.36572265625
+Epoch: (200)
+Timestep: 102912
+actor loss: 6.07986307144165
+critic loss: 3931.33984375
+Epoch: (201)
+Timestep: 103424
+actor loss: 6.206487655639648
+critic loss: 3832.761962890625
+Epoch: (202)
+Timestep: 103936
+actor loss: 6.454336643218994
+critic loss: 3908.3876953125
+Epoch: (203)
+Timestep: 104448
+actor loss: 6.131373405456543
+critic loss: 3710.964599609375
+Epoch: (204)
+Timestep: 104960
+actor loss: 6.558701515197754
+critic loss: 3977.87109375
+Epoch: (205)
+Timestep: 105472
+actor loss: 6.6187944412231445
+critic loss: 4100.68701171875
+Epoch: (206)
+Timestep: 105984
+actor loss: 6.181264877319336
+critic loss: 4001.066162109375
+Epoch: (207)
+Timestep: 106496
+actor loss: 6.7058329582214355
+critic loss: 4417.2822265625
+Epoch: (208)
+Timestep: 107008
+actor loss: 6.67495584487915
+critic loss: 4313.15283203125
+Epoch: (209)
+Timestep: 107520
+actor loss: 7.0235490798950195
+critic loss: 4467.44140625
+Epoch: (210)
+Timestep: 108032
+actor loss: 6.593633651733398
+critic loss: 4279.94873046875
+Epoch: (211)
+Timestep: 108544
+actor loss: 6.313600540161133
+critic loss: 3981.6865234375
+Epoch: (212)
+Timestep: 109056
+actor loss: 6.348438262939453
+critic loss: 3485.273681640625
+Epoch: (213)
+Timestep: 109568
+actor loss: 6.272174835205078
+critic loss: 3800.1318359375
+Epoch: (214)
+Timestep: 110080
+actor loss: 5.831859111785889
+critic loss: 3540.921630859375
+Epoch: (215)
+Timestep: 110592
+actor loss: 6.3388800621032715
+critic loss: 3918.500244140625
+Epoch: (216)
+Timestep: 111104
+actor loss: 6.318982124328613
+critic loss: 3880.503662109375
+Epoch: (217)
+Timestep: 111616
+actor loss: 6.330679893493652
+critic loss: 3825.441162109375
+Epoch: (218)
+Timestep: 112128
+actor loss: 6.0556817054748535
+critic loss: 3385.8583984375
+Epoch: (219)
+Timestep: 112640
+actor loss: 6.590877532958984
+critic loss: 3680.828857421875
+Epoch: (220)
+Timestep: 113152
+actor loss: 6.524385929107666
+critic loss: 3741.601318359375
+Epoch: (221)
+Timestep: 113664
+actor loss: 6.178432464599609
+critic loss: 3725.160400390625
+Epoch: (222)
+Timestep: 114176
+actor loss: 6.350250720977783
+critic loss: 3765.4755859375
+Epoch: (223)
+Timestep: 114688
+actor loss: 6.440471172332764
+critic loss: 3663.516357421875
+Epoch: (224)
+Timestep: 115200
+actor loss: 6.591940879821777
+critic loss: 3970.023193359375
+Epoch: (225)
+Timestep: 115712
+actor loss: 6.0680646896362305
+critic loss: 3719.19140625
+Epoch: (226)
+Timestep: 116224
+actor loss: 5.951357364654541
+critic loss: 3274.313720703125
+Epoch: (227)
+Timestep: 116736
+actor loss: 6.524687767028809
+critic loss: 3905.60546875
+Epoch: (228)
+Timestep: 117248
+actor loss: 5.989716053009033
+critic loss: 3581.425537109375
+Epoch: (229)
+Timestep: 117760
+actor loss: 6.178875923156738
+critic loss: 3660.5986328125
+Epoch: (230)
+Timestep: 118272
+actor loss: 6.248198986053467
+critic loss: 3638.292724609375
+Epoch: (231)
+Timestep: 118784
+actor loss: 5.866341590881348
+critic loss: 3121.96533203125
+Epoch: (232)
+Timestep: 119296
+actor loss: 5.407845497131348
+critic loss: 2935.80517578125
+Epoch: (233)
+Timestep: 119808
+actor loss: 5.693620681762695
+critic loss: 3003.762939453125
+Epoch: (234)
+Timestep: 120320
+actor loss: 5.615591049194336
+critic loss: 2994.8359375
+Epoch: (235)
+Timestep: 120832
+actor loss: 5.747663497924805
+critic loss: 3132.68408203125
+Epoch: (236)
+Timestep: 121344
+actor loss: 5.709431171417236
+critic loss: 3077.30517578125
+Epoch: (237)
+Timestep: 121856
+actor loss: 6.128109931945801
+critic loss: 3771.054443359375
+Epoch: (238)
+Timestep: 122368
+actor loss: 6.920454978942871
+critic loss: 4568.56201171875
+Epoch: (239)
+Timestep: 122880
+actor loss: 6.36805534362793
+critic loss: 4131.09033203125
+Epoch: (240)
+Timestep: 123392
+actor loss: 7.172974586486816
+critic loss: 4646.27392578125
+Epoch: (241)
+Timestep: 123904
+actor loss: 6.659035682678223
+critic loss: 4380.64794921875
+Epoch: (242)
+Timestep: 124416
+actor loss: 6.936165809631348
+critic loss: 4549.10107421875
+Epoch: (243)
+Timestep: 124928
+actor loss: 6.3735198974609375
+critic loss: 3551.160400390625
+Epoch: (244)
+Timestep: 125440
+actor loss: 6.679601669311523
+critic loss: 3732.586181640625
+Epoch: (245)
+Timestep: 125952
+actor loss: 5.982697010040283
+critic loss: 3422.5673828125
+Epoch: (246)
+Timestep: 126464
+actor loss: 6.003572463989258
+critic loss: 3618.9697265625
+Epoch: (247)
+Timestep: 126976
+actor loss: 6.15084171295166
+critic loss: 3705.726806640625
+Epoch: (248)
+Timestep: 127488
+actor loss: 6.281313896179199
+critic loss: 3655.2744140625
+Epoch: (249)
+Timestep: 128000
+actor loss: 6.348941802978516
+critic loss: 3705.0107421875
+Epoch: (250)
+Timestep: 128512
+actor loss: 6.684932708740234
+critic loss: 4247.66845703125
+Epoch: (251)
+Timestep: 129024
+actor loss: 6.61851167678833
+critic loss: 3964.3330078125
+Epoch: (252)
+Timestep: 129536
+actor loss: 6.693580627441406
+critic loss: 4012.590087890625
+Epoch: (253)
+Timestep: 130048
+actor loss: 6.498920440673828
+critic loss: 3963.3427734375
+Epoch: (254)
+Timestep: 130560
+actor loss: 6.309447288513184
+critic loss: 3799.972900390625
+Epoch: (255)
+Timestep: 131072
+actor loss: 6.465394020080566
+critic loss: 3781.3056640625
+Epoch: (256)
+Timestep: 131584
+actor loss: 6.054407596588135
+critic loss: 3359.29296875
+Epoch: (257)
+Timestep: 132096
+actor loss: 6.226119518280029
+critic loss: 3460.383056640625
+Epoch: (258)
+Timestep: 132608
+actor loss: 6.273531436920166
+critic loss: 3569.11572265625
+Epoch: (259)
+Timestep: 133120
+actor loss: 6.129799842834473
+critic loss: 3642.620849609375
+Epoch: (260)
+Timestep: 133632
+actor loss: 5.868244647979736
+critic loss: 3422.238037109375
+Epoch: (261)
+Timestep: 134144
+actor loss: 6.08207893371582
+critic loss: 3449.972900390625
+Epoch: (262)
+Timestep: 134656
+actor loss: 6.08132266998291
+critic loss: 3428.4423828125
+Epoch: (263)
+Timestep: 135168
+actor loss: 6.301933288574219
+critic loss: 3715.065673828125
+Epoch: (264)
+Timestep: 135680
+actor loss: 6.389278888702393
+critic loss: 3818.04296875
+Epoch: (265)
+Timestep: 136192
+actor loss: 6.399239540100098
+critic loss: 3922.539306640625
+Epoch: (266)
+Timestep: 136704
+actor loss: 6.396907329559326
+critic loss: 3770.4072265625
+Epoch: (267)
+Timestep: 137216
+actor loss: 6.607732772827148
+critic loss: 3988.3017578125
+Epoch: (268)
+Timestep: 137728
+actor loss: 6.006648063659668
+critic loss: 3359.179931640625
+Epoch: (269)
+Timestep: 138240
+actor loss: 6.846100330352783
+critic loss: 4050.4052734375
+Epoch: (270)
+Timestep: 138752
+actor loss: 6.385381698608398
+critic loss: 3795.605224609375
+Epoch: (271)
+Timestep: 139264
+actor loss: 6.8609418869018555
+critic loss: 4209.7197265625
+Epoch: (272)
+Timestep: 139776
+actor loss: 6.581299304962158
+critic loss: 4081.4228515625
+Epoch: (273)
+Timestep: 140288
+actor loss: 6.723543167114258
+critic loss: 4207.42626953125
+Epoch: (274)
+Timestep: 140800
+actor loss: 6.570468902587891
+critic loss: 4013.195556640625
+Epoch: (275)
+Timestep: 141312
+actor loss: 6.7569684982299805
+critic loss: 4356.828125
+Epoch: (276)
+Timestep: 141824
+actor loss: 6.6077423095703125
+critic loss: 4027.734619140625
+Epoch: (277)
+Timestep: 142336
+actor loss: 6.908031463623047
+critic loss: 4233.36376953125
+Epoch: (278)
+Timestep: 142848
+actor loss: 7.001073837280273
+critic loss: 4358.4423828125
+Epoch: (279)
+Timestep: 143360
+actor loss: 6.488633155822754
+critic loss: 3982.026611328125
+Epoch: (280)
+Timestep: 143872
+actor loss: 6.776421546936035
+critic loss: 4129.80126953125
+Epoch: (281)
+Timestep: 144384
+actor loss: 6.398621559143066
+critic loss: 3771.1298828125
+Epoch: (282)
+Timestep: 144896
+actor loss: 5.967934608459473
+critic loss: 3528.1318359375
+Epoch: (283)
+Timestep: 145408
+actor loss: 6.421255111694336
+critic loss: 3739.4248046875
+Epoch: (284)
+Timestep: 145920
+actor loss: 6.513396263122559
+critic loss: 3690.2373046875
+Epoch: (285)
+Timestep: 146432
+actor loss: 6.237802028656006
+critic loss: 3682.6259765625
+Epoch: (286)
+Timestep: 146944
+actor loss: 5.879764556884766
+critic loss: 3347.0498046875
+Epoch: (287)
+Timestep: 147456
+actor loss: 6.346231937408447
+critic loss: 3165.544189453125
+Epoch: (288)
+Timestep: 147968
+actor loss: 5.562299728393555
+critic loss: 2928.590087890625
+Epoch: (289)
+Timestep: 148480
+actor loss: 5.307766437530518
+critic loss: 2732.820556640625
+Epoch: (290)
+Timestep: 148992
+actor loss: 5.743415832519531
+critic loss: 2750.890869140625
+Epoch: (291)
+Timestep: 149504
+actor loss: 6.047773361206055
+critic loss: 2948.083251953125
+Epoch: (292)
+Timestep: 150016
+actor loss: 5.410025596618652
+critic loss: 2723.71630859375
+Epoch: (293)
+Timestep: 150528
+actor loss: 5.955899238586426
+critic loss: 3265.01171875
+Epoch: (294)
+Timestep: 151040
+actor loss: 7.246191024780273
+critic loss: 4440.1240234375
+Epoch: (295)
+Timestep: 151552
+actor loss: 7.231040954589844
+critic loss: 4453.828125
+Epoch: (296)
+Timestep: 152064
+actor loss: 6.947992324829102
+critic loss: 4394.01171875
+Epoch: (297)
+Timestep: 152576
+actor loss: 7.06020975112915
+critic loss: 4501.37841796875
+Epoch: (298)
+Timestep: 153088
+actor loss: 7.334149360656738
+critic loss: 4686.21142578125
+Epoch: (299)
+Timestep: 153600
+actor loss: 7.207566261291504
+critic loss: 4601.78955078125
+Epoch: (300)
+Timestep: 154112
+actor loss: 5.003375053405762
+critic loss: 2755.044189453125
+Epoch: (301)
+Timestep: 154624
+actor loss: 5.719604015350342
+critic loss: 2967.00048828125
+Epoch: (302)
+Timestep: 155136
+actor loss: 5.755643367767334
+critic loss: 2969.473876953125
+Epoch: (303)
+Timestep: 155648
+actor loss: 5.773896217346191
+critic loss: 3129.586181640625
+Epoch: (304)
+Timestep: 156160
+actor loss: 6.146915912628174
+critic loss: 3278.093505859375
+Epoch: (305)
+Timestep: 156672
+actor loss: 6.155006408691406
+critic loss: 3262.3330078125
+Epoch: (306)
+Timestep: 157184
+actor loss: 6.299283981323242
+critic loss: 3856.9287109375
+Epoch: (307)
+Timestep: 157696
+actor loss: 6.6897382736206055
+critic loss: 4065.9013671875
+Epoch: (308)
+Timestep: 158208
+actor loss: 6.778446674346924
+critic loss: 4158.85888671875
+Epoch: (309)
+Timestep: 158720
+actor loss: 6.631565570831299
+critic loss: 4094.5849609375
+Epoch: (310)
+Timestep: 159232
+actor loss: 6.622524738311768
+critic loss: 4081.996337890625
+Epoch: (311)
+Timestep: 159744
+actor loss: 6.730139255523682
+critic loss: 4024.680419921875
+Epoch: (312)
+Timestep: 160256
+actor loss: 6.780596733093262
+critic loss: 3869.4521484375
+Epoch: (313)
+Timestep: 160768
+actor loss: 6.284697532653809
+critic loss: 3596.3583984375
+Epoch: (314)
+Timestep: 161280
+actor loss: 6.2413177490234375
+critic loss: 3549.273193359375
+Epoch: (315)
+Timestep: 161792
+actor loss: 6.3255133628845215
+critic loss: 3653.9658203125
+Epoch: (316)
+Timestep: 162304
+actor loss: 6.3554582595825195
+critic loss: 3533.718994140625
+Epoch: (317)
+Timestep: 162816
+actor loss: 6.48450231552124
+critic loss: 3481.003662109375
+Epoch: (318)
+Timestep: 163328
+actor loss: 5.618851184844971
+critic loss: 2808.63330078125
+Epoch: (319)
+Timestep: 163840
+actor loss: 6.664079666137695
+critic loss: 3742.827880859375
+Epoch: (320)
+Timestep: 164352
+actor loss: 6.714809894561768
+critic loss: 3880.363037109375
+Epoch: (321)
+Timestep: 164864
+actor loss: 6.427791118621826
+critic loss: 3854.7998046875
+Epoch: (322)
+Timestep: 165376
+actor loss: 6.244098663330078
+critic loss: 3696.031494140625
+Epoch: (323)
+Timestep: 165888
+actor loss: 6.821712493896484
+critic loss: 4061.589599609375
+Epoch: (324)
+Timestep: 166400
+actor loss: 6.695226192474365
+critic loss: 4039.2666015625
+Epoch: (325)
+Timestep: 166912
+actor loss: 6.184571266174316
+critic loss: 3620.8232421875
+Epoch: (326)
+Timestep: 167424
+actor loss: 6.269595146179199
+critic loss: 3489.546630859375
+Epoch: (327)
+Timestep: 167936
+actor loss: 6.42122220993042
+critic loss: 3715.515869140625
+Epoch: (328)
+Timestep: 168448
+actor loss: 6.471323013305664
+critic loss: 3557.01171875
+Epoch: (329)
+Timestep: 168960
+actor loss: 6.0299882888793945
+critic loss: 3331.652587890625
+Epoch: (330)
+Timestep: 169472
+actor loss: 6.28462028503418
+critic loss: 3585.18603515625
+Epoch: (331)
+Timestep: 169984
+actor loss: 7.204451560974121
+critic loss: 4632.61669921875
+Epoch: (332)
+Timestep: 170496
+actor loss: 7.299742221832275
+critic loss: 4710.87548828125
+Epoch: (333)
+Timestep: 171008
+actor loss: 7.1537933349609375
+critic loss: 4567.15673828125
+Epoch: (334)
+Timestep: 171520
+actor loss: 7.363323211669922
+critic loss: 4712.07275390625
+Epoch: (335)
+Timestep: 172032
+actor loss: 7.124904155731201
+critic loss: 4594.15625
+Epoch: (336)
+Timestep: 172544
+actor loss: 7.114519119262695
+critic loss: 4544.1484375
+Epoch: (337)
+Timestep: 173056
+actor loss: 6.774243354797363
+critic loss: 3879.75390625
+Epoch: (338)
+Timestep: 173568
+actor loss: 6.232005596160889
+critic loss: 3517.789306640625
+Epoch: (339)
+Timestep: 174080
+actor loss: 6.178123474121094
+critic loss: 3564.375244140625
+Epoch: (340)
+Timestep: 174592
+actor loss: 6.444097995758057
+critic loss: 3667.3505859375
+Epoch: (341)
+Timestep: 175104
+actor loss: 6.321849822998047
+critic loss: 3407.1826171875
+Epoch: (342)
+Timestep: 175616
+actor loss: 6.314225196838379
+critic loss: 3459.913818359375
+Epoch: (343)
+Timestep: 176128
+actor loss: 5.776235103607178
+critic loss: 2847.91064453125
+Epoch: (344)
+Timestep: 176640
+actor loss: 6.06786584854126
+critic loss: 2997.870849609375
+Epoch: (345)
+Timestep: 177152
+actor loss: 5.962263107299805
+critic loss: 3059.69384765625
+Epoch: (346)
+Timestep: 177664
+actor loss: 5.936500549316406
+critic loss: 3035.1572265625
+Epoch: (347)
+Timestep: 178176
+actor loss: 5.996451377868652
+critic loss: 3051.6484375
+Epoch: (348)
+Timestep: 178688
+actor loss: 6.037134170532227
+critic loss: 3055.14453125
+Epoch: (349)
+Timestep: 179200
+actor loss: 6.073826789855957
+critic loss: 3179.640869140625
+Epoch: (350)
+Timestep: 179712
+actor loss: 6.506509780883789
+critic loss: 3972.2822265625
+Epoch: (351)
+Timestep: 180224
+actor loss: 6.6188812255859375
+critic loss: 3923.367431640625
+Epoch: (352)
+Timestep: 180736
+actor loss: 6.70628547668457
+critic loss: 3955.281982421875
+Epoch: (353)
+Timestep: 181248
+actor loss: 6.761075973510742
+critic loss: 4060.523193359375
+Epoch: (354)
+Timestep: 181760
+actor loss: 6.3268632888793945
+critic loss: 3704.867431640625
+Epoch: (355)
+Timestep: 182272
+actor loss: 6.807900905609131
+critic loss: 3992.492919921875
+Epoch: (356)
+Timestep: 182784
+actor loss: 5.859522819519043
+critic loss: 3245.688720703125
+Epoch: (357)
+Timestep: 183296
+actor loss: 6.606784343719482
+critic loss: 3561.675537109375
+Epoch: (358)
+Timestep: 183808
+actor loss: 6.450009822845459
+critic loss: 3565.4873046875
+Epoch: (359)
+Timestep: 184320
+actor loss: 6.228736877441406
+critic loss: 3436.734619140625
+Epoch: (360)
+Timestep: 184832
+actor loss: 6.356661319732666
+critic loss: 3455.97021484375
+Epoch: (361)
+Timestep: 185344
+actor loss: 6.340489864349365
+critic loss: 3490.7265625
+Epoch: (362)
+Timestep: 185856
+actor loss: 6.302480697631836
+critic loss: 3339.312744140625
+Epoch: (363)
+Timestep: 186368
+actor loss: 6.565975189208984
+critic loss: 3638.1884765625
+Epoch: (364)
+Timestep: 186880
+actor loss: 6.0213775634765625
+critic loss: 3337.4755859375
+Epoch: (365)
+Timestep: 187392
+actor loss: 6.091309547424316
+critic loss: 3191.680908203125
+Epoch: (366)
+Timestep: 187904
+actor loss: 6.649563789367676
+critic loss: 3511.6201171875
+Epoch: (367)
+Timestep: 188416
+actor loss: 6.467321395874023
+critic loss: 3415.14990234375
+Epoch: (368)
+Timestep: 188928
+actor loss: 6.164665699005127
+critic loss: 3222.42919921875
+Epoch: (369)
+Timestep: 189440
+actor loss: 6.756222724914551
+critic loss: 3500.698974609375
+Epoch: (370)
+Timestep: 189952
+actor loss: 6.314948558807373
+critic loss: 3445.250244140625
+Epoch: (371)
+Timestep: 190464
+actor loss: 6.405572414398193
+critic loss: 3534.1435546875
+Epoch: (372)
+Timestep: 190976
+actor loss: 6.2110137939453125
+critic loss: 3401.687255859375
+Epoch: (373)
+Timestep: 191488
+actor loss: 5.9267964363098145
+critic loss: 3166.965087890625
+Epoch: (374)
+Timestep: 192000
+actor loss: 6.35971212387085
+critic loss: 3419.394775390625
+Epoch: (375)
+Timestep: 192512
+actor loss: 6.316312789916992
+critic loss: 3669.2119140625
+Epoch: (376)
+Timestep: 193024
+actor loss: 6.153036117553711
+critic loss: 3409.9638671875
+Epoch: (377)
+Timestep: 193536
+actor loss: 6.575701713562012
+critic loss: 3599.116943359375
+Epoch: (378)
+Timestep: 194048
+actor loss: 6.402690887451172
+critic loss: 3447.429443359375
+Epoch: (379)
+Timestep: 194560
+actor loss: 6.156497955322266
+critic loss: 3360.2158203125
+Epoch: (380)
+Timestep: 195072
+actor loss: 6.368094444274902
+critic loss: 3367.937744140625
+Epoch: (381)
+Timestep: 195584
+actor loss: 7.040334701538086
+critic loss: 4321.07421875
+Epoch: (382)
+Timestep: 196096
+actor loss: 7.160223484039307
+critic loss: 4266.81982421875
+Epoch: (383)
+Timestep: 196608
+actor loss: 7.175849914550781
+critic loss: 4350.33984375
+Epoch: (384)
+Timestep: 197120
+actor loss: 7.033935070037842
+critic loss: 4273.4443359375
+Epoch: (385)
+Timestep: 197632
+actor loss: 6.978085517883301
+critic loss: 4250.93798828125
+Epoch: (386)
+Timestep: 198144
+actor loss: 7.064211845397949
+critic loss: 4381.78857421875
+Epoch: (387)
+Timestep: 198656
+actor loss: 6.90064811706543
+critic loss: 3873.4072265625
+Epoch: (388)
+Timestep: 199168
+actor loss: 6.088752746582031
+critic loss: 3299.617431640625
+Epoch: (389)
+Timestep: 199680
+actor loss: 6.1959123611450195
+critic loss: 3186.567626953125
+Epoch: (390)
+Timestep: 200192
+actor loss: 6.458571910858154
+critic loss: 3406.460693359375
+Epoch: (391)
+Timestep: 200704
+actor loss: 6.096219062805176
+critic loss: 3195.57763671875
+Epoch: (392)
+Timestep: 201216
+actor loss: 6.025489330291748
+critic loss: 3193.769775390625
+Epoch: (393)
+Timestep: 201728
+actor loss: 5.392087936401367
+critic loss: 2442.038818359375
+Epoch: (394)
+Timestep: 202240
+actor loss: 6.254681587219238
+critic loss: 3231.187255859375
+Epoch: (395)
+Timestep: 202752
+actor loss: 6.497983932495117
+critic loss: 3397.722412109375
+Epoch: (396)
+Timestep: 203264
+actor loss: 6.181458473205566
+critic loss: 3501.5029296875
+Epoch: (397)
+Timestep: 203776
+actor loss: 6.077883720397949
+critic loss: 3281.87646484375
+Epoch: (398)
+Timestep: 204288
+actor loss: 6.684918403625488
+critic loss: 3599.8173828125
+Epoch: (399)
+Timestep: 204800
+actor loss: 6.046409606933594
+critic loss: 3360.59521484375
+Epoch: (400)
+Timestep: 205312
+actor loss: 6.472249984741211
+critic loss: 3802.445556640625
+Epoch: (401)
+Timestep: 205824
+actor loss: 6.786592483520508
+critic loss: 3797.152587890625
+Epoch: (402)
+Timestep: 206336
+actor loss: 6.603857040405273
+critic loss: 3671.992431640625
+Epoch: (403)
+Timestep: 206848
+actor loss: 6.610273361206055
+critic loss: 3809.1904296875
+Epoch: (404)
+Timestep: 207360
+actor loss: 6.5294294357299805
+critic loss: 3658.0869140625
+Epoch: (405)
+Timestep: 207872
+actor loss: 6.831651210784912
+critic loss: 3785.890380859375
+Epoch: (406)
+Timestep: 208384
+actor loss: 6.70900297164917
+critic loss: 3808.296875
+Epoch: (407)
+Timestep: 208896
+actor loss: 6.608389854431152
+critic loss: 3716.186767578125
+Epoch: (408)
+Timestep: 209408
+actor loss: 6.348690032958984
+critic loss: 3465.4365234375
+Epoch: (409)
+Timestep: 209920
+actor loss: 6.911138534545898
+critic loss: 3768.6298828125
+Epoch: (410)
+Timestep: 210432
+actor loss: 6.677382946014404
+critic loss: 3699.668701171875
+Epoch: (411)
+Timestep: 210944
+actor loss: 6.604747772216797
+critic loss: 3708.475830078125
+Epoch: (412)
+Timestep: 211456
+actor loss: 7.000560760498047
+critic loss: 4099.41357421875
+Epoch: (413)
+Timestep: 211968
+actor loss: 6.73376989364624
+critic loss: 4018.9462890625
+Epoch: (414)
+Timestep: 212480
+actor loss: 6.772552967071533
+critic loss: 4030.7490234375
+Epoch: (415)
+Timestep: 212992
+actor loss: 6.829523086547852
+critic loss: 4057.8271484375
+Epoch: (416)
+Timestep: 213504
+actor loss: 6.880815505981445
+critic loss: 3987.597900390625
+Epoch: (417)
+Timestep: 214016
+actor loss: 7.178609848022461
+critic loss: 4120.96826171875
+Epoch: (418)
+Timestep: 214528
+actor loss: 6.56873893737793
+critic loss: 3647.230712890625
+Epoch: (419)
+Timestep: 215040
+actor loss: 6.716209411621094
+critic loss: 3673.043212890625
+Epoch: (420)
+Timestep: 215552
+actor loss: 6.610410690307617
+critic loss: 3598.144775390625
+Epoch: (421)
+Timestep: 216064
+actor loss: 6.779873847961426
+critic loss: 3825.7314453125
+Epoch: (422)
+Timestep: 216576
+actor loss: 6.587521553039551
+critic loss: 3861.0537109375
+Epoch: (423)
+Timestep: 217088
+actor loss: 6.526539325714111
+critic loss: 3705.683349609375
+Epoch: (424)
+Timestep: 217600
+actor loss: 7.024477481842041
+critic loss: 3926.082763671875
+Epoch: (425)
+Timestep: 218112
+actor loss: 6.709870338439941
+critic loss: 3936.6650390625
+Epoch: (426)
+Timestep: 218624
+actor loss: 6.7256269454956055
+critic loss: 3748.847900390625
+Epoch: (427)
+Timestep: 219136
+actor loss: 6.807539939880371
+critic loss: 3717.281494140625
+Epoch: (428)
+Timestep: 219648
+actor loss: 6.7667236328125
+critic loss: 3713.691650390625
+Epoch: (429)
+Timestep: 220160
+actor loss: 6.533176422119141
+critic loss: 3599.398681640625
+Epoch: (430)
+Timestep: 220672
+actor loss: 7.072867393493652
+critic loss: 3952.307861328125
+Epoch: (431)
+Timestep: 221184
+actor loss: 6.4287943840026855
+critic loss: 3576.629150390625
+Epoch: (432)
+Timestep: 221696
+actor loss: 6.422911643981934
+critic loss: 3610.109375
+Epoch: (433)
+Timestep: 222208
+actor loss: 6.5663347244262695
+critic loss: 3636.238525390625
+Epoch: (434)
+Timestep: 222720
+actor loss: 6.520499229431152
+critic loss: 3590.179443359375
+Epoch: (435)
+Timestep: 223232
+actor loss: 6.599535942077637
+critic loss: 3694.113037109375
+Epoch: (436)
+Timestep: 223744
+actor loss: 6.247130393981934
+critic loss: 3560.1591796875
+Epoch: (437)
+Timestep: 224256
+actor loss: 6.714177131652832
+critic loss: 3701.406005859375
+Epoch: (438)
+Timestep: 224768
+actor loss: 6.870959281921387
+critic loss: 4032.980224609375
+Epoch: (439)
+Timestep: 225280
+actor loss: 6.9900712966918945
+critic loss: 4166.87060546875
+Epoch: (440)
+Timestep: 225792
+actor loss: 6.896584510803223
+critic loss: 4132.93017578125
+Epoch: (441)
+Timestep: 226304
+actor loss: 6.968781471252441
+critic loss: 4158.4990234375
+Epoch: (442)
+Timestep: 226816
+actor loss: 6.968055248260498
+critic loss: 4267.8212890625
+Epoch: (443)
+Timestep: 227328
+actor loss: 6.549339771270752
+critic loss: 3664.578125
+Epoch: (444)
+Timestep: 227840
+actor loss: 6.914915561676025
+critic loss: 3868.1533203125
+Epoch: (445)
+Timestep: 228352
+actor loss: 6.741942405700684
+critic loss: 3761.999267578125
+Epoch: (446)
+Timestep: 228864
+actor loss: 6.81735897064209
+critic loss: 3988.823974609375
+Epoch: (447)
+Timestep: 229376
+actor loss: 6.911231517791748
+critic loss: 4083.4619140625
+Epoch: (448)
+Timestep: 229888
+actor loss: 6.972082138061523
+critic loss: 3944.0634765625
+Epoch: (449)
+Timestep: 230400
+actor loss: 6.801233768463135
+critic loss: 3931.1787109375
+Epoch: (450)
+Timestep: 230912
+actor loss: 5.761795997619629
+critic loss: 2937.493408203125
+Epoch: (451)
+Timestep: 231424
+actor loss: 6.194208145141602
+critic loss: 2894.464599609375
+Epoch: (452)
+Timestep: 231936
+actor loss: 6.054241180419922
+critic loss: 2808.909912109375
+Epoch: (453)
+Timestep: 232448
+actor loss: 5.736551284790039
+critic loss: 2761.51708984375
+Epoch: (454)
+Timestep: 232960
+actor loss: 5.96574592590332
+critic loss: 2869.745849609375
+Epoch: (455)
+Timestep: 233472
+actor loss: 5.512609958648682
+critic loss: 2633.859375
+Epoch: (456)
+Timestep: 233984
+actor loss: 6.806783676147461
+critic loss: 3949.28515625
+Epoch: (457)
+Timestep: 234496
+actor loss: 6.9217987060546875
+critic loss: 3957.1494140625
+Epoch: (458)
+Timestep: 235008
+actor loss: 6.713408470153809
+critic loss: 3758.660400390625
+Epoch: (459)
+Timestep: 235520
+actor loss: 7.067028045654297
+critic loss: 3856.933349609375
+Epoch: (460)
+Timestep: 236032
+actor loss: 6.657547950744629
+critic loss: 3720.530517578125
+Epoch: (461)
+Timestep: 236544
+actor loss: 6.812707424163818
+critic loss: 3835.429443359375
+Epoch: (462)
+Timestep: 237056
+actor loss: 7.113185882568359
+critic loss: 4247.57421875
+Epoch: (463)
+Timestep: 237568
+actor loss: 6.343433380126953
+critic loss: 3703.0810546875
+Epoch: (464)
+Timestep: 238080
+actor loss: 6.8508830070495605
+critic loss: 3835.870849609375
+Epoch: (465)
+Timestep: 238592
+actor loss: 6.908429145812988
+critic loss: 3832.741943359375
+Epoch: (466)
+Timestep: 239104
+actor loss: 6.864262104034424
+critic loss: 3854.023681640625
+Epoch: (467)
+Timestep: 239616
+actor loss: 6.706984043121338
+critic loss: 3727.6640625
+Epoch: (468)
+Timestep: 240128
+actor loss: 6.00157356262207
+critic loss: 2758.76123046875
+Epoch: (469)
+Timestep: 240640
+actor loss: 6.364384651184082
+critic loss: 3094.621337890625
+Epoch: (470)
+Timestep: 241152
+actor loss: 6.444520473480225
+critic loss: 3297.6669921875
+Epoch: (471)
+Timestep: 241664
+actor loss: 6.60476016998291
+critic loss: 3462.3994140625
+Epoch: (472)
+Timestep: 242176
+actor loss: 5.87742805480957
+critic loss: 3085.207275390625
+Epoch: (473)
+Timestep: 242688
+actor loss: 6.274426460266113
+critic loss: 3023.74658203125
+Epoch: (474)
+Timestep: 243200
+actor loss: 6.294247150421143
+critic loss: 3126.57177734375
+Epoch: (475)
+Timestep: 243712
+actor loss: 7.072046279907227
+critic loss: 4435.91064453125
+Epoch: (476)
+Timestep: 244224
+actor loss: 7.32870626449585
+critic loss: 4339.4990234375
+Epoch: (477)
+Timestep: 244736
+actor loss: 7.389064788818359
+critic loss: 4383.15625
+Epoch: (478)
+Timestep: 245248
+actor loss: 6.849117755889893
+critic loss: 4163.0556640625
+Epoch: (479)
+Timestep: 245760
+actor loss: 7.027981758117676
+critic loss: 4183.88623046875
+Epoch: (480)
+Timestep: 246272
+actor loss: 7.287866115570068
+critic loss: 4255.15283203125
+Epoch: (481)
+Timestep: 246784
+actor loss: 6.44420051574707
+critic loss: 3413.515625
+Epoch: (482)
+Timestep: 247296
+actor loss: 6.104270935058594
+critic loss: 3349.29296875
+Epoch: (483)
+Timestep: 247808
+actor loss: 6.3572916984558105
+critic loss: 3293.1591796875
+Epoch: (484)
+Timestep: 248320
+actor loss: 6.5173187255859375
+critic loss: 3321.093505859375
+Epoch: (485)
+Timestep: 248832
+actor loss: 6.374250888824463
+critic loss: 3390.394287109375
+Epoch: (486)
+Timestep: 249344
+actor loss: 6.1295061111450195
+critic loss: 3287.22265625
+Epoch: (487)
+Timestep: 249856
+actor loss: 6.338496208190918
+critic loss: 3417.2822265625
+Epoch: (488)
+Timestep: 250368
+actor loss: 6.344593524932861
+critic loss: 3290.624755859375
+Epoch: (489)
+Timestep: 250880
+actor loss: 6.12531852722168
+critic loss: 3096.80419921875
+Epoch: (490)
+Timestep: 251392
+actor loss: 6.317444801330566
+critic loss: 3204.20947265625
+Epoch: (491)
+Timestep: 251904
+actor loss: 6.408661842346191
+critic loss: 3199.087158203125
+Epoch: (492)
+Timestep: 252416
+actor loss: 6.508805274963379
+critic loss: 3192.63232421875
+Epoch: (493)
+Timestep: 252928
+actor loss: 6.214872360229492
+critic loss: 2925.487060546875
+Epoch: (494)
+Timestep: 253440
+actor loss: 6.807592391967773
+critic loss: 3488.35302734375
+Epoch: (495)
+Timestep: 253952
+actor loss: 6.477234363555908
+critic loss: 3473.468505859375
+Epoch: (496)
+Timestep: 254464
+actor loss: 6.047521591186523
+critic loss: 3177.4462890625
+Epoch: (497)
+Timestep: 254976
+actor loss: 6.522491455078125
+critic loss: 3425.41015625
+Epoch: (498)
+Timestep: 255488
+actor loss: 6.525300025939941
+critic loss: 3437.922119140625
+Epoch: (499)
+Timestep: 256000
+actor loss: 6.180778980255127
+critic loss: 3221.739501953125
+Epoch: (500)
+Timestep: 256512
+actor loss: 6.395572662353516
+critic loss: 3495.804443359375
+Epoch: (501)
+Timestep: 257024
+actor loss: 6.757867336273193
+critic loss: 3487.226806640625
+Epoch: (502)
+Timestep: 257536
+actor loss: 6.433158874511719
+critic loss: 3245.487060546875
+Epoch: (503)
+Timestep: 258048
+actor loss: 6.32559871673584
+critic loss: 3239.0576171875
+Epoch: (504)
+Timestep: 258560
+actor loss: 6.304997444152832
+critic loss: 3168.58251953125
+Epoch: (505)
+Timestep: 259072
+actor loss: 6.611292362213135
+critic loss: 3295.0625
+Epoch: (506)
+Timestep: 259584
+actor loss: 6.249666213989258
+critic loss: 3216.16748046875
+Epoch: (507)
+Timestep: 260096
+actor loss: 6.386351108551025
+critic loss: 3323.87353515625
+Epoch: (508)
+Timestep: 260608
+actor loss: 6.7877936363220215
+critic loss: 3512.5
+Epoch: (509)
+Timestep: 261120
+actor loss: 6.91349983215332
+critic loss: 3546.714599609375
+Epoch: (510)
+Timestep: 261632
+actor loss: 6.560956954956055
+critic loss: 3501.859375
+Epoch: (511)
+Timestep: 262144
+actor loss: 6.502525329589844
+critic loss: 3498.5986328125
+Epoch: (512)
+Timestep: 262656
+actor loss: 7.535983085632324
+critic loss: 4192.6025390625
+Epoch: (513)
+Timestep: 263168
+actor loss: 6.7176408767700195
+critic loss: 3810.98046875
+Epoch: (514)
+Timestep: 263680
+actor loss: 6.7670578956604
+critic loss: 3677.0869140625
+Epoch: (515)
+Timestep: 264192
+actor loss: 6.782589912414551
+critic loss: 3673.1728515625
+Epoch: (516)
+Timestep: 264704
+actor loss: 6.6814069747924805
+critic loss: 3642.3720703125
+Epoch: (517)
+Timestep: 265216
+actor loss: 6.657280921936035
+critic loss: 3546.2314453125
+Epoch: (518)
+Timestep: 265728
+actor loss: 6.358076095581055
+critic loss: 3148.988037109375
+Epoch: (519)
+Timestep: 266240
+actor loss: 6.66109561920166
+critic loss: 3541.6533203125
+Epoch: (520)
+Timestep: 266752
+actor loss: 7.123373031616211
+critic loss: 3935.019287109375
+Epoch: (521)
+Timestep: 267264
+actor loss: 6.894838809967041
+critic loss: 4017.976806640625
+Epoch: (522)
+Timestep: 267776
+actor loss: 6.926290512084961
+critic loss: 3953.581787109375
+Epoch: (523)
+Timestep: 268288
+actor loss: 7.084044933319092
+critic loss: 3928.261474609375
+Epoch: (524)
+Timestep: 268800
+actor loss: 6.929439544677734
+critic loss: 3938.992919921875
+Epoch: (525)
+Timestep: 269312
+actor loss: 6.738918781280518
+critic loss: 3834.2041015625
+Epoch: (526)
+Timestep: 269824
+actor loss: 6.732259273529053
+critic loss: 3631.246337890625
+Epoch: (527)
+Timestep: 270336
+actor loss: 6.650679588317871
+critic loss: 3645.8525390625
+Epoch: (528)
+Timestep: 270848
+actor loss: 6.863395690917969
+critic loss: 3766.3818359375
+Epoch: (529)
+Timestep: 271360
+actor loss: 6.6881513595581055
+critic loss: 3619.1259765625
+Epoch: (530)
+Timestep: 271872
+actor loss: 6.469061374664307
+critic loss: 3553.113525390625
+Epoch: (531)
+Timestep: 272384
+actor loss: 6.8832573890686035
+critic loss: 3789.578369140625
+Epoch: (532)
+Timestep: 272896
+actor loss: 6.9745683670043945
+critic loss: 3682.9638671875
+Epoch: (533)
+Timestep: 273408
+actor loss: 6.942511558532715
+critic loss: 3802.820068359375
+Epoch: (534)
+Timestep: 273920
+actor loss: 7.038738250732422
+critic loss: 3838.000244140625
+Epoch: (535)
+Timestep: 274432
+actor loss: 7.074960231781006
+critic loss: 3854.643798828125
+Epoch: (536)
+Timestep: 274944
+actor loss: 6.7997212409973145
+critic loss: 3829.0390625
+Epoch: (537)
+Timestep: 275456
+actor loss: 6.772440433502197
+critic loss: 3682.601318359375
+Epoch: (538)
+Timestep: 275968
+actor loss: 6.543830871582031
+critic loss: 3450.1376953125
+Epoch: (539)
+Timestep: 276480
+actor loss: 6.556838512420654
+critic loss: 3568.605224609375
+Epoch: (540)
+Timestep: 276992
+actor loss: 6.19050407409668
+critic loss: 3363.03271484375
+Epoch: (541)
+Timestep: 277504
+actor loss: 6.5274248123168945
+critic loss: 3372.43115234375
+Epoch: (542)
+Timestep: 278016
+actor loss: 7.065250396728516
+critic loss: 3645.452880859375
+Epoch: (543)
+Timestep: 278528
+actor loss: 6.097538948059082
+critic loss: 3097.880126953125
+Epoch: (544)
+Timestep: 279040
+actor loss: 6.906729698181152
+critic loss: 3266.1328125
+Epoch: (545)
+Timestep: 279552
+actor loss: 6.594161033630371
+critic loss: 3265.265625
+Epoch: (546)
+Timestep: 280064
+actor loss: 6.388765811920166
+critic loss: 3165.234619140625
+Epoch: (547)
+Timestep: 280576
+actor loss: 6.636487007141113
+critic loss: 3237.255126953125
+Epoch: (548)
+Timestep: 281088
+actor loss: 6.5664777755737305
+critic loss: 3222.39892578125
+Epoch: (549)
+Timestep: 281600
+actor loss: 6.315517902374268
+critic loss: 3180.197998046875
+Epoch: (550)
+Timestep: 282112
+actor loss: 6.097481727600098
+critic loss: 2986.07177734375
+Epoch: (551)
+Timestep: 282624
+actor loss: 6.042919158935547
+critic loss: 2722.42236328125
+Epoch: (552)
+Timestep: 283136
+actor loss: 6.006674766540527
+critic loss: 2736.649658203125
+Epoch: (553)
+Timestep: 283648
+actor loss: 6.276224136352539
+critic loss: 2838.69921875
+Epoch: (554)
+Timestep: 284160
+actor loss: 5.95402193069458
+critic loss: 2740.425537109375
+Epoch: (555)
+Timestep: 284672
+actor loss: 6.219794273376465
+critic loss: 2770.194091796875
+Epoch: (556)
+Timestep: 285184
+actor loss: 6.0187249183654785
+critic loss: 3008.216064453125
+Epoch: (557)
+Timestep: 285696
+actor loss: 6.636543273925781
+critic loss: 3384.081787109375
+Epoch: (558)
+Timestep: 286208
+actor loss: 6.55663537979126
+critic loss: 3446.968505859375
+Epoch: (559)
+Timestep: 286720
+actor loss: 6.5090718269348145
+critic loss: 3292.968994140625
+Epoch: (560)
+Timestep: 287232
+actor loss: 6.9901652336120605
+critic loss: 3677.175537109375
+Epoch: (561)
+Timestep: 287744
+actor loss: 6.506417274475098
+critic loss: 3495.6318359375
+Epoch: (562)
+Timestep: 288256
+actor loss: 6.608125686645508
+critic loss: 3315.913818359375
+Epoch: (563)
+Timestep: 288768
+actor loss: 6.169894695281982
+critic loss: 3123.186279296875
+Epoch: (564)
+Timestep: 289280
+actor loss: 6.092941761016846
+critic loss: 2997.333251953125
+Epoch: (565)
+Timestep: 289792
+actor loss: 6.265602111816406
+critic loss: 2850.81298828125
+Epoch: (566)
+Timestep: 290304
+actor loss: 6.4838714599609375
+critic loss: 2984.62939453125
+Epoch: (567)
+Timestep: 290816
+actor loss: 6.045825481414795
+critic loss: 2734.667724609375
+Epoch: (568)
+Timestep: 291328
+actor loss: 5.948535919189453
+critic loss: 2497.80712890625
+Epoch: (569)
+Timestep: 291840
+actor loss: 6.573312282562256
+critic loss: 2931.675537109375
+Epoch: (570)
+Timestep: 292352
+actor loss: 6.557893753051758
+critic loss: 3128.231689453125
+Epoch: (571)
+Timestep: 292864
+actor loss: 6.298844337463379
+critic loss: 3024.33447265625
+Epoch: (572)
+Timestep: 293376
+actor loss: 6.166815280914307
+critic loss: 2820.16455078125
+Epoch: (573)
+Timestep: 293888
+actor loss: 6.508283615112305
+critic loss: 3075.60595703125
+Epoch: (574)
+Timestep: 294400
+actor loss: 5.931524276733398
+critic loss: 2821.56689453125
+Epoch: (575)
+Timestep: 294912
+actor loss: 7.070774555206299
+critic loss: 4053.168212890625
+Epoch: (576)
+Timestep: 295424
+actor loss: 7.016995429992676
+critic loss: 3928.4794921875
+Epoch: (577)
+Timestep: 295936
+actor loss: 7.352762222290039
+critic loss: 4154.2783203125
+Epoch: (578)
+Timestep: 296448
+actor loss: 7.116652965545654
+critic loss: 3922.777587890625
+Epoch: (579)
+Timestep: 296960
+actor loss: 7.012068748474121
+critic loss: 3825.960693359375
+Epoch: (580)
+Timestep: 297472
+actor loss: 7.111421585083008
+critic loss: 3874.874755859375
+Epoch: (581)
+Timestep: 297984
+actor loss: 6.741368770599365
+critic loss: 3461.136962890625
+Epoch: (582)
+Timestep: 298496
+actor loss: 6.537854194641113
+critic loss: 3356.19677734375
+Epoch: (583)
+Timestep: 299008
+actor loss: 6.7935028076171875
+critic loss: 3493.6796875
+Epoch: (584)
+Timestep: 299520
+actor loss: 6.963117599487305
+critic loss: 3542.2587890625
+Epoch: (585)
+Timestep: 300032
+actor loss: 6.907923221588135
+critic loss: 3636.5712890625
+Epoch: (586)
+Timestep: 300544
+actor loss: 6.773561000823975
+critic loss: 3632.081787109375
+Epoch: (587)
+Timestep: 301056
+actor loss: 7.349432468414307
+critic loss: 4001.285400390625
+Epoch: (588)
+Timestep: 301568
+actor loss: 6.528907299041748
+critic loss: 3552.551025390625
+Epoch: (589)
+Timestep: 302080
+actor loss: 6.84238338470459
+critic loss: 3830.077880859375
+Epoch: (590)
+Timestep: 302592
+actor loss: 6.526276588439941
+critic loss: 3540.195068359375
+Epoch: (591)
+Timestep: 303104
+actor loss: 7.1658935546875
+critic loss: 3832.008056640625
+Epoch: (592)
+Timestep: 303616
+actor loss: 6.80625057220459
+critic loss: 3737.600830078125
+Epoch: (593)
+Timestep: 304128
+actor loss: 6.256251335144043
+critic loss: 2995.56884765625
+Epoch: (594)
+Timestep: 304640
+actor loss: 6.572749137878418
+critic loss: 3042.100341796875
+Epoch: (595)
+Timestep: 305152
+actor loss: 6.550087928771973
+critic loss: 3184.452880859375
+Epoch: (596)
+Timestep: 305664
+actor loss: 6.44680118560791
+critic loss: 3083.141845703125
+Epoch: (597)
+Timestep: 306176
+actor loss: 6.234302997589111
+critic loss: 2948.163818359375
+Epoch: (598)
+Timestep: 306688
+actor loss: 6.196462631225586
+critic loss: 2833.17578125
+Epoch: (599)
+Timestep: 307200
+actor loss: 6.634865760803223
+critic loss: 3075.859619140625
+Epoch: (600)
+Timestep: 307712
+actor loss: 6.068943023681641
+critic loss: 3067.24951171875
+Epoch: (601)
+Timestep: 308224
+actor loss: 6.164070129394531
+critic loss: 2892.156494140625
+Epoch: (602)
+Timestep: 308736
+actor loss: 6.859869003295898
+critic loss: 3214.713623046875
+Epoch: (603)
+Timestep: 309248
+actor loss: 6.209708213806152
+critic loss: 2942.41748046875
+Epoch: (604)
+Timestep: 309760
+actor loss: 6.033369064331055
+critic loss: 2861.778564453125
+Epoch: (605)
+Timestep: 310272
+actor loss: 6.520491600036621
+critic loss: 2921.90185546875
+Epoch: (606)
+Timestep: 310784
+actor loss: 6.7379302978515625
+critic loss: 3213.390380859375
+Epoch: (607)
+Timestep: 311296
+actor loss: 6.612536907196045
+critic loss: 3192.691162109375
+Epoch: (608)
+Timestep: 311808
+actor loss: 6.714705467224121
+critic loss: 3278.269775390625
+Epoch: (609)
+Timestep: 312320
+actor loss: 6.60190486907959
+critic loss: 3141.199462890625
+Epoch: (610)
+Timestep: 312832
+actor loss: 6.752328872680664
+critic loss: 3275.664306640625
+Epoch: (611)
+Timestep: 313344
+actor loss: 6.49599552154541
+critic loss: 3166.112060546875
+Epoch: (612)
+Timestep: 313856
+actor loss: 6.212176322937012
+critic loss: 2880.312744140625
+Epoch: (613)
+Timestep: 314368
+actor loss: 5.680209159851074
+critic loss: 2606.331787109375
+Epoch: (614)
+Timestep: 314880
+actor loss: 6.168647766113281
+critic loss: 2899.36865234375
+Epoch: (615)
+Timestep: 315392
+actor loss: 6.156427383422852
+critic loss: 2946.200439453125
+Epoch: (616)
+Timestep: 315904
+actor loss: 6.334468364715576
+critic loss: 2959.300537109375
+Epoch: (617)
+Timestep: 316416
+actor loss: 6.26495885848999
+critic loss: 2912.494873046875
+Epoch: (618)
+Timestep: 316928
+actor loss: 5.763375759124756
+critic loss: 2304.135009765625
+Epoch: (619)
+Timestep: 317440
+actor loss: 6.737916469573975
+critic loss: 3046.884033203125
+Epoch: (620)
+Timestep: 317952
+actor loss: 6.5107293128967285
+critic loss: 3036.288818359375
+Epoch: (621)
+Timestep: 318464
+actor loss: 6.393938064575195
+critic loss: 2963.96923828125
+Epoch: (622)
+Timestep: 318976
+actor loss: 6.46645975112915
+critic loss: 2996.8623046875
+Epoch: (623)
+Timestep: 319488
+actor loss: 6.180197238922119
+critic loss: 2913.983154296875
+Epoch: (624)
+Timestep: 320000
+actor loss: 6.144517421722412
+critic loss: 2881.960693359375
+Epoch: (625)
+Timestep: 320512
+actor loss: 5.723244667053223
+critic loss: 2740.783935546875
+Epoch: (626)
+Timestep: 321024
+actor loss: 5.844908714294434
+critic loss: 2654.86767578125
+Epoch: (627)
+Timestep: 321536
+actor loss: 6.280060768127441
+critic loss: 2846.18603515625
+Epoch: (628)
+Timestep: 322048
+actor loss: 6.126972675323486
+critic loss: 2666.92431640625
+Epoch: (629)
+Timestep: 322560
+actor loss: 6.21522331237793
+critic loss: 2762.47705078125
+Epoch: (630)
+Timestep: 323072
+actor loss: 5.9086408615112305
+critic loss: 2597.06982421875
+Epoch: (631)
+Timestep: 323584
+actor loss: 6.0807600021362305
+critic loss: 3045.3037109375
+Epoch: (632)
+Timestep: 324096
+actor loss: 6.322488307952881
+critic loss: 3197.098876953125
+Epoch: (633)
+Timestep: 324608
+actor loss: 6.28985071182251
+critic loss: 3080.39697265625
+Epoch: (634)
+Timestep: 325120
+actor loss: 6.732158184051514
+critic loss: 3231.959716796875
+Epoch: (635)
+Timestep: 325632
+actor loss: 6.574009895324707
+critic loss: 3322.8818359375
+Epoch: (636)
+Timestep: 326144
+actor loss: 6.323434829711914
+critic loss: 3133.36083984375
+Epoch: (637)
+Timestep: 326656
+actor loss: 6.545363426208496
+critic loss: 3133.632568359375
+Epoch: (638)
+Timestep: 327168
+actor loss: 7.198326110839844
+critic loss: 3866.22265625
+Epoch: (639)
+Timestep: 327680
+actor loss: 7.0458879470825195
+critic loss: 3723.2724609375
+Epoch: (640)
+Timestep: 328192
+actor loss: 6.9716410636901855
+critic loss: 3550.562744140625
+Epoch: (641)
+Timestep: 328704
+actor loss: 7.213807582855225
+critic loss: 3703.1533203125
+Epoch: (642)
+Timestep: 329216
+actor loss: 7.076175212860107
+critic loss: 3686.67578125
+Epoch: (643)
+Timestep: 329728
+actor loss: 6.509139537811279
+critic loss: 2914.453369140625
+Epoch: (644)
+Timestep: 330240
+actor loss: 6.807258129119873
+critic loss: 2761.26953125
+Epoch: (645)
+Timestep: 330752
+actor loss: 5.999554634094238
+critic loss: 2630.27685546875
+Epoch: (646)
+Timestep: 331264
+actor loss: 5.743237495422363
+critic loss: 2471.40380859375
+Epoch: (647)
+Timestep: 331776
+actor loss: 6.119192123413086
+critic loss: 2573.88134765625
+Epoch: (648)
+Timestep: 332288
+actor loss: 6.154985427856445
+critic loss: 2591.86865234375
+Epoch: (649)
+Timestep: 332800
+actor loss: 5.78116512298584
+critic loss: 2540.746337890625
+Epoch: (650)
+Timestep: 333312
+actor loss: 6.722982883453369
+critic loss: 3435.359619140625
+Epoch: (651)
+Timestep: 333824
+actor loss: 6.775234222412109
+critic loss: 3274.113525390625
+Epoch: (652)
+Timestep: 334336
+actor loss: 6.802407264709473
+critic loss: 3363.335693359375
+Epoch: (653)
+Timestep: 334848
+actor loss: 6.405296325683594
+critic loss: 3221.885498046875
+Epoch: (654)
+Timestep: 335360
+actor loss: 6.4760966300964355
+critic loss: 3069.16748046875
+Epoch: (655)
+Timestep: 335872
+actor loss: 6.664020538330078
+critic loss: 3167.0087890625
+Epoch: (656)
+Timestep: 336384
+actor loss: 6.643256187438965
+critic loss: 3271.46826171875
+Epoch: (657)
+Timestep: 336896
+actor loss: 6.601127624511719
+critic loss: 3243.264404296875
+Epoch: (658)
+Timestep: 337408
+actor loss: 6.175397872924805
+critic loss: 2993.5341796875
+Epoch: (659)
+Timestep: 337920
+actor loss: 6.7137041091918945
+critic loss: 3194.8623046875
+Epoch: (660)
+Timestep: 338432
+actor loss: 6.258747100830078
+critic loss: 2952.365966796875
+Epoch: (661)
+Timestep: 338944
+actor loss: 6.775997161865234
+critic loss: 3235.323974609375
+Epoch: (662)
+Timestep: 339456
+actor loss: 6.8064422607421875
+critic loss: 3300.855712890625
+Epoch: (663)
+Timestep: 339968
+actor loss: 7.204990386962891
+critic loss: 3828.297119140625
+Epoch: (664)
+Timestep: 340480
+actor loss: 6.979383945465088
+critic loss: 3748.4501953125
+Epoch: (665)
+Timestep: 340992
+actor loss: 7.1213698387146
+critic loss: 3828.7578125
+Epoch: (666)
+Timestep: 341504
+actor loss: 7.25708532333374
+critic loss: 3772.953369140625
+Epoch: (667)
+Timestep: 342016
+actor loss: 7.039477348327637
+critic loss: 3695.3662109375
+Epoch: (668)
+Timestep: 342528
+actor loss: 6.920422077178955
+critic loss: 3429.67041015625
+Epoch: (669)
+Timestep: 343040
+actor loss: 6.94931173324585
+critic loss: 3331.95947265625
+Epoch: (670)
+Timestep: 343552
+actor loss: 7.020896911621094
+critic loss: 3464.2001953125
+Epoch: (671)
+Timestep: 344064
+actor loss: 7.102652072906494
+critic loss: 3589.6396484375
+Epoch: (672)
+Timestep: 344576
+actor loss: 7.008823871612549
+critic loss: 3541.468994140625
+Epoch: (673)
+Timestep: 345088
+actor loss: 7.1526031494140625
+critic loss: 3588.8681640625
+Epoch: (674)
+Timestep: 345600
+actor loss: 6.917479038238525
+critic loss: 3467.648193359375
+Epoch: (675)
+Timestep: 346112
+actor loss: 6.028092384338379
+critic loss: 2926.528564453125
+Epoch: (676)
+Timestep: 346624
+actor loss: 6.419797897338867
+critic loss: 2886.69580078125
+Epoch: (677)
+Timestep: 347136
+actor loss: 6.550098419189453
+critic loss: 3025.024658203125
+Epoch: (678)
+Timestep: 347648
+actor loss: 6.4213175773620605
+critic loss: 3079.062744140625
+Epoch: (679)
+Timestep: 348160
+actor loss: 6.360956192016602
+critic loss: 3017.188720703125
+Epoch: (680)
+Timestep: 348672
+actor loss: 6.34246826171875
+critic loss: 2886.94677734375
+Epoch: (681)
+Timestep: 349184
+actor loss: 6.475790977478027
+critic loss: 2978.135498046875
+Epoch: (682)
+Timestep: 349696
+actor loss: 6.359833717346191
+critic loss: 3055.743408203125
+Epoch: (683)
+Timestep: 350208
+actor loss: 6.368483543395996
+critic loss: 2955.35791015625
+Epoch: (684)
+Timestep: 350720
+actor loss: 6.761115074157715
+critic loss: 3028.010498046875
+Epoch: (685)
+Timestep: 351232
+actor loss: 6.69054651260376
+critic loss: 3255.690185546875
+Epoch: (686)
+Timestep: 351744
+actor loss: 6.020425319671631
+critic loss: 2932.06103515625
+Epoch: (687)
+Timestep: 352256
+actor loss: 7.642739295959473
+critic loss: 3990.3642578125
+Epoch: (688)
+Timestep: 352768
+actor loss: 7.158568859100342
+critic loss: 4030.4189453125
+Epoch: (689)
+Timestep: 353280
+actor loss: 7.394489765167236
+critic loss: 4155.87451171875
+Epoch: (690)
+Timestep: 353792
+actor loss: 7.3110551834106445
+critic loss: 4014.1611328125
+Epoch: (691)
+Timestep: 354304
+actor loss: 7.4646315574646
+critic loss: 4082.460693359375
+Epoch: (692)
+Timestep: 354816
+actor loss: 7.297555923461914
+critic loss: 4068.8720703125
+Epoch: (693)
+Timestep: 355328
+actor loss: 6.356476783752441
+critic loss: 2981.93359375
+Epoch: (694)
+Timestep: 355840
+actor loss: 6.337397575378418
+critic loss: 2383.587158203125
+Epoch: (695)
+Timestep: 356352
+actor loss: 6.505880355834961
+critic loss: 2774.55859375
+Epoch: (696)
+Timestep: 356864
+actor loss: 5.630101203918457
+critic loss: 2456.23388671875
+Epoch: (697)
+Timestep: 357376
+actor loss: 6.138092517852783
+critic loss: 2548.419189453125
+Epoch: (698)
+Timestep: 357888
+actor loss: 5.838472843170166
+critic loss: 2417.00048828125
+Epoch: (699)
+Timestep: 358400
+actor loss: 5.8915815353393555
+critic loss: 2426.47119140625
+Epoch: (700)
+Timestep: 358912
+actor loss: 7.110856056213379
+critic loss: 3653.413330078125
+Epoch: (701)
+Timestep: 359424
+actor loss: 6.941962242126465
+critic loss: 3363.965087890625
+Epoch: (702)
+Timestep: 359936
+actor loss: 7.03327751159668
+critic loss: 3469.277099609375
+Epoch: (703)
+Timestep: 360448
+actor loss: 6.983048439025879
+critic loss: 3450.683349609375
+Epoch: (704)
+Timestep: 360960
+actor loss: 6.626355171203613
+critic loss: 3234.434814453125
+Epoch: (705)
+Timestep: 361472
+actor loss: 6.775217533111572
+critic loss: 3244.40478515625
+Epoch: (706)
+Timestep: 361984
+actor loss: 5.745120048522949
+critic loss: 2174.62158203125
+Epoch: (707)
+Timestep: 362496
+actor loss: 5.542349338531494
+critic loss: 2220.01171875
+Epoch: (708)
+Timestep: 363008
+actor loss: 5.623676300048828
+critic loss: 2131.48193359375
+Epoch: (709)
+Timestep: 363520
+actor loss: 5.930362224578857
+critic loss: 2149.46484375
+Epoch: (710)
+Timestep: 364032
+actor loss: 5.441446781158447
+critic loss: 2051.90625
+Epoch: (711)
+Timestep: 364544
+actor loss: 5.8110246658325195
+critic loss: 2160.48388671875
+Epoch: (712)
+Timestep: 365056
+actor loss: 5.708246231079102
+critic loss: 2250.21533203125
+Epoch: (713)
+Timestep: 365568
+actor loss: 6.791840076446533
+critic loss: 3155.127685546875
+Epoch: (714)
+Timestep: 366080
+actor loss: 6.2425971031188965
+critic loss: 3000.20458984375
+Epoch: (715)
+Timestep: 366592
+actor loss: 6.776789665222168
+critic loss: 3180.10498046875
+Epoch: (716)
+Timestep: 367104
+actor loss: 6.826870441436768
+critic loss: 3177.96142578125
+Epoch: (717)
+Timestep: 367616
+actor loss: 6.504028797149658
+critic loss: 3115.533935546875
+Epoch: (718)
+Timestep: 368128
+actor loss: 6.1113996505737305
+critic loss: 2561.859130859375
+Epoch: (719)
+Timestep: 368640
+actor loss: 7.017592906951904
+critic loss: 3334.61083984375
+Epoch: (720)
+Timestep: 369152
+actor loss: 7.047192573547363
+critic loss: 3499.488037109375
+Epoch: (721)
+Timestep: 369664
+actor loss: 6.3895583152771
+critic loss: 3388.6240234375
+Epoch: (722)
+Timestep: 370176
+actor loss: 6.768847465515137
+critic loss: 3589.828369140625
+Epoch: (723)
+Timestep: 370688
+actor loss: 6.899238586425781
+critic loss: 3459.3916015625
+Epoch: (724)
+Timestep: 371200
+actor loss: 6.499175548553467
+critic loss: 3319.301025390625
+Epoch: (725)
+Timestep: 371712
+actor loss: 6.073311805725098
+critic loss: 2708.19384765625
+Epoch: (726)
+Timestep: 372224
+actor loss: 6.230557918548584
+critic loss: 2540.91162109375
+Epoch: (727)
+Timestep: 372736
+actor loss: 6.334525108337402
+critic loss: 2590.244873046875
+Epoch: (728)
+Timestep: 373248
+actor loss: 6.007998943328857
+critic loss: 2519.12744140625
+Epoch: (729)
+Timestep: 373760
+actor loss: 5.922044277191162
+critic loss: 2525.24853515625
+Epoch: (730)
+Timestep: 374272
+actor loss: 5.673194885253906
+critic loss: 2327.96044921875
+Epoch: (731)
+Timestep: 374784
+actor loss: 5.86785364151001
+critic loss: 2602.878662109375
+Epoch: (732)
+Timestep: 375296
+actor loss: 5.821135520935059
+critic loss: 2585.73095703125
+Epoch: (733)
+Timestep: 375808
+actor loss: 6.02951717376709
+critic loss: 2476.16357421875
+Epoch: (734)
+Timestep: 376320
+actor loss: 6.5105977058410645
+critic loss: 2721.097412109375
+Epoch: (735)
+Timestep: 376832
+actor loss: 5.907190799713135
+critic loss: 2559.97802734375
+Epoch: (736)
+Timestep: 377344
+actor loss: 6.101757526397705
+critic loss: 2484.769775390625
+Epoch: (737)
+Timestep: 377856
+actor loss: 6.940431594848633
+critic loss: 3034.3984375
+Epoch: (738)
+Timestep: 378368
+actor loss: 6.879343509674072
+critic loss: 3478.70703125
+Epoch: (739)
+Timestep: 378880
+actor loss: 6.772089958190918
+critic loss: 3516.710693359375
+Epoch: (740)
+Timestep: 379392
+actor loss: 6.774158000946045
+critic loss: 3455.402099609375
+Epoch: (741)
+Timestep: 379904
+actor loss: 7.159255027770996
+critic loss: 3609.499755859375
+Epoch: (742)
+Timestep: 380416
+actor loss: 6.850316047668457
+critic loss: 3524.6220703125
+Epoch: (743)
+Timestep: 380928
+actor loss: 6.639902591705322
+critic loss: 3061.949462890625
+Epoch: (744)
+Timestep: 381440
+actor loss: 7.137595176696777
+critic loss: 3295.948974609375
+Epoch: (745)
+Timestep: 381952
+actor loss: 7.168704986572266
+critic loss: 3424.2509765625
+Epoch: (746)
+Timestep: 382464
+actor loss: 6.733083248138428
+critic loss: 3248.449462890625
+Epoch: (747)
+Timestep: 382976
+actor loss: 6.804457187652588
+critic loss: 3234.282470703125
+Epoch: (748)
+Timestep: 383488
+actor loss: 7.064729690551758
+critic loss: 3366.547119140625
+Epoch: (749)
+Timestep: 384000
+actor loss: 6.687582969665527
+critic loss: 3166.145751953125
+Epoch: (750)
+Timestep: 384512
+actor loss: 7.197183132171631
+critic loss: 3742.648681640625
+Epoch: (751)
+Timestep: 385024
+actor loss: 6.974719524383545
+critic loss: 3445.95947265625
+Epoch: (752)
+Timestep: 385536
+actor loss: 7.138202667236328
+critic loss: 3478.695068359375
+Epoch: (753)
+Timestep: 386048
+actor loss: 7.1101179122924805
+critic loss: 3373.54296875
+Epoch: (754)
+Timestep: 386560
+actor loss: 6.6992692947387695
+critic loss: 3216.31640625
+Epoch: (755)
+Timestep: 387072
+actor loss: 6.7097625732421875
+critic loss: 3131.741943359375
+Epoch: (756)
+Timestep: 387584
+actor loss: 6.1971116065979
+critic loss: 2978.98388671875
+Epoch: (757)
+Timestep: 388096
+actor loss: 6.667150497436523
+critic loss: 3294.44921875
+Epoch: (758)
+Timestep: 388608
+actor loss: 6.892486572265625
+critic loss: 3441.39990234375
+Epoch: (759)
+Timestep: 389120
+actor loss: 6.959385395050049
+critic loss: 3524.9541015625
+Epoch: (760)
+Timestep: 389632
+actor loss: 6.8026299476623535
+critic loss: 3412.777099609375
+Epoch: (761)
+Timestep: 390144
+actor loss: 7.050890922546387
+critic loss: 3602.4990234375
+Epoch: (762)
+Timestep: 390656
+actor loss: 7.086621284484863
+critic loss: 3464.9091796875
+Epoch: (763)
+Timestep: 391168
+actor loss: 7.126202583312988
+critic loss: 3610.058349609375
+Epoch: (764)
+Timestep: 391680
+actor loss: 6.923888206481934
+critic loss: 3473.8681640625
+Epoch: (765)
+Timestep: 392192
+actor loss: 7.204204559326172
+critic loss: 3562.956787109375
+Epoch: (766)
+Timestep: 392704
+actor loss: 7.336594581604004
+critic loss: 3698.355224609375
+Epoch: (767)
+Timestep: 393216
+actor loss: 6.830814361572266
+critic loss: 3403.449462890625
+Epoch: (768)
+Timestep: 393728
+actor loss: 6.498568534851074
+critic loss: 2867.99658203125
+Epoch: (769)
+Timestep: 394240
+actor loss: 6.307372093200684
+critic loss: 2584.07080078125
+Epoch: (770)
+Timestep: 394752
+actor loss: 6.938511848449707
+critic loss: 3043.376220703125
+Epoch: (771)
+Timestep: 395264
+actor loss: 6.486713409423828
+critic loss: 3007.750244140625
+Epoch: (772)
+Timestep: 395776
+actor loss: 6.2082414627075195
+critic loss: 2848.257568359375
+Epoch: (773)
+Timestep: 396288
+actor loss: 6.617129325866699
+critic loss: 2920.26953125
+Epoch: (774)
+Timestep: 396800
+actor loss: 6.628486633300781
+critic loss: 2918.261474609375
+Epoch: (775)
+Timestep: 397312
+actor loss: 6.436781883239746
+critic loss: 3055.406494140625
+Epoch: (776)
+Timestep: 397824
+actor loss: 6.357086658477783
+critic loss: 2822.62890625
+Epoch: (777)
+Timestep: 398336
+actor loss: 7.0944671630859375
+critic loss: 3211.884033203125
+Epoch: (778)
+Timestep: 398848
+actor loss: 6.401898384094238
+critic loss: 2860.40283203125
+Epoch: (779)
+Timestep: 399360
+actor loss: 6.29570198059082
+critic loss: 2871.804443359375
+Epoch: (780)
+Timestep: 399872
+actor loss: 6.679503440856934
+critic loss: 2973.338623046875
+Epoch: (781)
+Timestep: 400384
+actor loss: 6.063493251800537
+critic loss: 2599.523193359375
+Epoch: (782)
+Timestep: 400896
+actor loss: 5.872409820556641
+critic loss: 2542.559814453125
+Epoch: (783)
+Timestep: 401408
+actor loss: 6.21474552154541
+critic loss: 2685.8515625
+Epoch: (784)
+Timestep: 401920
+actor loss: 6.093632698059082
+critic loss: 2597.265869140625
+Epoch: (785)
+Timestep: 402432
+actor loss: 6.222463607788086
+critic loss: 2701.99267578125
+Epoch: (786)
+Timestep: 402944
+actor loss: 5.779690742492676
+critic loss: 2559.02197265625
+Epoch: (787)
+Timestep: 403456
+actor loss: 6.918194770812988
+critic loss: 3234.92626953125
+Epoch: (788)
+Timestep: 403968
+actor loss: 6.397744178771973
+critic loss: 2864.165283203125
+Epoch: (789)
+Timestep: 404480
+actor loss: 6.49235200881958
+critic loss: 2952.062255859375
+Epoch: (790)
+Timestep: 404992
+actor loss: 6.268124103546143
+critic loss: 2792.19580078125
+Epoch: (791)
+Timestep: 405504
+actor loss: 6.7914628982543945
+critic loss: 2890.87841796875
+Epoch: (792)
+Timestep: 406016
+actor loss: 6.277290344238281
+critic loss: 2792.542724609375
+Epoch: (793)
+Timestep: 406528
+actor loss: 6.122465133666992
+critic loss: 2693.67578125
+Epoch: (794)
+Timestep: 407040
+actor loss: 7.239819526672363
+critic loss: 3275.830810546875
+Epoch: (795)
+Timestep: 407552
+actor loss: 7.085036277770996
+critic loss: 3300.073974609375
+Epoch: (796)
+Timestep: 408064
+actor loss: 7.248658180236816
+critic loss: 3476.00927734375
+Epoch: (797)
+Timestep: 408576
+actor loss: 7.094196319580078
+critic loss: 3480.1630859375
+Epoch: (798)
+Timestep: 409088
+actor loss: 7.188601970672607
+critic loss: 3495.6220703125
+Epoch: (799)
+Timestep: 409600
+actor loss: 7.257095813751221
+critic loss: 3517.714599609375
+Epoch: (800)
+Timestep: 410112
+actor loss: 6.914443016052246
+critic loss: 3419.9580078125
+Epoch: (801)
+Timestep: 410624
+actor loss: 6.8236589431762695
+critic loss: 3242.1201171875
+Epoch: (802)
+Timestep: 411136
+actor loss: 6.898881912231445
+critic loss: 3234.61767578125
+Epoch: (803)
+Timestep: 411648
+actor loss: 6.9377946853637695
+critic loss: 3166.256591796875
+Epoch: (804)
+Timestep: 412160
+actor loss: 6.844839096069336
+critic loss: 3126.90234375
+Epoch: (805)
+Timestep: 412672
+actor loss: 6.606502056121826
+critic loss: 3046.427001953125
+Epoch: (806)
+Timestep: 413184
+actor loss: 6.7802734375
+critic loss: 3229.51416015625
+Epoch: (807)
+Timestep: 413696
+actor loss: 7.164808750152588
+critic loss: 3450.8466796875
+Epoch: (808)
+Timestep: 414208
+actor loss: 7.12759256362915
+critic loss: 3392.890869140625
+Epoch: (809)
+Timestep: 414720
+actor loss: 6.98863410949707
+critic loss: 3270.093994140625
+Epoch: (810)
+Timestep: 415232
+actor loss: 6.888182640075684
+critic loss: 3323.929443359375
+Epoch: (811)
+Timestep: 415744
+actor loss: 7.031496047973633
+critic loss: 3344.6376953125
+Epoch: (812)
+Timestep: 416256
+actor loss: 6.848531246185303
+critic loss: 3277.054443359375
+Epoch: (813)
+Timestep: 416768
+actor loss: 6.870602607727051
+critic loss: 3360.3876953125
+Epoch: (814)
+Timestep: 417280
+actor loss: 6.87349796295166
+critic loss: 3322.94140625
+Epoch: (815)
+Timestep: 417792
+actor loss: 7.179826736450195
+critic loss: 3342.327880859375
+Epoch: (816)
+Timestep: 418304
+actor loss: 7.073967933654785
+critic loss: 3266.618408203125
+Epoch: (817)
+Timestep: 418816
+actor loss: 6.754456043243408
+critic loss: 3248.1943359375
+Epoch: (818)
+Timestep: 419328
+actor loss: 6.359222888946533
+critic loss: 2601.57958984375
+Epoch: (819)
+Timestep: 419840
+actor loss: 6.723137855529785
+critic loss: 2679.37548828125
+Epoch: (820)
+Timestep: 420352
+actor loss: 6.362178802490234
+critic loss: 2526.73779296875
+Epoch: (821)
+Timestep: 420864
+actor loss: 6.377860069274902
+critic loss: 2568.459716796875
+Epoch: (822)
+Timestep: 421376
+actor loss: 6.112935543060303
+critic loss: 2500.74560546875
+Epoch: (823)
+Timestep: 421888
+actor loss: 6.535173416137695
+critic loss: 2663.917724609375
+Epoch: (824)
+Timestep: 422400
+actor loss: 6.037989139556885
+critic loss: 2457.287109375
+Epoch: (825)
+Timestep: 422912
+actor loss: 7.209774971008301
+critic loss: 3707.7724609375
+Epoch: (826)
+Timestep: 423424
+actor loss: 7.3267364501953125
+critic loss: 3670.7861328125
+Epoch: (827)
+Timestep: 423936
+actor loss: 7.489443778991699
+critic loss: 3658.726318359375
+Epoch: (828)
+Timestep: 424448
+actor loss: 7.0134077072143555
+critic loss: 3469.913818359375
+Epoch: (829)
+Timestep: 424960
+actor loss: 7.16508674621582
+critic loss: 3490.558349609375
+Epoch: (830)
+Timestep: 425472
+actor loss: 7.496293067932129
+critic loss: 3641.28125
+Epoch: (831)
+Timestep: 425984
+actor loss: 6.787980556488037
+critic loss: 3145.933349609375
+Epoch: (832)
+Timestep: 426496
+actor loss: 6.968766689300537
+critic loss: 3217.21728515625
+Epoch: (833)
+Timestep: 427008
+actor loss: 7.111415386199951
+critic loss: 3177.639404296875
+Epoch: (834)
+Timestep: 427520
+actor loss: 6.760837554931641
+critic loss: 3200.505126953125
+Epoch: (835)
+Timestep: 428032
+actor loss: 6.751645088195801
+critic loss: 3276.34814453125
+Epoch: (836)
+Timestep: 428544
+actor loss: 6.639418601989746
+critic loss: 3056.457275390625
+Epoch: (837)
+Timestep: 429056
+actor loss: 6.667510986328125
+critic loss: 2862.994873046875
+Epoch: (838)
+Timestep: 429568
+actor loss: 6.338970184326172
+critic loss: 2786.704345703125
+Epoch: (839)
+Timestep: 430080
+actor loss: 6.439592361450195
+critic loss: 2729.5078125
+Epoch: (840)
+Timestep: 430592
+actor loss: 6.181237697601318
+critic loss: 2657.00048828125
+Epoch: (841)
+Timestep: 431104
+actor loss: 6.552286148071289
+critic loss: 2867.075439453125
+Epoch: (842)
+Timestep: 431616
+actor loss: 6.712265968322754
+critic loss: 2866.51123046875
+Epoch: (843)
+Timestep: 432128
+actor loss: 5.978742599487305
+critic loss: 2114.867431640625
+Epoch: (844)
+Timestep: 432640
+actor loss: 6.9546942710876465
+critic loss: 2910.704345703125
+Epoch: (845)
+Timestep: 433152
+actor loss: 6.30264139175415
+critic loss: 2771.773681640625
+Epoch: (846)
+Timestep: 433664
+actor loss: 6.418916702270508
+critic loss: 2881.507568359375
+Epoch: (847)
+Timestep: 434176
+actor loss: 6.755915641784668
+critic loss: 2922.733154296875
+Epoch: (848)
+Timestep: 434688
+actor loss: 6.494701385498047
+critic loss: 2855.36279296875
+Epoch: (849)
+Timestep: 435200
+actor loss: 6.038877487182617
+critic loss: 2704.296875
+Epoch: (850)
+Timestep: 435712
+actor loss: 6.148288726806641
+critic loss: 2841.533935546875
+Epoch: (851)
+Timestep: 436224
+actor loss: 6.396868705749512
+critic loss: 2852.954345703125
+Epoch: (852)
+Timestep: 436736
+actor loss: 6.985766410827637
+critic loss: 3050.44970703125
+Epoch: (853)
+Timestep: 437248
+actor loss: 6.632926940917969
+critic loss: 2959.35986328125
+Epoch: (854)
+Timestep: 437760
+actor loss: 6.493307113647461
+critic loss: 2880.786376953125
+Epoch: (855)
+Timestep: 438272
+actor loss: 6.610434532165527
+critic loss: 2732.066162109375
+Epoch: (856)
+Timestep: 438784
+actor loss: 7.315931797027588
+critic loss: 3451.8740234375
+Epoch: (857)
+Timestep: 439296
+actor loss: 7.4010114669799805
+critic loss: 3410.453369140625
+Epoch: (858)
+Timestep: 439808
+actor loss: 7.414578437805176
+critic loss: 3508.574462890625
+Epoch: (859)
+Timestep: 440320
+actor loss: 7.277187347412109
+critic loss: 3504.015869140625
+Epoch: (860)
+Timestep: 440832
+actor loss: 7.189391136169434
+critic loss: 3332.773193359375
+Epoch: (861)
+Timestep: 441344
+actor loss: 7.235037326812744
+critic loss: 3287.859130859375
+Epoch: (862)
+Timestep: 441856
+actor loss: 6.84184455871582
+critic loss: 2871.812255859375
+Epoch: (863)
+Timestep: 442368
+actor loss: 6.680483341217041
+critic loss: 3036.62060546875
+Epoch: (864)
+Timestep: 442880
+actor loss: 6.654640197753906
+critic loss: 3003.19091796875
+Epoch: (865)
+Timestep: 443392
+actor loss: 6.8125
+critic loss: 3007.334716796875
+Epoch: (866)
+Timestep: 443904
+actor loss: 7.1871137619018555
+critic loss: 3192.14013671875
+Epoch: (867)
+Timestep: 444416
+actor loss: 6.671567916870117
+critic loss: 3073.24560546875
+Epoch: (868)
+Timestep: 444928
+actor loss: 6.188158988952637
+critic loss: 2457.06005859375
+Epoch: (869)
+Timestep: 445440
+actor loss: 6.557990550994873
+critic loss: 2422.71142578125
+Epoch: (870)
+Timestep: 445952
+actor loss: 6.310664653778076
+critic loss: 2449.141845703125
+Epoch: (871)
+Timestep: 446464
+actor loss: 5.80772066116333
+critic loss: 2200.974853515625
+Epoch: (872)
+Timestep: 446976
+actor loss: 6.473283290863037
+critic loss: 2540.875
+Epoch: (873)
+Timestep: 447488
+actor loss: 5.925387382507324
+critic loss: 2259.85546875
+Epoch: (874)
+Timestep: 448000
+actor loss: 5.672427177429199
+critic loss: 2185.452880859375
+Epoch: (875)
+Timestep: 448512
+actor loss: 6.749645709991455
+critic loss: 3083.99609375
+Epoch: (876)
+Timestep: 449024
+actor loss: 6.466259956359863
+critic loss: 2830.14990234375
+Epoch: (877)
+Timestep: 449536
+actor loss: 7.01353645324707
+critic loss: 3049.652587890625
+Epoch: (878)
+Timestep: 450048
+actor loss: 7.1302032470703125
+critic loss: 3193.062255859375
+Epoch: (879)
+Timestep: 450560
+actor loss: 6.706849575042725
+critic loss: 2957.15576171875
+Epoch: (880)
+Timestep: 451072
+actor loss: 6.816232681274414
+critic loss: 2973.490966796875
+Epoch: (881)
+Timestep: 451584
+actor loss: 6.413673400878906
+critic loss: 2651.234375
+Epoch: (882)
+Timestep: 452096
+actor loss: 6.260303020477295
+critic loss: 2619.19482421875
+Epoch: (883)
+Timestep: 452608
+actor loss: 6.30206298828125
+critic loss: 2570.104248046875
+Epoch: (884)
+Timestep: 453120
+actor loss: 6.8907599449157715
+critic loss: 2926.359130859375
+Epoch: (885)
+Timestep: 453632
+actor loss: 6.125256061553955
+critic loss: 2589.37646484375
+Epoch: (886)
+Timestep: 454144
+actor loss: 6.093550682067871
+critic loss: 2570.781494140625
+Epoch: (887)
+Timestep: 454656
+actor loss: 7.177220344543457
+critic loss: 3250.734375
+Epoch: (888)
+Timestep: 455168
+actor loss: 6.39498233795166
+critic loss: 2838.386962890625
+Epoch: (889)
+Timestep: 455680
+actor loss: 6.613429069519043
+critic loss: 2843.803466796875
+Epoch: (890)
+Timestep: 456192
+actor loss: 6.570652961730957
+critic loss: 2769.623779296875
+Epoch: (891)
+Timestep: 456704
+actor loss: 6.551854610443115
+critic loss: 2915.673095703125
+Epoch: (892)
+Timestep: 457216
+actor loss: 6.665616989135742
+critic loss: 2940.962158203125
+Epoch: (893)
+Timestep: 457728
+actor loss: 6.128208637237549
+critic loss: 2364.921630859375
+Epoch: (894)
+Timestep: 458240
+actor loss: 6.750940799713135
+critic loss: 2581.58740234375
+Epoch: (895)
+Timestep: 458752
+actor loss: 6.516478538513184
+critic loss: 2664.96142578125
+Epoch: (896)
+Timestep: 459264
+actor loss: 6.458950042724609
+critic loss: 2726.015625
+Epoch: (897)
+Timestep: 459776
+actor loss: 6.545680522918701
+critic loss: 2732.199462890625
+Epoch: (898)
+Timestep: 460288
+actor loss: 6.348114490509033
+critic loss: 2635.02685546875
+Epoch: (899)
+Timestep: 460800
+actor loss: 6.746930122375488
+critic loss: 2929.495849609375
+Epoch: (900)
+Timestep: 461312
+actor loss: 6.124603271484375
+critic loss: 2467.00439453125
+Epoch: (901)
+Timestep: 461824
+actor loss: 6.006877422332764
+critic loss: 2067.958740234375
+Epoch: (902)
+Timestep: 462336
+actor loss: 6.313948631286621
+critic loss: 2220.660400390625
+Epoch: (903)
+Timestep: 462848
+actor loss: 5.9487714767456055
+critic loss: 2184.023681640625
+Epoch: (904)
+Timestep: 463360
+actor loss: 6.003654956817627
+critic loss: 2248.8203125
+Epoch: (905)
+Timestep: 463872
+actor loss: 5.743980407714844
+critic loss: 1998.0626220703125
+Epoch: (906)
+Timestep: 464384
+actor loss: 6.067216873168945
+critic loss: 2531.31103515625
+Epoch: (907)
+Timestep: 464896
+actor loss: 5.7839035987854
+critic loss: 2419.728515625
+Epoch: (908)
+Timestep: 465408
+actor loss: 6.631986618041992
+critic loss: 2726.59619140625
+Epoch: (909)
+Timestep: 465920
+actor loss: 6.504001617431641
+critic loss: 2671.222900390625
+Epoch: (910)
+Timestep: 466432
+actor loss: 6.535939693450928
+critic loss: 2677.140869140625
+Epoch: (911)
+Timestep: 466944
+actor loss: 6.4394330978393555
+critic loss: 2672.01123046875
+Epoch: (912)
+Timestep: 467456
+actor loss: 6.255630016326904
+critic loss: 2603.94775390625
+Epoch: (913)
+Timestep: 467968
+actor loss: 6.755974292755127
+critic loss: 3123.465087890625
+Epoch: (914)
+Timestep: 468480
+actor loss: 6.997687339782715
+critic loss: 3291.519287109375
+Epoch: (915)
+Timestep: 468992
+actor loss: 6.963475227355957
+critic loss: 3282.2880859375
+Epoch: (916)
+Timestep: 469504
+actor loss: 6.532524108886719
+critic loss: 3107.641845703125
+Epoch: (917)
+Timestep: 470016
+actor loss: 6.993611812591553
+critic loss: 3213.4921875
+Epoch: (918)
+Timestep: 470528
+actor loss: 6.025233745574951
+critic loss: 2114.87060546875
+Epoch: (919)
+Timestep: 471040
+actor loss: 6.317468166351318
+critic loss: 2317.136962890625
+Epoch: (920)
+Timestep: 471552
+actor loss: 6.43815803527832
+critic loss: 2430.29443359375
+Epoch: (921)
+Timestep: 472064
+actor loss: 6.46255350112915
+critic loss: 2592.836181640625
+Epoch: (922)
+Timestep: 472576
+actor loss: 5.929582595825195
+critic loss: 2476.45849609375
+Epoch: (923)
+Timestep: 473088
+actor loss: 6.278105735778809
+critic loss: 2410.167724609375
+Epoch: (924)
+Timestep: 473600
+actor loss: 6.433279037475586
+critic loss: 2515.865234375
+Epoch: (925)
+Timestep: 474112
+actor loss: 6.113635063171387
+critic loss: 2643.84619140625
+Epoch: (926)
+Timestep: 474624
+actor loss: 6.509962558746338
+critic loss: 2653.25244140625
+Epoch: (927)
+Timestep: 475136
+actor loss: 6.380418300628662
+critic loss: 2673.581787109375
+Epoch: (928)
+Timestep: 475648
+actor loss: 6.362240791320801
+critic loss: 2577.691650390625
+Epoch: (929)
+Timestep: 476160
+actor loss: 6.816150665283203
+critic loss: 2935.839599609375
+Epoch: (930)
+Timestep: 476672
+actor loss: 6.0855207443237305
+critic loss: 2726.077880859375
+Epoch: (931)
+Timestep: 477184
+actor loss: 6.963568687438965
+critic loss: 3166.929443359375
+Epoch: (932)
+Timestep: 477696
+actor loss: 7.223235607147217
+critic loss: 3257.832275390625
+Epoch: (933)
+Timestep: 478208
+actor loss: 6.7916669845581055
+critic loss: 3069.718994140625
+Epoch: (934)
+Timestep: 478720
+actor loss: 7.065225124359131
+critic loss: 3106.976318359375
+Epoch: (935)
+Timestep: 479232
+actor loss: 6.9820661544799805
+critic loss: 3135.490966796875
+Epoch: (936)
+Timestep: 479744
+actor loss: 7.154351234436035
+critic loss: 3166.86279296875
+Epoch: (937)
+Timestep: 480256
+actor loss: 6.829820156097412
+critic loss: 3033.38671875
+Epoch: (938)
+Timestep: 480768
+actor loss: 7.625943183898926
+critic loss: 3757.5556640625
+Epoch: (939)
+Timestep: 481280
+actor loss: 7.056469917297363
+critic loss: 3545.640380859375
+Epoch: (940)
+Timestep: 481792
+actor loss: 7.274133682250977
+critic loss: 3559.917724609375
+Epoch: (941)
+Timestep: 482304
+actor loss: 7.443192481994629
+critic loss: 3643.339599609375
+Epoch: (942)
+Timestep: 482816
+actor loss: 7.440741539001465
+critic loss: 3705.6328125
+Epoch: (943)
+Timestep: 483328
+actor loss: 6.304712295532227
+critic loss: 2510.22265625
+Epoch: (944)
+Timestep: 483840
+actor loss: 5.8942155838012695
+critic loss: 2063.917724609375
+Epoch: (945)
+Timestep: 484352
+actor loss: 5.645393371582031
+critic loss: 2118.8984375
+Epoch: (946)
+Timestep: 484864
+actor loss: 5.804832935333252
+critic loss: 2112.301025390625
+Epoch: (947)
+Timestep: 485376
+actor loss: 6.013073921203613
+critic loss: 2174.613525390625
+Epoch: (948)
+Timestep: 485888
+actor loss: 5.988241672515869
+critic loss: 2182.714599609375
+Epoch: (949)
+Timestep: 486400
+actor loss: 5.841705322265625
+critic loss: 2235.60888671875
+Epoch: (950)
+Timestep: 486912
+actor loss: 7.298129081726074
+critic loss: 3663.542724609375
+Epoch: (951)
+Timestep: 487424
+actor loss: 7.14113712310791
+critic loss: 3439.214599609375
+Epoch: (952)
+Timestep: 487936
+actor loss: 7.543753623962402
+critic loss: 3574.867431640625
+Epoch: (953)
+Timestep: 488448
+actor loss: 7.096894264221191
+critic loss: 3380.746337890625
+Epoch: (954)
+Timestep: 488960
+actor loss: 7.431501388549805
+critic loss: 3510.4609375
+Epoch: (955)
+Timestep: 489472
+actor loss: 7.2072882652282715
+critic loss: 3378.148681640625
+Epoch: (956)
+Timestep: 489984
+actor loss: 6.985993385314941
+critic loss: 3051.471435546875
+Epoch: (957)
+Timestep: 490496
+actor loss: 7.168905258178711
+critic loss: 3157.229248046875
+Epoch: (958)
+Timestep: 491008
+actor loss: 6.816959381103516
+critic loss: 3021.00927734375
+Epoch: (959)
+Timestep: 491520
+actor loss: 6.953283309936523
+critic loss: 3097.44921875
+Epoch: (960)
+Timestep: 492032
+actor loss: 7.014824867248535
+critic loss: 3042.024658203125
+Epoch: (961)
+Timestep: 492544
+actor loss: 6.868533134460449
+critic loss: 3008.16845703125
+Epoch: (962)
+Timestep: 493056
+actor loss: 6.965971946716309
+critic loss: 3076.868408203125
+Epoch: (963)
+Timestep: 493568
+actor loss: 6.739908695220947
+critic loss: 2889.196533203125
+Epoch: (964)
+Timestep: 494080
+actor loss: 6.427630424499512
+critic loss: 2758.072998046875
+Epoch: (965)
+Timestep: 494592
+actor loss: 6.703207015991211
+critic loss: 2895.05126953125
+Epoch: (966)
+Timestep: 495104
+actor loss: 6.7570905685424805
+critic loss: 2875.451904296875
+Epoch: (967)
+Timestep: 495616
+actor loss: 6.855219841003418
+critic loss: 2818.86376953125
+Epoch: (968)
+Timestep: 496128
+actor loss: 6.569542407989502
+critic loss: 2536.94970703125
+Epoch: (969)
+Timestep: 496640
+actor loss: 7.5961456298828125
+critic loss: 3425.3056640625
+Epoch: (970)
+Timestep: 497152
+actor loss: 7.150130271911621
+critic loss: 3331.0703125
+Traceback (most recent call last):
+  File "/work/flemingc/nvan21/projects/shac/main.py", line 32, in <module>
+    shac.train()
+  File "/work/flemingc/nvan21/projects/shac/shac.py", line 137, in train
+    critic_loss = self.compute_critic_loss()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/flemingc/nvan21/projects/shac/shac.py", line 102, in compute_critic_loss
+    Ai = (1.0 - self.done_mask[i]) * (
+          ~~~~^~~~~~~~~~~~~~~~~~~
+  File "/work/flemingc/nvan21/miniconda3/envs/shac/lib/python3.12/site-packages/torch/_tensor.py", line 34, in wrapped
+    @functools.wraps(f, assigned=assigned)
+KeyboardInterrupt

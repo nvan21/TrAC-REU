@@ -23,9 +23,14 @@ class Config:
     # Default hyperparameters for training
     gae_lambda = 0.95
     gamma = 0.99
+    tau = 0.2
     num_steps = 32  # this is the length of the trajectory (h in the paper)
     num_envs = 64  # this is the number of parallel envs (N in the paper)
     max_epochs = 2000
+    critic_iterations = 16
+
+    # Whether or not to log run with wandb (useful for debugging)
+    do_wandb_logging = False
 
     # Device to use for tensor storage
     device = device("cuda" if cuda.is_available() else "cpu")
@@ -34,5 +39,12 @@ class Config:
 class HopperConfig(Config):
     actor_units = [128, 128]
 
-    num_envs = 4
-    num_steps = 16
+    num_envs = 16
+    num_steps = 32
+
+
+class PendulumConfig(Config):
+    actor_units = [64, 64]
+
+    num_envs = 16
+    num_steps = 32
