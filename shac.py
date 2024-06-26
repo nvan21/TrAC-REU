@@ -5,7 +5,7 @@ import utils
 
 import torch
 import numpy as np
-from gymnasium.vector import VectorEnv
+from envs import PendulumEnv
 import wandb
 
 from typing import Tuple
@@ -13,10 +13,9 @@ import pickle
 
 
 class SHAC:
-    def __init__(self, config: Config, envs: VectorEnv):
+    def __init__(self, config: Config, envs: PendulumEnv):
         self.device = config.device
         self.config = config
-        self.envs = envs
 
         # Create learning rate schedules
         self.actor_lr_schedule = self.learning_rate_scheduler(
@@ -33,12 +32,13 @@ class SHAC:
             (
                 config.num_steps,
                 config.num_envs,
-                envs.unwrapped.observation_space.shape[1],
+                envs.observation_space.shape[0],
             ),
             dtype=torch.float32,
         ).to(self.device)
         self.rewards_buf = torch.zeros(
-            (config.num_steps, config.num_envs), dtype=torch.float32
+            (config.num_steps, config.num_envs),
+            dtype=torch.float32,
         ).to(self.device)
         self.done_mask = torch.zeros(
             (config.num_steps, config.num_envs), dtype=torch.float32
@@ -93,28 +93,35 @@ class SHAC:
         """
         Computes the critic target values and then uses those to calculate the critic loss
         """
-        Ai = torch.zeros(self.config.num_envs, dtype=torch.float32, device=self.device)
-        Bi = torch.zeros(self.config.num_envs, dtype=torch.float32, device=self.device)
-        lam = torch.ones(self.config.num_envs, dtype=torch.float32, device=self.device)
-        for i in reversed(range(self.config.num_steps)):
-            lam = (
-                lam * self.config.gae_lambda * (1.0 - self.done_mask[i])
-                + self.done_mask[i]
+        with torch.no_grad():
+            Ai = torch.zeros(
+                self.config.num_envs, dtype=torch.float32, device=self.device
             )
-            Ai = (1.0 - self.done_mask[i]) * (
-                self.config.gae_lambda * self.config.gamma * Ai
-                + self.config.gamma * self.next_values[i]
-                + (1.0 - lam) / (1.0 - self.config.gae_lambda) * self.rewards_buf[i]
+            Bi = torch.zeros(
+                self.config.num_envs, dtype=torch.float32, device=self.device
             )
-            Bi = (
-                self.config.gamma
-                * (
-                    self.next_values[i] * self.done_mask[i]
-                    + Bi * (1.0 - self.done_mask[i])
+            lam = torch.ones(
+                self.config.num_envs, dtype=torch.float32, device=self.device
+            )
+            for i in reversed(range(self.config.num_steps)):
+                lam = (
+                    lam * self.config.gae_lambda * (1.0 - self.done_mask[i])
+                    + self.done_mask[i]
                 )
-                + self.rewards_buf[i]
-            )
-            self.target_values[i] = (1.0 - self.config.gae_lambda) * Ai + lam * Bi
+                Ai = (1.0 - self.done_mask[i]) * (
+                    self.config.gae_lambda * self.config.gamma * Ai
+                    + self.config.gamma * self.next_values[i]
+                    + (1.0 - lam) / (1.0 - self.config.gae_lambda) * self.rewards_buf[i]
+                )
+                Bi = (
+                    self.config.gamma
+                    * (
+                        self.next_values[i] * self.done_mask[i]
+                        + Bi * (1.0 - self.done_mask[i])
+                    )
+                    + self.rewards_buf[i]
+                )
+                self.target_values[i] = (1.0 - self.config.gae_lambda) * Ai + lam * Bi
 
         # TODO: Implement mini batches for critic training
         total_critic_loss = 0.0
@@ -129,7 +136,6 @@ class SHAC:
 
     def train(self):
         states, _ = self.envs.reset()
-        states = utils.np_to_tensor(device=self.device, arrays=[states])
 
         critic_loss_hist = []
         actor_loss_hist = []
@@ -176,108 +182,113 @@ class SHAC:
         Performs num_steps rollouts. It takes in the intial states and then returns the GAE returns
         and the final states of each environment.
         """
-        running_rewards = torch.zeros(
-            (self.config.num_steps + 1, self.config.num_envs), dtype=torch.float32
-        ).to(self.device)
-        gamma = torch.ones(self.config.num_envs, dtype=torch.float32).to(self.device)
-        next_values = torch.zeros(
-            (self.config.num_steps + 1, self.config.num_envs), dtype=torch.float32
-        ).to(self.device)
-
-        actor_loss = torch.tensor(0.0, dtype=torch.float32).to(self.device)
-
-        for step in range(self.config.num_steps):
-            # Add the states to the replay buffer (used for critic training)
-            self.states_buf[step] = states
-
-            # Get the actions from the actor and step through the environment
-            actions = self.actor(states).detach().cpu().numpy()
-            states, rewards, dones, truncateds, info = self.envs.step(actions)
-
-            # Convert environment numpy arrays to tensors
-            states, rewards, dones, truncateds = utils.np_to_tensor(
-                device=self.device, arrays=[states, rewards, dones, truncateds]
+        with torch.autograd.set_detect_anomaly(True):
+            running_rewards = torch.zeros(
+                (self.config.num_steps + 1, self.config.num_envs), dtype=torch.float32
+            ).to(self.device)
+            gamma = torch.ones(self.config.num_envs, dtype=torch.float32).to(
+                self.device
             )
+            next_values = torch.zeros(
+                (self.config.num_steps + 1, self.config.num_envs), dtype=torch.float32
+            ).to(self.device)
 
-            # Add the rewards to the replay buffer (used for critic training)
-            self.rewards_buf[step] = rewards
+            actor_loss = torch.tensor(0.0, dtype=torch.float32).to(self.device)
 
-            # Get the IDs of all the environments that terminated/truncated this step
-            done_ids = torch.nonzero(dones, as_tuple=False).squeeze(-1)
-            truncated_ids = torch.nonzero(truncateds, as_tuple=False).squeeze(-1)
+            self.envs.clear_grad()
+            for step in range(self.config.num_steps):
+                with torch.no_grad():
+                    # Add the states to the replay buffer (used for critic training)
+                    self.states_buf[step] = states
 
-            # Get the estimated critic value of the next state, and set the terminated states to 0
-            next_values[step + 1] = self.target_critic(states).squeeze(-1)
-            next_values[step + 1, done_ids] = 0.0
+                # Get the actions from the actor and step through the environment
+                actions = self.actor(states)
+                states, rewards, dones, truncateds, info = self.envs.step(actions)
 
-            # Change the next value of truncated states to use their final observation rather than the reset observation
-            if ("final_observation") in info and len(truncated_ids) != 0:
-                # Mask out the None values to get the truncated states
-                truncated_states = info["final_observation"]
-                truncated_states = [arr for arr in truncated_states if arr is not None]
+                # Get the IDs of all the environments that terminated/truncated this step
+                done_ids = torch.nonzero(dones, as_tuple=False).squeeze(-1)
+                truncated_ids = torch.nonzero(truncateds, as_tuple=False).squeeze(-1)
 
-                # Turn the array of arrays of states into a single 2D tensor
-                truncated_states = np.vstack(truncated_states)
-                truncated_states = utils.np_to_tensor(
-                    device=self.device, arrays=[truncated_states]
-                )
+                # Get the estimated critic value of the next state, and set the terminated states to 0
+                next_values[step + 1] = self.target_critic(states).squeeze(-1)
+                next_values[step + 1, done_ids] = 0.0
 
-                # Updated the next values to accurately reflect the final observation of the truncated state
-                next_values[step + 1, truncated_ids] = self.target_critic(
-                    truncated_states
-                ).squeeze(-1)
+                # Change the next value of truncated states to use their final observation rather than the reset observation
+                if ("final_observation") in info and len(truncated_ids) != 0:
+                    # Mask out the None values to get the truncated states
+                    truncated_states = info["final_observation"]
+                    truncated_states = [
+                        arr for arr in truncated_states if arr is not None
+                    ]
 
-                if self.config.do_wandb_logging:
-                    # Log and reset episode rewards
-                    wandb.log(
-                        {"episode_rewards": self.episode_reward / self.config.num_envs}
+                    # Turn the array of arrays of states into a single 2D tensor
+                    truncated_states = np.vstack(truncated_states)
+                    truncated_states = utils.np_to_tensor(
+                        device=self.device, arrays=[truncated_states]
                     )
-                    self.episode_reward = 0
 
-            # Update the running rewards
-            running_rewards[step + 1, :] = (
-                running_rewards[step, :] + self.config.gamma * rewards
-            )
+                    # Updated the next values to accurately reflect the final observation of the truncated state
+                    next_values[step + 1, truncated_ids] = self.target_critic(
+                        truncated_states
+                    ).squeeze(-1)
 
-            # Get the estimated value of all states for the last timestep in the trajectory
-            if step < self.config.num_steps - 1:
-                actor_loss = actor_loss + (
-                    (
-                        (
-                            running_rewards[step + 1, done_ids]
-                            + self.config.gamma
-                            * gamma[done_ids]
-                            * next_values[step + 1, done_ids]
+                    if self.config.do_wandb_logging:
+                        # Log and reset episode rewards
+                        wandb.log(
+                            {
+                                "episode_rewards": self.episode_reward
+                                / self.config.num_envs
+                            }
                         )
-                    ).sum()
-                )
-            else:
-                actor_loss = (
-                    actor_loss
-                    + (
-                        running_rewards[step + 1, :]
-                        + self.config.gamma * gamma * next_values[step + 1, :]
-                    ).sum()
+                        self.episode_reward = 0
+
+                # Update the running rewards
+                running_rewards[step + 1, :] = (
+                    running_rewards[step, :] + self.config.gamma * rewards
                 )
 
-            # Calculate gamma for the next step
-            gamma = gamma * self.config.gamma
+                # Get the estimated value of all states for the last timestep in the trajectory
+                if step < self.config.num_steps - 1:
+                    actor_loss = actor_loss + (
+                        (
+                            (
+                                running_rewards[step + 1, done_ids]
+                                + self.config.gamma
+                                * gamma[done_ids]
+                                * next_values[step + 1, done_ids]
+                            )
+                        ).sum()
+                    )
+                else:
+                    actor_loss = (
+                        actor_loss
+                        + (
+                            running_rewards[step + 1, :]
+                            + self.config.gamma * gamma * next_values[step + 1, :]
+                        ).sum()
+                    )
 
-            # Reset gamma and returns for done environments
-            gamma[done_ids] = 1.0
-            running_rewards[step + 1, done_ids] = 0.0
+                # Calculate gamma for the next step
+                gamma = gamma * self.config.gamma
 
-            # Update data for critic training
-            if step < self.config.num_steps - 1:
-                # Update the done mask for the terminated environments
-                self.done_mask[step, done_ids] = 1.0
-            else:
-                self.done_mask[step, :] = 1.0
+                # Reset gamma and returns for done environments
+                gamma[done_ids] = 1.0
+                running_rewards[step + 1, done_ids] = 0.0
 
-            self.total_timesteps += self.config.num_envs
-            self.episode_reward += rewards.sum().item()
+                with torch.no_grad():
+                    # Update data for critic training
+                    self.rewards_buf[step] = rewards.clone()
 
-        return actor_loss, states
+                    if step < self.config.num_steps - 1:
+                        # Update the done mask for the terminated environments
+                        self.done_mask[step] = dones.clone().to(torch.float32)
+                    else:
+                        self.done_mask[step, :] = 1.0
+
+                self.total_timesteps += self.config.num_envs
+                self.episode_reward += rewards.sum().item()
+
+            return actor_loss, states
 
     def learning_rate_scheduler(self, lr: float, decay: str) -> list:
         if decay == "constant":

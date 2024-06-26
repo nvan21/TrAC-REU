@@ -30,3 +30,7 @@ def np_to_tensor(
         tensors = tensors[0]
 
     return tensors
+
+
+def hook_fn(grad):
+    print(f"Gradient computed for tensor: {grad}")

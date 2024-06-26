@@ -1,102 +1,87 @@
+# import torch
+# import torch.distributions
+# from envs import Pendulum
+
+# device = torch.device("cpu")
+# num_envs = 4
+
+# env = Pendulum(num_envs, device)
+# states, _ = env.reset()
+
+# done = False
+# truncated = False
+
+# loss = torch.tensor(0, dtype=torch.float32).to(device)
+# while not done and not truncated:
+#     action = torch.randn((4, 1)).to(device)
+#     state, reward, done, truncated, info = env.step(action.unsqueeze(-1))
+
+#     loss += reward.sum()
+# loss /= 200 * num_envs
+# print(loss)
+# loss.backward()
+
 import torch
 import torch.nn as nn
-import torch.optim as optim
-import numpy as np
 
 
-# Define the policy network and value network
-class PolicyNetwork(nn.Module):
-    def __init__(self, input_size, output_size):
-        super(PolicyNetwork, self).__init__()
-        self.fc = nn.Linear(input_size, output_size)
+class DifferentiablePendulumEnv:
+    def __init__(self):
+        self.g = 9.81
+        self.l = 1.0
+        self.dt = 0.1
+        self.state = None
 
-    def forward(self, x):
-        return torch.softmax(self.fc(x), dim=-1)
+    def reset(self):
+        self.state = torch.tensor([0.5, 0.0], requires_grad=True)
+        return self.state
+
+    def step(self, action):
+        theta, theta_dot = self.state
+        theta_dot_new = (
+            theta_dot
+            + (-3 * self.g / (2 * self.l) * torch.sin(theta + action)) * self.dt
+        )
+        theta_new = theta + theta_dot_new * self.dt
+        self.state = torch.tensor([theta_new, theta_dot_new], requires_grad=True)
+        reward = -(theta_new**2)  # Simple reward: penalize angle
+        done = False  # Pendulum never really 'ends'
+        return self.state, reward, done
 
 
-class ValueNetwork(nn.Module):
-    def __init__(self, input_size):
-        super(ValueNetwork, self).__init__()
-        self.fc = nn.Linear(input_size, 1)
+# Define a function to run the simulation and update the loss after each step
+def run_simulation(env, actions):
+    state = env.reset()
+    trajectory = [state]
+    loss = torch.tensor(0.0, requires_grad=True)
 
-    def forward(self, x):
-        return self.fc(x)
+    for action in actions:
+        state, reward, done = env.step(action)
+        trajectory.append(state)
+        loss = loss + reward**2  # Update loss incrementally
+
+    return trajectory, loss
 
 
-# Example environment setup
-input_size = 4  # Example state size
-output_size = 2  # Example action size
+# Initialize environment
+env = DifferentiablePendulumEnv()
 
-policy_net = PolicyNetwork(input_size, output_size)
-value_net = ValueNetwork(input_size)
-optimizer_policy = optim.Adam(policy_net.parameters(), lr=0.01)
-optimizer_value = optim.Adam(value_net.parameters(), lr=0.01)
+# Define actions
+actions = [torch.tensor([0.1], requires_grad=True) for _ in range(16)]
 
-# Simulate a trajectory
-trajectory = {
-    "states": [np.random.rand(input_size) for _ in range(16)],
-    "actions": [np.random.randint(output_size) for _ in range(16)],
-    "rewards": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-    ],  # Example constant reward
-}
+# Run simulation
+trajectory, loss = run_simulation(env, actions)
 
-# Convert trajectory to PyTorch tensors
-states = torch.tensor(trajectory["states"], dtype=torch.float32)
-actions = torch.tensor(trajectory["actions"], dtype=torch.int64)
-rewards = torch.tensor(trajectory["rewards"], dtype=torch.float32)
+# Perform backward pass
+loss.backward()
 
-# Calculate discounted returns
-gamma = 0.99
-returns = []
-G = 0
-for r in reversed(rewards):
-    G = r + gamma * G
-    returns.insert(0, G)
-returns = torch.tensor(returns, dtype=torch.float32)
+# Print gradients
+print("Gradients for initial state:", trajectory[0].grad)
+for i, action in enumerate(actions):
+    print(f"Gradients for action {i}:", action.grad)
 
-# Policy gradient update
-optimizer_policy.zero_grad()
-optimizer_value.zero_grad()
-
-log_probs = torch.log(policy_net(states))
-selected_log_probs = log_probs[range(len(actions)), actions]
-
-# Calculate the value of the last state
-last_state = states[-1]
-last_value = value_net(last_state).squeeze()
-
-# Update returns with the value of the last state
-returns[-1] += gamma * last_value.item()
-
-# Calculate the policy loss
-policy_loss = -torch.sum(selected_log_probs * returns)
-
-# Calculate the value loss for the last state
-value_loss = nn.functional.mse_loss(last_value, returns[-1].unsqueeze(0))
-
-# Backpropagation
-(policy_loss + value_loss).backward()
-optimizer_policy.step()
-optimizer_value.step()
-
-print("Policy loss:", policy_loss.item())
-print("Value loss:", value_loss.item())
+# Reset environment for another episode
+env.reset()
 
 
 # import pickle
