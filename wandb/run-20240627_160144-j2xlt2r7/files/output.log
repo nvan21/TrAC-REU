@@ -1,0 +1,11 @@
+Epoch: (0)
+Timestep: 2048
+actor loss: 6.187788009643555
+critic loss: 29445.075561523438
+Traceback (most recent call last):
+  File "/work/flemingc/nvan21/projects/shac/main.py", line 41, in <module>
+    shac.train()
+  File "/work/flemingc/nvan21/projects/shac/shac.py", line 194, in train
+    critic_loss_hist.append(critic_loss.detach().cpu())
+                            ^^^^^^^^^^^^^^^^^^
+AttributeError: 'float' object has no attribute 'detach'

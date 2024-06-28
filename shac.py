@@ -9,13 +9,16 @@ from envs import PendulumEnv
 import wandb
 
 from typing import Tuple
-import pickle
+from datetime import datetime
+import os
+from collections import deque
 
 
 class SHAC:
     def __init__(self, config: Config, envs: PendulumEnv):
         self.device = config.device
         self.config = config
+        self.envs = envs
 
         # Create learning rate schedules
         self.actor_lr_schedule = self.learning_rate_scheduler(
@@ -53,6 +56,12 @@ class SHAC:
         # Rollout tracking metrics
         self.total_timesteps = 0
         self.episode_reward = 0
+        self.best_actor_loss = torch.inf
+        self.actor_loss_hist = deque(maxlen=10)
+        self.critic_loss_hist = deque(maxlen=10)
+
+        # Date for the filename
+        self.date = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
     def create_models(
         self,
@@ -89,7 +98,7 @@ class SHAC:
         """
         return rets / -(self.config.num_envs * self.config.num_steps)
 
-    def compute_critic_loss(self):
+    def compute_critic_loss(self, learning_rate: float):
         """
         Computes the critic target values and then uses those to calculate the critic loss
         """
@@ -123,59 +132,72 @@ class SHAC:
                 )
                 self.target_values[i] = (1.0 - self.config.gae_lambda) * Ai + lam * Bi
 
-        # TODO: Implement mini batches for critic training
         total_critic_loss = 0.0
         for i in range(self.config.critic_iterations):
-            predicted_values = self.critic(
-                self.states_buf.view(-1, self.states_buf.shape[-1])
-            ).squeeze(-1)
+            # Create a tensor with randomized indexes
+            idxs = torch.randperm(self.config.num_steps).view(
+                self.config.critic_minibatches, -1
+            )
+            states = self.states_buf.view(-1, self.states_buf.shape[-1])
             target_values = self.target_values.view(-1)
-            total_critic_loss += ((predicted_values - target_values) ** 2).mean()
+
+            for j in range(self.config.critic_minibatches):
+                idx = idxs[j]
+                mb_states = states[idx]
+                mb_predicted_values = self.critic(mb_states).squeeze(-1)
+                mb_target_values = target_values[idx].view(-1)
+
+                critic_loss = ((mb_predicted_values - mb_target_values) ** 2).mean()
+
+                self.critic.backward(loss=critic_loss, learning_rate=learning_rate)
+
+                total_critic_loss += critic_loss.item()
 
         return total_critic_loss / self.config.critic_iterations
 
     def train(self):
         states, _ = self.envs.reset()
 
-        critic_loss_hist = []
-        actor_loss_hist = []
         for epoch in range(self.config.max_epochs):
             rets, states = self.rollout(states)
-
-            actor_loss = self.compute_actor_loss(rets)
-            critic_loss = self.compute_critic_loss()
 
             # Get the updated learning rates
             actor_lr = self.actor_lr_schedule[epoch]
             critic_lr = self.critic_lr_schedule[epoch]
 
-            # Backpropogate the network losses
+            # Calculate and backpropogate the actor loss
+            actor_loss = self.compute_actor_loss(rets)
             self.actor.backward(loss=actor_loss, learning_rate=actor_lr)
-            self.critic.backward(loss=critic_loss, learning_rate=critic_lr)
 
+            # Calculate and backpropogate the critic loss (it's backpropogated in the compute method)
+            critic_loss = self.compute_critic_loss(learning_rate=critic_lr)
+
+            # Store the losses for the average loss calculation
+            self.actor_loss_hist.append(actor_loss)
+            self.critic_loss_hist.append(critic_loss)
+
+            # Save the model if it has the best loss
+            if actor_loss < self.best_actor_loss:
+                self.save()
+
+            # Debugging/logging
+            avg_actor_loss = sum(self.actor_loss_hist) / len(self.actor_loss_hist)
+            avg_critic_loss = sum(self.critic_loss_hist) / len(self.critic_loss_hist)
             print(f"Epoch: ({epoch})")
             print(f"Timestep: {self.total_timesteps}")
-            print(f"actor loss: {actor_loss}")
-            print(f"critic loss: {critic_loss}")
-            print(f"episode reward: {self.episode_reward / self.config.num_envs}")
-            print("")
+            print(f"Average actor loss: {avg_actor_loss}")
+            print(f"critic loss: {avg_critic_loss} \n")
 
             if self.config.do_wandb_logging:
                 wandb.log(
                     {
-                        "actor_loss": actor_loss,
-                        "critic_loss": critic_loss,
+                        "actor_loss": avg_actor_loss,
+                        "critic_loss": avg_critic_loss,
                     }
                 )
 
-            actor_loss_hist.append(actor_loss.detach().cpu())
-            critic_loss_hist.append(critic_loss.detach().cpu())
-
+            # Update the target network
             self.soft_network_update()
-            self.save()
-
-        print(np.array(actor_loss_hist[-20:]).mean())
-        print(np.array(critic_loss_hist[-20:]).mean())
 
     def rollout(self, states: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
         """
@@ -215,17 +237,8 @@ class SHAC:
 
                 # Change the next value of truncated states to use their final observation rather than the reset observation
                 if ("final_observation") in info and len(truncated_ids) != 0:
-                    # Mask out the None values to get the truncated states
+                    # Get the states before the environments were reset
                     truncated_states = info["final_observation"]
-                    truncated_states = [
-                        arr for arr in truncated_states if arr is not None
-                    ]
-
-                    # Turn the array of arrays of states into a single 2D tensor
-                    truncated_states = np.vstack(truncated_states)
-                    truncated_states = utils.np_to_tensor(
-                        device=self.device, arrays=[truncated_states]
-                    )
 
                     # Updated the next values to accurately reflect the final observation of the truncated state
                     next_values[step + 1, truncated_ids] = self.target_critic(
@@ -240,7 +253,10 @@ class SHAC:
                                 / self.config.num_envs
                             }
                         )
-                        self.episode_reward = 0
+                        print(
+                            f"Episode has ended! Average episode reward: {self.episode_reward / self.config.num_envs}\n"
+                        )
+                    self.episode_reward = 0
 
                 # Update the running rewards
                 running_rewards[step + 1, :] = (
@@ -285,8 +301,9 @@ class SHAC:
                     else:
                         self.done_mask[step, :] = 1.0
 
+                    self.episode_reward += rewards.sum().item()
+
                 self.total_timesteps += self.config.num_envs
-                self.episode_reward += rewards.sum().item()
 
             return actor_loss, states
 
@@ -319,9 +336,14 @@ class SHAC:
 
     def save(self, filename=None):
         if filename is None:
-            filename = "best_policy.pt"
+            filename = f"weights/{self.date}"
 
-        torch.save([self.actor, self.critic, self.target_critic], filename)
+            if not os.path.exists(filename):
+                os.makedirs(filename)
+
+        torch.save(
+            [self.actor, self.critic, self.target_critic], f"{filename}/best_policy.pt"
+        )
 
     def load(self, filename=None):
         if filename is None:

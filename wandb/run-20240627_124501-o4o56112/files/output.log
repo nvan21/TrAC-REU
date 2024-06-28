@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/work/flemingc/nvan21/projects/shac/main.py", line 40, in <module>
+    shac.train()
+  File "/work/flemingc/nvan21/projects/shac/shac.py", line 164, in train
+    self.save()
+  File "/work/flemingc/nvan21/projects/shac/shac.py", line 334, in save
+    torch.save(self.actor.state_dict(), f"{filename}/actor.pt")
+  File "/work/flemingc/nvan21/miniconda3/envs/shac/lib/python3.12/site-packages/torch/serialization.py", line 627, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/flemingc/nvan21/miniconda3/envs/shac/lib/python3.12/site-packages/torch/serialization.py", line 501, in _open_zipfile_writer
+    return container(name_or_buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/flemingc/nvan21/miniconda3/envs/shac/lib/python3.12/site-packages/torch/serialization.py", line 472, in __init__
+    super().__init__(torch._C.PyTorchFileWriter(self.name))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Parent directory weights/2024-06-27_12-45-04 does not exist.

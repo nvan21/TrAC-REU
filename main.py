@@ -19,7 +19,16 @@ if __name__ == "__main__":
             config={
                 "actor_learning_rate": config.actor_learning_rate,
                 "critic_learning_rate": config.critic_learning_rate,
+                "actor_units": config.actor_units,
+                "critic_units": config.critic_units,
+                "critic_minibatches": config.critic_minibatches,
+                "critic_iterations": config.critic_iterations,
+                "actor_activation": config.actor_activation,
+                "critic_activation": config.critic_activation,
+                "num_steps": config.num_steps,
+                "num_envs": config.num_envs,
                 "epochs": config.max_epochs,
+                "polyak_averaging": config.tau,
             },
         )
 

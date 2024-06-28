@@ -51,27 +51,5 @@ class StochasticActor(nn.Module):
 
         with torch.autograd.set_detect_anomaly(True):
             self.optimizer.zero_grad()
-
             loss.backward()
-            # Store parameters before the optimizer step
-            params_before = {
-                name: param.clone() for name, param in self.named_parameters()
-            }
-
-            # Perform an optimizer step
             self.optimizer.step()
-
-            # Store parameters after the optimizer step
-            params_after = {name: param for name, param in self.named_parameters()}
-
-            # Check if parameters have changed
-            for name in params_before:
-                if torch.equal(params_before[name], params_after[name]):
-                    print(f"Parameter {name} has not changed.")
-                else:
-                    print(f"Parameter {name} has changed.")
-
-            # Output gradients if any parameter has changed
-            for name, param in self.named_parameters():
-                if not torch.equal(params_before[name], params_after[name]):
-                    print(f"Gradients for {name}: {param.grad}")

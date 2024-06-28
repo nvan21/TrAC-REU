@@ -37,6 +37,5 @@ class Critic(nn.Module):
             param_group["lr"] = learning_rate
 
         self.optimizer.zero_grad()
-        print("critic backward")
         loss.backward()
         self.optimizer.step()

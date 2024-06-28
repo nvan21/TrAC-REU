@@ -1,4 +1,4 @@
-from torch.nn import ELU
+from torch.nn import ELU, ReLU
 from torch import device, cuda
 
 
@@ -19,6 +19,7 @@ class Config:
     critic_activation = ELU()
     critic_learning_rate = 2e-4
     critic_learning_rate_schedule = "linear"  # can be linear or constant
+    critic_minibatches = 4
 
     # Default hyperparameters for training
     gae_lambda = 0.95
@@ -30,7 +31,7 @@ class Config:
     critic_iterations = 16
 
     # Whether or not to log run with wandb (useful for debugging)
-    do_wandb_logging = False
+    do_wandb_logging = True
 
     # Device to use for tensor storage
     device = device("cuda" if cuda.is_available() else "cpu")
@@ -46,5 +47,14 @@ class HopperConfig(Config):
 class PendulumConfig(Config):
     actor_units = [64, 64]
 
-    num_envs = 16
-    num_steps = 32
+    actor_learning_rate = 1e-3
+    critic_learning_rate = 1e-3
+
+    actor_activation = ReLU()
+    critic_activation = ReLU()
+    critic_minibatches = 2
+
+    num_envs = 256
+    num_steps = 16
+
+    tau = 0.2
