@@ -32,10 +32,11 @@ if __name__ == "__main__":
             },
         )
 
-    # envs = PendulumEnv(num_envs=config.num_envs, device=config.device)
+    envs = PendulumEnv(num_envs=config.num_envs, device=config.device)
     # envs = gym.make_vec("Pendulum-v1", num_envs=config.num_envs)
-    envs = gym.make("Pendulum-v1", render_mode="rgb_array")
-    envs = gym.wrappers.RecordVideo(envs, ".")
+    # envs = gym.make("Pendulum-v1", render_mode="rgb_array")
+    # envs = gym.wrappers.RecordVideo(envs, ".")
+
     obs_dim = envs.observation_space.shape[0]
     act_dim = envs.action_space.shape[0]
 
@@ -44,9 +45,9 @@ if __name__ == "__main__":
     shac = SHAC(config=config, envs=envs)
     shac.create_models(act_dim=act_dim, obs_dim=obs_dim)
 
-    shac.load(
-        filename="/Users/nvan/Documents/Code/shac/weights/2024-06-28_10-28-45/best_policy.pt"
-    )
-    shac.evaluate_policy()
+    # shac.load(
+    #     filename="/Users/nvan/Documents/Code/shac/weights/2024-06-27_16-11-31/best_policy.pt"
+    # )
+    # shac.evaluate_policy()
 
-    # shac.train()
+    shac.train()

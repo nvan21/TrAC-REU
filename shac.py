@@ -202,13 +202,18 @@ class SHAC:
     def evaluate_policy(self):
         state, _ = self.envs.reset()
         done = False
+        truncated = False
 
-        while not done:
+        while not done and not truncated:
             if isinstance(state, np.ndarray):
                 state = torch.tensor(state, device=self.device)
 
-            action = self.actor(state).detach().numpy()
-            state, reward, done, *_ = self.envs.step(action)
+            action = self.actor(state)
+            state, reward, done, truncated, _ = self.envs.step(action)
+
+            self.episode_reward += reward
+
+        print(f"final evaluation reward: {self.episode_reward}")
 
     def rollout(self, states: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
         """

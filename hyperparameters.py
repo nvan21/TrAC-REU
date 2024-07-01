@@ -52,9 +52,9 @@ class PendulumConfig(Config):
 
     actor_activation = ReLU()
     critic_activation = ReLU()
-    critic_minibatches = 2
+    critic_minibatches = 4
 
-    num_envs = 128
-    num_steps = 0
+    num_envs = 64
+    num_steps = 32
 
-    tau = 0.2
+    tau = 0.1

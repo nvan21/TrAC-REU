@@ -85,7 +85,7 @@ class PendulumEnv:
             ).flatten()
 
             # fmt: off
-            new_theta_dots = theta_dots + (3 * g / (2 * l) * torch.sin(thetas) + 3.0 / (m * l*2) * torques) * dt
+            new_theta_dots = theta_dots + (3 * g / (2 * l) * torch.sin(thetas) + 3.0 / (m * l**2) * torques) * dt
             # fmt: on
             new_theta_dots = torch.clip(new_theta_dots, -self.max_speed, self.max_speed)
             new_thetas = thetas + new_theta_dots * dt
