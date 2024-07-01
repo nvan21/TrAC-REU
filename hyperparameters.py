@@ -31,7 +31,7 @@ class Config:
     critic_iterations = 16
 
     # Whether or not to log run with wandb (useful for debugging)
-    do_wandb_logging = True
+    do_wandb_logging = False
 
     # Device to use for tensor storage
     device = device("cuda" if cuda.is_available() else "cpu")
@@ -55,6 +55,6 @@ class PendulumConfig(Config):
     critic_minibatches = 2
 
     num_envs = 128
-    num_steps = 32
+    num_steps = 0
 
     tau = 0.2

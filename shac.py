@@ -199,6 +199,17 @@ class SHAC:
             # Update the target network
             self.soft_network_update()
 
+    def evaluate_policy(self):
+        state, _ = self.envs.reset()
+        done = False
+
+        while not done:
+            if isinstance(state, np.ndarray):
+                state = torch.tensor(state, device=self.device)
+
+            action = self.actor(state).detach().numpy()
+            state, reward, done, *_ = self.envs.step(action)
+
     def rollout(self, states: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
         """
         Performs num_steps rollouts. It takes in the intial states and then returns the GAE returns
@@ -345,11 +356,8 @@ class SHAC:
             [self.actor, self.critic, self.target_critic], f"{filename}/best_policy.pt"
         )
 
-    def load(self, filename=None):
-        if filename is None:
-            filename = "best_policy.pt"
-
-        checkpoint = torch.load(filename)
+    def load(self, filename: str) -> None:
+        checkpoint = torch.load(filename, map_location=self.device)
         self.actor = checkpoint[0].to(self.device)
         self.critic = checkpoint[1].to(self.device)
         self.target_critic = checkpoint[2].to(self.device)
