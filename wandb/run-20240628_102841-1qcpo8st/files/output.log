@@ -8153,3 +8153,8 @@ Epoch: (1998)
 Timestep: 8187904
 Average actor loss: 8.119776725769043
 critic loss: 2.2215562324039637
+Episode has ended! Average episode reward: -1060.9293248653412
+Epoch: (1999)
+Timestep: 8192000
+Average actor loss: 8.02992057800293
+critic loss: 2.0237017448060213

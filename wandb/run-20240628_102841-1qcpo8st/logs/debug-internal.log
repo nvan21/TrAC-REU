@@ -9980,3 +9980,84 @@
 2024-06-28 10:35:59,701 INFO    Thread-12 :4165589 [dir_watcher.py:_on_file_modified():288] file/dir modified: /work/flemingc/nvan21/projects/shac/wandb/run-20240628_102841-1qcpo8st/files/output.log
 2024-06-28 10:35:59,702 INFO    Thread-12 :4165589 [dir_watcher.py:_on_file_modified():288] file/dir modified: /work/flemingc/nvan21/projects/shac/wandb/run-20240628_102841-1qcpo8st/files/wandb-summary.json
 2024-06-28 10:36:00,032 DEBUG   HandlerThread:4165589 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-28 10:36:01,168 INFO    SenderThread:4165589 [sender.py:transition_state():614] send defer: 8
+2024-06-28 10:36:01,168 DEBUG   SenderThread:4165589 [sender.py:send_request():406] send_request: poll_exit
+2024-06-28 10:36:01,169 DEBUG   HandlerThread:4165589 [handler.py:handle_request():158] handle_request: defer
+2024-06-28 10:36:01,169 INFO    HandlerThread:4165589 [handler.py:handle_request_defer():184] handle defer: 8
+2024-06-28 10:36:01,170 DEBUG   SenderThread:4165589 [sender.py:send_request():406] send_request: defer
+2024-06-28 10:36:01,170 INFO    SenderThread:4165589 [sender.py:send_request_defer():610] handle sender defer: 8
+2024-06-28 10:36:01,170 INFO    SenderThread:4165589 [job_builder.py:build():440] Attempting to build job artifact
+2024-06-28 10:36:01,171 INFO    SenderThread:4165589 [job_builder.py:_get_source_type():569] is repo sourced job
+2024-06-28 10:36:01,190 INFO    SenderThread:4165589 [job_builder.py:build():545] adding wandb-job metadata file
+2024-06-28 10:36:01,194 INFO    SenderThread:4165589 [sender.py:transition_state():614] send defer: 9
+2024-06-28 10:36:01,194 DEBUG   HandlerThread:4165589 [handler.py:handle_request():158] handle_request: defer
+2024-06-28 10:36:01,194 DEBUG   SenderThread:4165589 [sender.py:send():379] send: artifact
+2024-06-28 10:36:01,194 INFO    HandlerThread:4165589 [handler.py:handle_request_defer():184] handle defer: 9
+2024-06-28 10:36:01,671 INFO    SenderThread:4165589 [sender.py:send_artifact():1530] sent artifact job-https___github.com_nvan21_shac.git_main.py - {'id': 'QXJ0aWZhY3Q6OTMyNDQ3NDE0', 'state': 'COMMITTED', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjIyODM2NzY5OA==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6OTMyNDQ3NDE0', 'versionIndex': 11}}}
+2024-06-28 10:36:01,671 DEBUG   SenderThread:4165589 [sender.py:send_request():406] send_request: defer
+2024-06-28 10:36:01,671 INFO    SenderThread:4165589 [sender.py:send_request_defer():610] handle sender defer: 9
+2024-06-28 10:36:01,671 INFO    SenderThread:4165589 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-06-28 10:36:01,703 INFO    Thread-12 :4165589 [dir_watcher.py:_on_file_modified():288] file/dir modified: /work/flemingc/nvan21/projects/shac/wandb/run-20240628_102841-1qcpo8st/files/output.log
+2024-06-28 10:36:01,703 INFO    SenderThread:4165589 [dir_watcher.py:finish():388] scan: /work/flemingc/nvan21/projects/shac/wandb/run-20240628_102841-1qcpo8st/files
+2024-06-28 10:36:01,704 INFO    SenderThread:4165589 [dir_watcher.py:finish():402] scan save: /work/flemingc/nvan21/projects/shac/wandb/run-20240628_102841-1qcpo8st/files/wandb-summary.json wandb-summary.json
+2024-06-28 10:36:01,704 INFO    SenderThread:4165589 [dir_watcher.py:finish():402] scan save: /work/flemingc/nvan21/projects/shac/wandb/run-20240628_102841-1qcpo8st/files/wandb-metadata.json wandb-metadata.json
+2024-06-28 10:36:01,705 INFO    SenderThread:4165589 [dir_watcher.py:finish():402] scan save: /work/flemingc/nvan21/projects/shac/wandb/run-20240628_102841-1qcpo8st/files/output.log output.log
+2024-06-28 10:36:01,705 INFO    SenderThread:4165589 [dir_watcher.py:finish():402] scan save: /work/flemingc/nvan21/projects/shac/wandb/run-20240628_102841-1qcpo8st/files/config.yaml config.yaml
+2024-06-28 10:36:01,707 INFO    SenderThread:4165589 [dir_watcher.py:finish():402] scan save: /work/flemingc/nvan21/projects/shac/wandb/run-20240628_102841-1qcpo8st/files/requirements.txt requirements.txt
+2024-06-28 10:36:01,708 INFO    SenderThread:4165589 [dir_watcher.py:finish():402] scan save: /work/flemingc/nvan21/projects/shac/wandb/run-20240628_102841-1qcpo8st/files/conda-environment.yaml conda-environment.yaml
+2024-06-28 10:36:01,709 INFO    SenderThread:4165589 [sender.py:transition_state():614] send defer: 10
+2024-06-28 10:36:01,709 DEBUG   HandlerThread:4165589 [handler.py:handle_request():158] handle_request: defer
+2024-06-28 10:36:01,710 INFO    HandlerThread:4165589 [handler.py:handle_request_defer():184] handle defer: 10
+2024-06-28 10:36:01,710 DEBUG   SenderThread:4165589 [sender.py:send_request():406] send_request: defer
+2024-06-28 10:36:01,711 INFO    SenderThread:4165589 [sender.py:send_request_defer():610] handle sender defer: 10
+2024-06-28 10:36:01,711 INFO    SenderThread:4165589 [file_pusher.py:finish():169] shutting down file pusher
+2024-06-28 10:36:02,001 INFO    wandb-upload_1:4165589 [upload_job.py:push():130] Uploaded file /work/flemingc/nvan21/projects/shac/wandb/run-20240628_102841-1qcpo8st/files/output.log
+2024-06-28 10:36:02,021 INFO    wandb-upload_2:4165589 [upload_job.py:push():130] Uploaded file /work/flemingc/nvan21/projects/shac/wandb/run-20240628_102841-1qcpo8st/files/config.yaml
+2024-06-28 10:36:02,022 INFO    wandb-upload_0:4165589 [upload_job.py:push():130] Uploaded file /work/flemingc/nvan21/projects/shac/wandb/run-20240628_102841-1qcpo8st/files/wandb-summary.json
+2024-06-28 10:36:02,027 INFO    wandb-upload_4:4165589 [upload_job.py:push():130] Uploaded file /work/flemingc/nvan21/projects/shac/wandb/run-20240628_102841-1qcpo8st/files/conda-environment.yaml
+2024-06-28 10:36:02,033 DEBUG   HandlerThread:4165589 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-28 10:36:02,033 DEBUG   SenderThread:4165589 [sender.py:send_request():406] send_request: poll_exit
+2024-06-28 10:36:02,099 INFO    wandb-upload_3:4165589 [upload_job.py:push():130] Uploaded file /work/flemingc/nvan21/projects/shac/wandb/run-20240628_102841-1qcpo8st/files/requirements.txt
+2024-06-28 10:36:02,300 INFO    Thread-11 (_thread_body):4165589 [sender.py:transition_state():614] send defer: 11
+2024-06-28 10:36:02,300 DEBUG   HandlerThread:4165589 [handler.py:handle_request():158] handle_request: defer
+2024-06-28 10:36:02,300 INFO    HandlerThread:4165589 [handler.py:handle_request_defer():184] handle defer: 11
+2024-06-28 10:36:02,300 DEBUG   SenderThread:4165589 [sender.py:send_request():406] send_request: defer
+2024-06-28 10:36:02,301 INFO    SenderThread:4165589 [sender.py:send_request_defer():610] handle sender defer: 11
+2024-06-28 10:36:02,301 INFO    SenderThread:4165589 [file_pusher.py:join():175] waiting for file pusher
+2024-06-28 10:36:02,301 INFO    SenderThread:4165589 [sender.py:transition_state():614] send defer: 12
+2024-06-28 10:36:02,301 DEBUG   HandlerThread:4165589 [handler.py:handle_request():158] handle_request: defer
+2024-06-28 10:36:02,302 INFO    HandlerThread:4165589 [handler.py:handle_request_defer():184] handle defer: 12
+2024-06-28 10:36:02,302 DEBUG   SenderThread:4165589 [sender.py:send_request():406] send_request: defer
+2024-06-28 10:36:02,302 INFO    SenderThread:4165589 [sender.py:send_request_defer():610] handle sender defer: 12
+2024-06-28 10:36:02,302 INFO    SenderThread:4165589 [file_stream.py:finish():601] file stream finish called
+2024-06-28 10:36:02,515 INFO    SenderThread:4165589 [file_stream.py:finish():605] file stream finish is done
+2024-06-28 10:36:02,515 INFO    SenderThread:4165589 [sender.py:transition_state():614] send defer: 13
+2024-06-28 10:36:02,515 DEBUG   HandlerThread:4165589 [handler.py:handle_request():158] handle_request: defer
+2024-06-28 10:36:02,515 INFO    HandlerThread:4165589 [handler.py:handle_request_defer():184] handle defer: 13
+2024-06-28 10:36:02,516 DEBUG   SenderThread:4165589 [sender.py:send_request():406] send_request: defer
+2024-06-28 10:36:02,516 INFO    SenderThread:4165589 [sender.py:send_request_defer():610] handle sender defer: 13
+2024-06-28 10:36:02,516 INFO    SenderThread:4165589 [sender.py:transition_state():614] send defer: 14
+2024-06-28 10:36:02,517 DEBUG   SenderThread:4165589 [sender.py:send():379] send: final
+2024-06-28 10:36:02,517 DEBUG   HandlerThread:4165589 [handler.py:handle_request():158] handle_request: defer
+2024-06-28 10:36:02,517 INFO    HandlerThread:4165589 [handler.py:handle_request_defer():184] handle defer: 14
+2024-06-28 10:36:02,517 DEBUG   SenderThread:4165589 [sender.py:send():379] send: footer
+2024-06-28 10:36:02,517 DEBUG   SenderThread:4165589 [sender.py:send_request():406] send_request: defer
+2024-06-28 10:36:02,518 INFO    SenderThread:4165589 [sender.py:send_request_defer():610] handle sender defer: 14
+2024-06-28 10:36:02,518 DEBUG   HandlerThread:4165589 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-28 10:36:02,518 DEBUG   HandlerThread:4165589 [handler.py:handle_request():158] handle_request: server_info
+2024-06-28 10:36:02,518 DEBUG   HandlerThread:4165589 [handler.py:handle_request():158] handle_request: poll_exit
+2024-06-28 10:36:02,518 DEBUG   HandlerThread:4165589 [handler.py:handle_request():158] handle_request: get_summary
+2024-06-28 10:36:02,519 DEBUG   SenderThread:4165589 [sender.py:send_request():406] send_request: poll_exit
+2024-06-28 10:36:02,519 DEBUG   HandlerThread:4165589 [handler.py:handle_request():158] handle_request: sampled_history
+2024-06-28 10:36:02,519 DEBUG   SenderThread:4165589 [sender.py:send_request():406] send_request: server_info
+2024-06-28 10:36:02,520 DEBUG   HandlerThread:4165589 [handler.py:handle_request():158] handle_request: internal_messages
+2024-06-28 10:36:02,573 DEBUG   SenderThread:4165589 [sender.py:send_request():406] send_request: poll_exit
+2024-06-28 10:36:02,573 INFO    MainThread:4165589 [wandb_run.py:_footer_history_summary_info():3988] rendering history
+2024-06-28 10:36:02,574 INFO    MainThread:4165589 [wandb_run.py:_footer_history_summary_info():4020] rendering summary
+2024-06-28 10:36:02,575 INFO    MainThread:4165589 [wandb_run.py:_footer_sync_info():3947] logging synced files
+2024-06-28 10:36:02,575 DEBUG   HandlerThread:4165589 [handler.py:handle_request():158] handle_request: shutdown
+2024-06-28 10:36:02,575 INFO    HandlerThread:4165589 [handler.py:finish():882] shutting down handler
+2024-06-28 10:36:03,519 INFO    WriterThread:4165589 [datastore.py:close():296] close: /work/flemingc/nvan21/projects/shac/wandb/run-20240628_102841-1qcpo8st/run-1qcpo8st.wandb
+2024-06-28 10:36:03,573 INFO    SenderThread:4165589 [sender.py:finish():1608] shutting down sender
+2024-06-28 10:36:03,573 INFO    SenderThread:4165589 [file_pusher.py:finish():169] shutting down file pusher
+2024-06-28 10:36:03,573 INFO    SenderThread:4165589 [file_pusher.py:join():175] waiting for file pusher

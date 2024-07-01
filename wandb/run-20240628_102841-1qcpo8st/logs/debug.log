@@ -26,3 +26,4 @@ config: {'actor_learning_rate': 0.001, 'critic_learning_rate': 0.001, 'actor_uni
 2024-06-28 10:28:44,004 INFO    MainThread:4165537 [wandb_run.py:_redirect():2300] Wrapping output streams.
 2024-06-28 10:28:44,004 INFO    MainThread:4165537 [wandb_run.py:_redirect():2325] Redirects installed.
 2024-06-28 10:28:44,006 INFO    MainThread:4165537 [wandb_init.py:init():838] run started, returning control to user process
+2024-06-28 10:36:03,576 WARNING MsgRouterThr:4165537 [router.py:message_loop():77] message_loop has been closed
