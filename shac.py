@@ -208,7 +208,7 @@ class SHAC:
             if isinstance(state, np.ndarray):
                 state = torch.tensor(state, device=self.device)
 
-            action = self.actor(state)
+            action = self.actor(state).detach().numpy()
             state, reward, done, truncated, _ = self.envs.step(action)
 
             self.episode_reward += reward

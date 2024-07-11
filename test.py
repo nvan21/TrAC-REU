@@ -59,17 +59,42 @@
 # idxs = torch.randperm(16).view(4, -1)
 # print(idxs[0], idxs[1], idxs[2], idxs[3])
 
-from hyperparameters import PendulumParams
+# from hyperparameters import PendulumParams
 
-test = PendulumParams()
+# test = PendulumParams()
 
-params = {
-    k: v
-    for k, v in test.__dict__.items()
-    if not k.startswith("__")
-    and not callable(v)
-    and not isinstance(v, staticmethod)
-    and not k == "project_name"
-}
+# params = {
+#     k: v
+#     for k, v in test.__dict__.items()
+#     if not k.startswith("__")
+#     and not callable(v)
+#     and not isinstance(v, staticmethod)
+#     and not k == "project_name"
+# }
 
-print(params)
+# print(params)
+
+import torch
+import numpy as np
+
+I = torch.tensor(
+    [[1, 2, 3, 4], [0, 1, 2, 3], [-1, -2, -3, -4], [10, 20, 30, 40]],
+    dtype=torch.float32,
+)
+
+Inp = np.array([[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]])
+state = torch.ones((3, 4))
+statenp = np.ones((3, 4))
+
+print((I @ state.T).T)
+meas_state = (I.unsqueeze(0).repeat(3, 1, 1) @ state.unsqueeze(-1)).squeeze(-1)
+print(meas_state, meas_state.shape)
+
+x_meas = np.array((1, 200, 300, 100))
+noise = np.array((1, 1, 1, 1))
+
+x_meas = torch.tensor(x_meas)
+# x_meas = torch.zeros(4)
+noise = torch.randn_like(state)
+
+print(meas_state + noise * x_meas)

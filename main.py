@@ -5,7 +5,7 @@ from envs import PendulumEnv
 import wandb
 import gymnasium as gym
 
-TRAIN_MODE = True
+TRAIN_MODE = False
 
 if __name__ == "__main__":
     # Get config
@@ -26,10 +26,10 @@ if __name__ == "__main__":
         wandb.init(project=params.project_name, config=log_params)
 
     # Initialize environments and SHAC instance
-    envs = PendulumEnv(num_envs=params.num_envs, device=params.device)
+    # envs = PendulumEnv(num_envs=params.num_envs, device=params.device)
     # envs = gym.make_vec("Pendulum-v1", num_envs=params.num_envs)
-    # envs = gym.make("Pendulum-v1", render_mode="rgb_array")
-    # envs = gym.wrappers.RecordVideo(envs, ".")
+    envs = gym.make("Pendulum-v1", render_mode="rgb_array")
+    envs = gym.wrappers.RecordVideo(envs, ".")
 
     obs_dim = envs.observation_space.shape[0]
     act_dim = envs.action_space.shape[0]
