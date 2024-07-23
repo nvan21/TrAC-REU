@@ -2,34 +2,20 @@
 # import torch
 # import math
 # from shac import SHAC
-# from hyperparameters import PendulumConfig
+# from hyperparameters import PendulumParams
 # from envs import PendulumEnv
 
-# config = PendulumConfig()
+# config = PendulumParams()
 
 # envs = PendulumEnv(num_envs=config.num_envs, device=config.device)
 # obs_dim = envs.observation_space.shape[0]
 # act_dim = envs.action_space.shape[0]
 
-# shac = SHAC(config=config, envs=envs)
+# shac = SHAC(params=config, envs=envs)
 # shac.create_models(act_dim=act_dim, obs_dim=obs_dim)
 # envs = PendulumEnv(num_envs=config.num_envs, device=config.device)
 
-# shac.actor.load_state_dict(
-#     torch.load(
-#         "/work/flemingc/nvan21/projects/shac/weights/2024-06-27_15-02-59/actor.pt"
-#     )
-# )
-# shac.critic.load_state_dict(
-#     torch.load(
-#         "/work/flemingc/nvan21/projects/shac/weights/2024-06-27_15-02-59/critic.pt"
-#     )
-# )
-# shac.target_critic.load_state_dict(
-#     torch.load(
-#         "/work/flemingc/nvan21/projects/shac/weights/2024-06-27_15-02-59/target_critic.pt"
-#     )
-# )
+# shac.load("/Users/nvan/Documents/Code/shac/weights/2024-06-28_10-28-45/best_policy.pt")
 
 # actor = shac.actor
 # critic = shac.critic
@@ -74,27 +60,6 @@
 
 # print(params)
 
-import torch
 import numpy as np
 
-I = torch.tensor(
-    [[1, 2, 3, 4], [0, 1, 2, 3], [-1, -2, -3, -4], [10, 20, 30, 40]],
-    dtype=torch.float32,
-)
-
-Inp = np.array([[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]])
-state = torch.ones((3, 4))
-statenp = np.ones((3, 4))
-
-print((I @ state.T).T)
-meas_state = (I.unsqueeze(0).repeat(3, 1, 1) @ state.unsqueeze(-1)).squeeze(-1)
-print(meas_state, meas_state.shape)
-
-x_meas = np.array((1, 200, 300, 100))
-noise = np.array((1, 1, 1, 1))
-
-x_meas = torch.tensor(x_meas)
-# x_meas = torch.zeros(4)
-noise = torch.randn_like(state)
-
-print(meas_state + noise * x_meas)
+print(np.linspace(0, 4999, 5000).shape)
