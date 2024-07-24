@@ -60,6 +60,7 @@ def extract_rewards_from_monitors(log_dir):
 
 
 def plot_means_and_stds(means_list, stds_list, timesteps_list, series_list):
+    plt.figure(figsize=(12, 8))
     for idx, (means, stds) in enumerate(zip(means_list, stds_list)):
         ts = timesteps_list[idx] / 1e5
         label = series_list[idx]
@@ -73,8 +74,6 @@ def plot_means_and_stds(means_list, stds_list, timesteps_list, series_list):
     plt.grid(True)
     plt.xticks(fontsize=12)
     plt.yticks(fontsize=12)
-    # ax = plt.gca()
-    # ax.xaxis.set_major_formatter(FuncFormatter(scientific_format))
 
     plt.tight_layout()
     plt.show()
