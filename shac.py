@@ -1,24 +1,33 @@
 from actor import StochasticActor
 from critic import Critic
-from hyperparameters import PendulumParams
-import utils
+from hyperparameters import SHACPendulumParams
+from envs import PendulumEnv
 
 import torch
 import numpy as np
-from envs import PendulumEnv
 import wandb
+import pickle
+from gymnasium import Env
 
 from typing import Tuple
 from datetime import datetime
 import os
 from collections import deque
+import time
 
 
 class SHAC:
-    def __init__(self, params: PendulumParams, envs: PendulumEnv):
+    def __init__(
+        self, params: SHACPendulumParams, envs: PendulumEnv, eval_env: Env, run_dir: str
+    ):
         self.device = params.device
         self.params = params
         self.envs = envs
+        self.eval_env = eval_env
+        self.run_dir = run_dir
+        self.max_epochs = int(
+            self.params.max_timesteps / (self.params.num_steps * self.params.num_envs)
+        )
 
         # Create learning rate schedules
         self.actor_lr_schedule = self.learning_rate_scheduler(
@@ -59,9 +68,20 @@ class SHAC:
         self.best_actor_loss = torch.inf
         self.actor_loss_hist = deque(maxlen=10)
         self.critic_loss_hist = deque(maxlen=10)
+        self.reward_hist = deque(maxlen=10)
+        self.eval_reward_hist = []
+        self.timestep_hist = []
+        self.realtime_hist = []
+        self.start_time = time.time()
 
         # Date for the filename
         self.date = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+
+    def set_seed(self, seed: int):
+        self.seed = seed
+        self.envs.seed(seed)
+        torch.manual_seed(seed)
+        np.random.seed(seed)
 
     def create_models(
         self,
@@ -158,8 +178,8 @@ class SHAC:
     def train(self):
         states, _ = self.envs.reset()
 
-        for epoch in range(self.params.max_epochs):
-            rets, states = self.rollout(states)
+        for epoch in range(self.max_epochs):
+            rets, states, rewards = self.rollout(states)
 
             # Get the updated learning rates
             actor_lr = self.actor_lr_schedule[epoch]
@@ -172,48 +192,85 @@ class SHAC:
             # Calculate and backpropogate the critic loss (it's backpropogated in the compute method)
             critic_loss = self.compute_critic_loss(learning_rate=critic_lr)
 
-            # Store the losses for the average loss calculation
+            # Store the losses and reward for the loss calculations
             self.actor_loss_hist.append(actor_loss)
             self.critic_loss_hist.append(critic_loss)
+            self.reward_hist.append(rewards)
 
-            # Save the model if it has the best loss
+            # Save the model if it has the best actor loss
             if actor_loss < self.best_actor_loss:
                 self.save()
+
+            # Evaluate the model
+            if epoch % 1 == 0:
+                eval_reward = self.evaluate_policy()
 
             # Debugging/logging
             avg_actor_loss = sum(self.actor_loss_hist) / len(self.actor_loss_hist)
             avg_critic_loss = sum(self.critic_loss_hist) / len(self.critic_loss_hist)
+            avg_reward = sum(self.reward_hist) / len(self.reward_hist)
             print(f"Epoch: ({epoch})")
             print(f"Timestep: {self.total_timesteps}")
             print(f"Average actor loss: {avg_actor_loss}")
-            print(f"critic loss: {avg_critic_loss} \n")
+            print(f"Average critic loss: {avg_critic_loss}")
+            print(f"Average episode reward: {avg_reward}")
+            print(f"Evaluation reward: {eval_reward} \n")
 
             if self.params.do_wandb_logging:
                 wandb.log(
                     {
-                        "actor_loss": avg_actor_loss,
-                        "critic_loss": avg_critic_loss,
+                        "step": self.total_timesteps,
+                        "epoch": epoch,
+                        "step/actor_loss": avg_actor_loss,
+                        "step/critic_loss": avg_critic_loss,
+                        "step/learning_episode_rewards": avg_reward,
+                        "step/eval_reward": eval_reward,
+                        "epoch/actor_loss": avg_actor_loss,
+                        "epoch/critic_loss": avg_critic_loss,
+                        "epoch/learning_episode_rewards": avg_reward,
+                        "epoch/eval_reward": eval_reward,
                     }
                 )
 
             # Update the target network
             self.soft_network_update()
 
+        # run_dir = f"runs/{self.date}"
+        # if not os.path.exists(run_dir):
+        #     os.makedirs(run_dir)
+
+        with open(f"{self.run_dir}/data.pkl", "wb") as f:
+            data = {
+                "timesteps": self.timestep_hist,
+                "rewards": self.eval_reward_hist,
+                "times": self.realtime_hist,
+            }
+            pickle.dump(data, f)
+
+    @torch.no_grad()
     def evaluate_policy(self):
-        state, _ = self.envs.reset()
+        self.actor.eval()
+        self.timestep_hist.append(self.total_timesteps)
+        state, _ = self.eval_env.reset(seed=self.seed)
         done = False
         truncated = False
+        eval_reward = 0
 
         while not done and not truncated:
             if isinstance(state, np.ndarray):
                 state = torch.tensor(state, device=self.device)
 
-            action = self.actor(state).detach().numpy()
-            state, reward, done, truncated, _ = self.envs.step(action)
+            action = self.actor(state).cpu().detach().numpy()
+            state, reward, done, truncated, _ = self.eval_env.step(action)
 
-            self.episode_reward += reward
+            eval_reward += reward
 
-        print(f"final evaluation reward: {self.episode_reward}")
+        print(f"Final evaluation reward: {eval_reward} \n")
+        self.eval_reward_hist.append(eval_reward)
+        self.realtime_hist.append(time.time() - self.start_time)
+        self.actor.train()
+
+        return eval_reward
 
     def rollout(self, states: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
         """
@@ -261,17 +318,6 @@ class SHAC:
                         truncated_states
                     ).squeeze(-1)
 
-                    if self.params.do_wandb_logging:
-                        # Log and reset episode rewards
-                        wandb.log(
-                            {
-                                "episode_rewards": self.episode_reward
-                                / self.params.num_envs
-                            }
-                        )
-                        print(
-                            f"Episode has ended! Average episode reward: {self.episode_reward / self.params.num_envs}\n"
-                        )
                     self.episode_reward = 0
 
                 # Update the running rewards
@@ -320,16 +366,17 @@ class SHAC:
                     self.episode_reward += rewards.sum().item()
 
                 self.total_timesteps += self.params.num_envs
+                episode_reward = self.episode_reward / self.params.num_envs
 
-            return actor_loss, states
+            return actor_loss, states, episode_reward
 
     def learning_rate_scheduler(self, lr: float, decay: str) -> list:
         if decay == "constant":
-            schedule = [lr for _ in range(self.params.max_epochs)]
+            schedule = [lr for _ in range(self.max_epochs)]
         elif decay == "linear":
             schedule = [
-                lr * (self.params.max_epochs - i) / self.params.max_epochs
-                for i in range(self.params.max_epochs)
+                lr * (self.max_epochs - i) / self.max_epochs
+                for i in range(self.max_epochs)
             ]
 
         return schedule
@@ -352,10 +399,10 @@ class SHAC:
 
     def save(self, filename=None):
         if filename is None:
-            filename = f"weights/{self.date}"
+            filename = self.run_dir
 
-            if not os.path.exists(filename):
-                os.makedirs(filename)
+        if not os.path.exists(filename):
+            os.makedirs(filename)
 
         torch.save(
             [self.actor, self.critic, self.target_critic], f"{filename}/best_policy.pt"

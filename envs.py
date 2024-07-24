@@ -5,8 +5,6 @@ import math
 
 from typing import Tuple
 
-from utils import hook_fn
-
 
 class PendulumEnv:
     def __init__(self, num_envs: int, device: torch.device):
@@ -106,6 +104,10 @@ class PendulumEnv:
                 self.truncateds,
                 info,
             )
+
+    def seed(self, seed: int) -> None:
+        torch.manual_seed(seed)
+        np.random.seed(seed)
 
     def reset(self) -> Tuple[torch.Tensor, dict]:
         # Sample new states from uniform distribution

@@ -2,42 +2,12 @@ from torch.nn import ELU, ReLU
 from torch import device, cuda
 
 
-class HopperParams:
+class SHACPendulumParams:
     # Project name for wandb
-    project_name = "shac-hopper"
-
-    # Configurations for the actor neural network
-    actor_units = [128, 128]
-    actor_activation = ELU()
-    actor_learning_rate = 2e-3
-    actor_learning_rate_schedule = "linear"  # can be linear or constant
-
-    # Configurations for the critic neural network
-    critic_units = [64, 64]
-    critic_activation = ELU()
-    critic_learning_rate = 2e-4
-    critic_learning_rate_schedule = "linear"  # can be linear or constant
-    critic_minibatches = 4
-
-    # Hyperparameters for training
-    gae_lambda = 0.95
-    gamma = 0.99
-    tau = 0.2
-    num_steps = 32  # this is the length of the trajectory (h in the paper)
-    num_envs = 64  # this is the number of parallel envs (N in the paper)
-    max_epochs = 2000
-    critic_iterations = 16
+    project_name = "shac-pendulum"
 
     # Whether or not to log run with wandb (useful for debugging)
     do_wandb_logging = False
-
-    # Device to use for tensor storage
-    device = device("cuda" if cuda.is_available() else "cpu")
-
-
-class PendulumParams:
-    # Project name for wandb
-    project_name = "shac-pendulum"
 
     # Configurations for the actor neural network
     actor_units = [64, 64]
@@ -58,11 +28,59 @@ class PendulumParams:
     tau = 0.1
     num_steps = 32  # this is the length of the trajectory (h in the paper)
     num_envs = 64  # this is the number of parallel envs (N in the paper)
-    max_epochs = 2000
+    max_timesteps = 5e5
     critic_iterations = 16
+
+    # Device to use for tensor storage
+    device = device("cuda" if cuda.is_available() else "cpu")
+
+    # Experiment seeds
+    seeds = [0, 100, 200, 300, 400]
+
+
+class PPOPendulumParams:
+    # Project name for wandb
+    project_name = "ppo-pendulum"
 
     # Whether or not to log run with wandb (useful for debugging)
     do_wandb_logging = False
 
+    # Hyperparameters for training
+    gae_lambda = 0.95
+    gamma = 0.99
+    tau = 0.1
+    num_steps = 32  # this is the length of the trajectory (h in the paper)
+    num_envs = 4  # this is the number of parallel envs (N in the paper)
+    max_timesteps = 5e5
+    learning_rate = 1e3
+
     # Device to use for tensor storage
     device = device("cuda" if cuda.is_available() else "cpu")
+
+    # Experiment seeds
+    seeds = [0, 100, 200, 300, 400]
+
+
+class SACPendulumParams:
+    # Project name for wandb
+    project_name = "sac-pendulum"
+
+    # Whether or not to log run with wandb (useful for debugging)
+    do_wandb_logging = False
+
+    # Hyperparameters for training
+    gae_lambda = 0.95
+    gamma = 0.99
+    tau = 0.1
+    num_steps = 32  # this is the length of the trajectory (h in the paper)
+    num_envs = 4  # this is the number of parallel envs (N in the paper)
+    max_timesteps = 5e5
+    learning_rate = 1e3
+    buffer_size = 1e6
+    batch_size = 512
+
+    # Device to use for tensor storage
+    device = device("cuda" if cuda.is_available() else "cpu")
+
+    # Experiment seeds
+    seeds = [0, 100, 200, 300, 400]
