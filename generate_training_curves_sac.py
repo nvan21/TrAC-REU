@@ -77,7 +77,7 @@ if __name__ == "__main__":
         vec_env = DummyVecEnv(envs)  # Use DummyVecEnv for simplicity
 
         # Create and train the PPO model
-        model = SAC("MlpPolicy", env=vec_env, verbose=1)
+        model = SAC("MlpPolicy", env=vec_env, verbose=1, seed=seed)
         model.learn(total_timesteps=params.max_timesteps)
 
         # Save the model

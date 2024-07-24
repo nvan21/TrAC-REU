@@ -79,7 +79,8 @@ class SHAC:
 
     def set_seed(self, seed: int):
         self.seed = seed
-        self.envs.seed(seed)
+        if isinstance(self.envs, PendulumEnv):
+            self.envs.seed(seed)
         torch.manual_seed(seed)
         np.random.seed(seed)
 

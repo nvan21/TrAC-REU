@@ -13,7 +13,7 @@ def extract_pickle_data(log_dir):
         with open(f"{log_dir}/{seed}/data.pkl", "rb") as f:
             data = pickle.load(f)
             rewards.append(data["rewards"])
-            timesteps = data["timesteps"]
+            timesteps = data["lengths"]
 
     rewards = np.array(rewards)
     timesteps = np.array(timesteps)
@@ -61,41 +61,41 @@ def extract_rewards_from_monitors(log_dir):
 
 def plot_means_and_stds(means_list, stds_list, timesteps_list, series_list):
     for idx, (means, stds) in enumerate(zip(means_list, stds_list)):
-        ts = timesteps_list[idx] / 1e5
+        ts = timesteps_list[idx]
         label = series_list[idx]
         plt.plot(ts, means, label=label, linewidth=1.5)
         plt.fill_between(ts, means - stds, means + stds, alpha=0.3)
 
-    plt.title("Pendulum Reward Comparison", fontsize=20, fontweight="bold")
-    plt.xlabel(f"Simulation Steps (x10\u2075)", fontsize=14)
+    plt.title("Pendulum Length Robustness Comparison", fontsize=20, fontweight="bold")
+    plt.xlabel(f"Pendulum length (m)", fontsize=14)
     plt.ylabel("Reward", fontsize=14)
     plt.legend()
     plt.grid(True)
     plt.xticks(fontsize=12)
     plt.yticks(fontsize=12)
-    # ax = plt.gca()
-    # ax.xaxis.set_major_formatter(FuncFormatter(scientific_format))
 
     plt.tight_layout()
     plt.show()
     plt.savefig(
-        "experiments/training_curves/Learning Curve Comparison.png", format="png"
+        "experiments/length_parameter_curves/Length Robustness Comparison.png",
+        format="png",
     )
     plt.savefig(
-        "experiments/training_curves/Learning Curve Comparison.svg", format="svg"
+        "experiments/length_parameter_curves/Length Robustness Comparison.svg",
+        format="svg",
     )
 
 
 model = "SHAC"
-shac_run_dir = "experiments/training_curves/SHAC"
-ppo_run_dir = "experiments/training_curves/PPO"
-sac_run_dir = "experiments/training_curves/SAC"
+shac_run_dir = "experiments/length_parameter_curves/SHAC"
+ppo_run_dir = "experiments/length_parameter_curves/PPO"
+sac_run_dir = "experiments/length_parameter_curves/SAC"
 
 shac_mean_rewards, shac_std_rewards, shac_timesteps = extract_pickle_data(shac_run_dir)
-ppo_mean_rewards, ppo_std_rewards, ppo_timesteps = extract_rewards_from_monitors(
+ppo_mean_rewards, ppo_std_rewards, ppo_timesteps = extract_pickle_data(
     log_dir=ppo_run_dir
 )
-sac_mean_rewards, sac_std_rewards, sac_timesteps = extract_rewards_from_monitors(
+sac_mean_rewards, sac_std_rewards, sac_timesteps = extract_pickle_data(
     log_dir=sac_run_dir
 )
 

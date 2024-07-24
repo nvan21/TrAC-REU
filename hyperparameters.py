@@ -1,5 +1,6 @@
 from torch.nn import ELU, ReLU
 from torch import device, cuda
+import numpy as np
 
 
 class SHACPendulumParams:
@@ -37,6 +38,15 @@ class SHACPendulumParams:
     # Experiment seeds
     seeds = [0, 100, 200, 300, 400]
 
+    # Experiment noises
+    noises = np.linspace(0, 0.2, 100).tolist()
+
+    # Experiment masses
+    masses = np.linspace(0.75, 1.25, 100).tolist()
+
+    # Experiment lengths
+    lengths = np.linspace(0.2, 1.8, 100).tolist()
+
 
 class PPOPendulumParams:
     # Project name for wandb
@@ -59,6 +69,15 @@ class PPOPendulumParams:
 
     # Experiment seeds
     seeds = [0, 100, 200, 300, 400]
+
+    # Experiment noises
+    noises = np.linspace(0, 0.2, 100).tolist()
+
+    # Experiment masses
+    masses = np.linspace(0.75, 1.25, 100).tolist()
+
+    # Experiment lengths
+    lengths = np.linspace(0.2, 1.8, 100).tolist()
 
 
 class SACPendulumParams:
@@ -84,3 +103,12 @@ class SACPendulumParams:
 
     # Experiment seeds
     seeds = [0, 100, 200, 300, 400]
+
+    # Experiment noises
+    noises = np.linspace(0, 0.2, 100).tolist()
+
+    # Experiment masses
+    masses = np.linspace(0.75, 1.25, 100).tolist()
+
+    # Experiment lengths
+    lengths = np.linspace(0.2, 1.8, 100).tolist()
