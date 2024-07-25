@@ -8,6 +8,7 @@ import pandas as pd
 
 def extract_pickle_data(log_dir):
     seeds = [f for f in os.listdir(log_dir) if os.path.isdir(os.path.join(log_dir, f))]
+    # seeds.remove("seed_100")
     rewards = []
     for seed in seeds:
         with open(f"{log_dir}/{seed}/data.pkl", "rb") as f:
@@ -27,6 +28,7 @@ def extract_pickle_data(log_dir):
 def extract_rewards_from_monitors(log_dir):
     all_rewards = []
     seeds = os.listdir(log_dir)
+    # seeds.remove("seed_100")
 
     for seed in seeds:
         seed_rewards = []

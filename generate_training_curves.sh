@@ -27,4 +27,13 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+# Create the plot
+python3 generate_training_curves_plots.py
+
+# Check if the fourth script executed successfully
+if [ $? -ne 0]; then
+  echo "plot generation failed"
+  exit1
+fi
+
 echo "All scripts executed successfully"

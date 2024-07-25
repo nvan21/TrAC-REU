@@ -41,7 +41,7 @@ if __name__ == "__main__":
     obs_dim = envs.observation_space.shape[0]
     act_dim = envs.action_space.shape[0]
 
-    shac = SHAC(params=params, envs=envs, eval_env=eval_env)
+    shac = SHAC(params=params, envs=envs, eval_env=eval_env, run_dir=".")
     shac.set_seed(seed=0)
 
     if TRAIN_MODE:
