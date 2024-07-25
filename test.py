@@ -61,7 +61,17 @@ import pickle
 
 # print(params)
 
-with open("experiments/training_curves/SHAC/seed_0/data.pkl", "rb") as f:
-    data = pickle.load(f)
+# with open("experiments/training_curves/SHAC/seed_0/data.pkl", "rb") as f:
+#     data = pickle.load(f)
 
-print(data["rewards"])
+# print(data["rewards"])
+
+
+import matplotlib.font_manager as fm
+from matplotlib.font_manager import FontProperties
+
+# List all font names
+font_names = sorted([f.name for f in fm.fontManager.ttflist])
+for name in font_names:
+    print(name)
+print(len(font_names))
