@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 from matplotlib.ticker import ScalarFormatter, FuncFormatter
 import matplotlib as mpl
+from matplotlib.lines import Line2D
 from matplotlib import font_manager
 import pickle
 import numpy as np
@@ -109,6 +110,13 @@ def plot_means_and_stds(
     plt.title("Pendulum Learning Comparison", font=title_font, fontsize=40)
     plt.xlabel(f"Wallclock time (min)")
     plt.ylabel("Reward")
+    # Create custom legend lines with thicker line width for the legend
+    custom_lines = [
+        Line2D([0], [0], color=colors_list[0], lw=4),
+        Line2D([0], [0], color=colors_list[1], lw=4),
+        Line2D([0], [0], color=colors_list[2], lw=4),
+    ]
+    plt.legend(custom_lines, series_list)
     plt.grid(True)
     plt.xlim(baseline_ts)
     plt.xticks(fontsize=12)
