@@ -76,18 +76,19 @@ def plot_means_and_stds(
     means_list, stds_list, timesteps_list, series_list, colors_list
 ):
 
-    plt.figure(figsize=(12, 8))
+    plt.figure(figsize=(12, 8), facecolor="#F2D8BD")
     baseline = -150
     for idx, (means, stds) in enumerate(zip(means_list, stds_list)):
-        ts = timesteps_list[idx] / 1e5
+        ts = timesteps_list[idx]
         label = series_list[idx]
+        means = pd.Series(means).rolling(window=5).mean()
+        stds = pd.Series(stds).rolling(window=5).mean()
         plt.plot(
             ts,
             means,
             label=label,
             linewidth=1.5,
             color=colors_list[idx],
-            zorder=idx - 1,
         )
         plt.fill_between(
             ts,
@@ -95,7 +96,6 @@ def plot_means_and_stds(
             means + stds,
             alpha=0.2,
             color=colors_list[idx],
-            zorder=idx - 1,
         )
 
     baseline_ts = plt.gca().get_xlim()
@@ -110,7 +110,6 @@ def plot_means_and_stds(
     plt.title("Pendulum Noise Robustness Comparison", font=title_font, fontsize=40)
     plt.xlabel(f"Noise standard deviation")
     plt.ylabel("Reward")
-    plt.legend()
     plt.grid(True)
     plt.xlim(baseline_ts)
     plt.xticks(fontsize=12)

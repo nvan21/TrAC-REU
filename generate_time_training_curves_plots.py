@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 from matplotlib.ticker import ScalarFormatter, FuncFormatter
+import matplotlib as mpl
 from matplotlib import font_manager
 import pickle
 import numpy as np
@@ -67,7 +68,6 @@ def extract_rewards_from_monitors(log_dir):
     std_rewards = all_rewards.std(axis=0)
 
     timesteps = np.array(timesteps)
-    timesteps = np.cumsum(timesteps) * num_envs
 
     return mean_rewards, std_rewards, timesteps
 
@@ -75,11 +75,12 @@ def extract_rewards_from_monitors(log_dir):
 def plot_means_and_stds(
     means_list, stds_list, timesteps_list, series_list, colors_list
 ):
-
-    plt.figure(figsize=(12, 8))
+    plt.figure(figsize=(12, 8), facecolor="#F2D8BD")
     baseline = -150
     for idx, (means, stds) in enumerate(zip(means_list, stds_list)):
-        ts = timesteps_list[idx] / 1e5
+        means = pd.Series(means).rolling(window=5).mean()
+        stds = pd.Series(stds).rolling(window=5).mean()
+        ts = timesteps_list[idx] / 60
         label = series_list[idx]
         plt.plot(
             ts,
@@ -87,7 +88,6 @@ def plot_means_and_stds(
             label=label,
             linewidth=1.5,
             color=colors_list[idx],
-            zorder=idx - 1,
         )
         plt.fill_between(
             ts,
@@ -95,7 +95,6 @@ def plot_means_and_stds(
             means + stds,
             alpha=0.2,
             color=colors_list[idx],
-            zorder=idx - 1,
         )
 
     baseline_ts = plt.gca().get_xlim()
@@ -108,9 +107,8 @@ def plot_means_and_stds(
         color="black",
     )
     plt.title("Pendulum Learning Comparison", font=title_font, fontsize=40)
-    plt.xlabel(f"Wallclock time ")
+    plt.xlabel(f"Wallclock time (min)")
     plt.ylabel("Reward")
-    plt.legend()
     plt.grid(True)
     plt.xlim(baseline_ts)
     plt.xticks(fontsize=12)
@@ -123,6 +121,19 @@ def plot_means_and_stds(
     plt.savefig(
         "experiments/training_curves/Time Learning Curve Comparison.svg", format="svg"
     )
+
+    # Create a color palette
+    plt.close()
+    plt.figure(figsize=(6, 3), facecolor="#F2D8BD")
+    palette = dict(zip(series_list, colors_list))
+    # Create legend handles manually
+    handles = [mpl.patches.Patch(color=palette[x], label=x) for x in palette.keys()]
+    # Create legend
+    plt.legend(handles=handles, loc="center", frameon=False)
+    # Get current axes object and turn off axis
+    plt.gca().set_axis_off()
+    plt.savefig("legend.png", format="png")
+    plt.savefig("legend.svg", format="svg")
 
 
 model = "SHAC"
