@@ -108,7 +108,7 @@ def plot_means_and_stds(
         linestyle="--",
         color="black",
     )
-    # plt.title("Pendulum Learning Comparison", font=title_font, fontsize=40)
+    plt.title("Pendulum Learning Comparison", font=title_font, fontsize=40)
     plt.xlabel(f"Simulation steps (x10\u2075)")
     plt.ylabel("Reward")
     # Create custom legend lines with thicker line width for the legend
@@ -116,7 +116,9 @@ def plot_means_and_stds(
         Line2D([0], [0], color=colors_list[0], lw=4),
         Line2D([0], [0], color=colors_list[1], lw=4),
         Line2D([0], [0], color=colors_list[2], lw=4),
+        Line2D([0], [0], color="black", linestyle="--", lw=4),
     ]
+    series_list.append("Expert performance")
     plt.legend(custom_lines, series_list)
     plt.grid(True)
     plt.xlim(baseline_ts)

@@ -116,7 +116,9 @@ def plot_means_and_stds(
         Line2D([0], [0], color=colors_list[0], lw=4),
         Line2D([0], [0], color=colors_list[1], lw=4),
         Line2D([0], [0], color=colors_list[2], lw=4),
+        Line2D([0], [0], color="black", linestyle="--", lw=4),
     ]
+    series_list.append("Expert performance")
     plt.legend(custom_lines, series_list)
     plt.grid(True)
     plt.xlim(baseline_ts)
