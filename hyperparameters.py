@@ -57,10 +57,13 @@ class PPOPendulumParams:
 
     # Hyperparameters for training
     gae_lambda = 0.95
-    gamma = 0.99
+    gamma = 0.9
     tau = 0.1
-    num_steps = 32  # this is the length of the trajectory (h in the paper)
-    num_envs = 4  # this is the number of parallel envs (N in the paper)
+    num_steps = 1024
+    num_envs = 4
+    use_sde = True
+    sde_sample_freq = 4
+    learning_rate = 1e-3
     max_timesteps = 1e6
     learning_rate = 1e3
 

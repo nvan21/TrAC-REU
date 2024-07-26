@@ -108,7 +108,7 @@ def plot_means_and_stds(
         linestyle="--",
         color="black",
     )
-    plt.title("Pendulum Learning Comparison", font=title_font, fontsize=40)
+    # plt.title("Pendulum Learning Comparison", font=title_font, fontsize=40)
     plt.xlabel(f"Simulation steps (x10\u2075)")
     plt.ylabel("Reward")
     # Create custom legend lines with thicker line width for the legend

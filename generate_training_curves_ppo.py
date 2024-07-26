@@ -77,7 +77,16 @@ if __name__ == "__main__":
         vec_env = DummyVecEnv(envs)  # Use DummyVecEnv for simplicity
 
         # Create and train the PPO model
-        model = PPO("MlpPolicy", vec_env, verbose=1, seed=seed)
+        model = PPO(
+            "MlpPolicy",
+            vec_env,
+            verbose=1,
+            seed=seed,
+            n_steps=params.num_steps,
+            use_sde=params.use_sde,
+            sde_sample_freq=params.sde_sample_freq,
+            gamma=params.gamma,
+        )
         model.learn(total_timesteps=params.max_timesteps)
 
         # Save the model
