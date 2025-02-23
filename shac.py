@@ -1,58 +1,88 @@
 from actor import StochasticActor
 from critic import Critic
-from hyperparameters import Config
-import utils
+from hyperparameters import SHACPendulumParams
+from envs import PendulumEnv
 
 import torch
 import numpy as np
-from gymnasium.vector import VectorEnv
 import wandb
+import pickle
+from gymnasium import Env
 
 from typing import Tuple
-import pickle
+from datetime import datetime
+import os
+from collections import deque
+import time
 
 
 class SHAC:
-    def __init__(self, config: Config, envs: VectorEnv):
-        self.device = config.device
-        self.config = config
+    def __init__(
+        self, params: SHACPendulumParams, envs: PendulumEnv, eval_env: Env, run_dir: str
+    ):
+        self.device = params.device
+        self.params = params
         self.envs = envs
+        self.eval_env = eval_env
+        self.run_dir = run_dir
+        self.max_epochs = int(
+            self.params.max_timesteps / (self.params.num_steps * self.params.num_envs)
+        )
 
         # Create learning rate schedules
         self.actor_lr_schedule = self.learning_rate_scheduler(
-            lr=self.config.actor_learning_rate,
-            decay=self.config.actor_learning_rate_schedule,
+            lr=self.params.actor_learning_rate,
+            decay=self.params.actor_learning_rate_schedule,
         )
         self.critic_lr_schedule = self.learning_rate_scheduler(
-            lr=self.config.critic_learning_rate,
-            decay=self.config.critic_learning_rate_schedule,
+            lr=self.params.critic_learning_rate,
+            decay=self.params.critic_learning_rate_schedule,
         )
 
         # Replay buffers
         self.states_buf = torch.zeros(
             (
-                config.num_steps,
-                config.num_envs,
-                envs.unwrapped.observation_space.shape[1],
+                params.num_steps,
+                params.num_envs,
+                envs.observation_space.shape[0],
             ),
             dtype=torch.float32,
         ).to(self.device)
         self.rewards_buf = torch.zeros(
-            (config.num_steps, config.num_envs), dtype=torch.float32
+            (params.num_steps, params.num_envs),
+            dtype=torch.float32,
         ).to(self.device)
         self.done_mask = torch.zeros(
-            (config.num_steps, config.num_envs), dtype=torch.float32
+            (params.num_steps, params.num_envs), dtype=torch.float32
         ).to(self.device)
         self.next_values = torch.zeros(
-            (config.num_steps, config.num_envs), dtype=torch.float32
+            (params.num_steps, params.num_envs), dtype=torch.float32
         ).to(self.device)
         self.target_values = torch.zeros(
-            (config.num_steps, config.num_envs), dtype=torch.float32
+            (params.num_steps, params.num_envs), dtype=torch.float32
         ).to(self.device)
 
         # Rollout tracking metrics
         self.total_timesteps = 0
         self.episode_reward = 0
+        self.best_actor_loss = torch.inf
+        self.actor_loss_hist = deque(maxlen=10)
+        self.critic_loss_hist = deque(maxlen=10)
+        self.reward_hist = deque(maxlen=10)
+        self.eval_reward_hist = []
+        self.timestep_hist = []
+        self.realtime_hist = []
+        self.start_time = time.time()
+
+        # Date for the filename
+        self.date = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+
+    def set_seed(self, seed: int):
+        self.seed = seed
+        if isinstance(self.envs, PendulumEnv):
+            self.envs.seed(seed)
+        torch.manual_seed(seed)
+        np.random.seed(seed)
 
     def create_models(
         self,
@@ -62,22 +92,22 @@ class SHAC:
         self.actor = StochasticActor(
             obs_dim=obs_dim,
             act_dim=act_dim,
-            units=self.config.actor_units,
-            activation_fn=self.config.actor_activation,
+            units=self.params.actor_units,
+            activation_fn=self.params.actor_activation,
             device=self.device,
         )
 
         self.critic = Critic(
             obs_dim=obs_dim,
-            units=self.config.critic_units,
-            activation_fn=self.config.critic_activation,
+            units=self.params.critic_units,
+            activation_fn=self.params.critic_activation,
             device=self.device,
         )
 
         self.target_critic = Critic(
             obs_dim=obs_dim,
-            units=self.config.critic_units,
-            activation_fn=self.config.critic_activation,
+            units=self.params.critic_units,
+            activation_fn=self.params.critic_activation,
             device=self.device,
         )
 
@@ -87,205 +117,267 @@ class SHAC:
         """
         Takes in the returns and calculates the actor loss
         """
-        return rets / -(self.config.num_envs * self.config.num_steps)
+        return rets / -(self.params.num_envs * self.params.num_steps)
 
-    def compute_critic_loss(self):
+    def compute_critic_loss(self, learning_rate: float):
         """
         Computes the critic target values and then uses those to calculate the critic loss
         """
-        Ai = torch.zeros(self.config.num_envs, dtype=torch.float32, device=self.device)
-        Bi = torch.zeros(self.config.num_envs, dtype=torch.float32, device=self.device)
-        lam = torch.ones(self.config.num_envs, dtype=torch.float32, device=self.device)
-        for i in reversed(range(self.config.num_steps)):
-            lam = (
-                lam * self.config.gae_lambda * (1.0 - self.done_mask[i])
-                + self.done_mask[i]
+        with torch.no_grad():
+            Ai = torch.zeros(
+                self.params.num_envs, dtype=torch.float32, device=self.device
             )
-            Ai = (1.0 - self.done_mask[i]) * (
-                self.config.gae_lambda * self.config.gamma * Ai
-                + self.config.gamma * self.next_values[i]
-                + (1.0 - lam) / (1.0 - self.config.gae_lambda) * self.rewards_buf[i]
+            Bi = torch.zeros(
+                self.params.num_envs, dtype=torch.float32, device=self.device
             )
-            Bi = (
-                self.config.gamma
-                * (
-                    self.next_values[i] * self.done_mask[i]
-                    + Bi * (1.0 - self.done_mask[i])
+            lam = torch.ones(
+                self.params.num_envs, dtype=torch.float32, device=self.device
+            )
+            for i in reversed(range(self.params.num_steps)):
+                lam = (
+                    lam * self.params.gae_lambda * (1.0 - self.done_mask[i])
+                    + self.done_mask[i]
                 )
-                + self.rewards_buf[i]
-            )
-            self.target_values[i] = (1.0 - self.config.gae_lambda) * Ai + lam * Bi
+                Ai = (1.0 - self.done_mask[i]) * (
+                    self.params.gae_lambda * self.params.gamma * Ai
+                    + self.params.gamma * self.next_values[i]
+                    + (1.0 - lam) / (1.0 - self.params.gae_lambda) * self.rewards_buf[i]
+                )
+                Bi = (
+                    self.params.gamma
+                    * (
+                        self.next_values[i] * self.done_mask[i]
+                        + Bi * (1.0 - self.done_mask[i])
+                    )
+                    + self.rewards_buf[i]
+                )
+                self.target_values[i] = (1.0 - self.params.gae_lambda) * Ai + lam * Bi
 
-        # TODO: Implement mini batches for critic training
         total_critic_loss = 0.0
-        for i in range(self.config.critic_iterations):
-            predicted_values = self.critic(
-                self.states_buf.view(-1, self.states_buf.shape[-1])
-            ).squeeze(-1)
+        for i in range(self.params.critic_iterations):
+            # Create a tensor with randomized indexes
+            idxs = torch.randperm(self.params.num_steps).view(
+                self.params.critic_minibatches, -1
+            )
+            states = self.states_buf.view(-1, self.states_buf.shape[-1])
             target_values = self.target_values.view(-1)
-            total_critic_loss += ((predicted_values - target_values) ** 2).mean()
 
-        return total_critic_loss / self.config.critic_iterations
+            for j in range(self.params.critic_minibatches):
+                idx = idxs[j]
+                mb_states = states[idx]
+                mb_predicted_values = self.critic(mb_states).squeeze(-1)
+                mb_target_values = target_values[idx].view(-1)
+
+                critic_loss = ((mb_predicted_values - mb_target_values) ** 2).mean()
+
+                self.critic.backward(loss=critic_loss, learning_rate=learning_rate)
+
+                total_critic_loss += critic_loss.item()
+
+        return total_critic_loss / self.params.critic_iterations
 
     def train(self):
         states, _ = self.envs.reset()
-        states = utils.np_to_tensor(device=self.device, arrays=[states])
 
-        critic_loss_hist = []
-        actor_loss_hist = []
-        for epoch in range(self.config.max_epochs):
-            rets, states = self.rollout(states)
-
-            actor_loss = self.compute_actor_loss(rets)
-            critic_loss = self.compute_critic_loss()
+        for epoch in range(self.max_epochs):
+            rets, states, rewards = self.rollout(states)
 
             # Get the updated learning rates
             actor_lr = self.actor_lr_schedule[epoch]
             critic_lr = self.critic_lr_schedule[epoch]
 
-            # Backpropogate the network losses
+            # Calculate and backpropogate the actor loss
+            actor_loss = self.compute_actor_loss(rets)
             self.actor.backward(loss=actor_loss, learning_rate=actor_lr)
-            self.critic.backward(loss=critic_loss, learning_rate=critic_lr)
 
+            # Calculate and backpropogate the critic loss (it's backpropogated in the compute method)
+            critic_loss = self.compute_critic_loss(learning_rate=critic_lr)
+
+            # Store the losses and reward for the loss calculations
+            self.actor_loss_hist.append(actor_loss)
+            self.critic_loss_hist.append(critic_loss)
+            self.reward_hist.append(rewards)
+
+            # Save the model if it has the best actor loss
+            if actor_loss < self.best_actor_loss:
+                self.save()
+
+            # Evaluate the model
+            if epoch % 1 == 0:
+                eval_reward = self.evaluate_policy()
+
+            # Debugging/logging
+            avg_actor_loss = sum(self.actor_loss_hist) / len(self.actor_loss_hist)
+            avg_critic_loss = sum(self.critic_loss_hist) / len(self.critic_loss_hist)
+            avg_reward = sum(self.reward_hist) / len(self.reward_hist)
             print(f"Epoch: ({epoch})")
             print(f"Timestep: {self.total_timesteps}")
-            print(f"actor loss: {actor_loss}")
-            print(f"critic loss: {critic_loss}")
-            print(f"episode reward: {self.episode_reward / self.config.num_envs}")
-            print("")
+            print(f"Average actor loss: {avg_actor_loss}")
+            print(f"Average critic loss: {avg_critic_loss}")
+            print(f"Average episode reward: {avg_reward}")
+            print(f"Evaluation reward: {eval_reward} \n")
 
-            if self.config.do_wandb_logging:
+            if self.params.do_wandb_logging:
                 wandb.log(
                     {
-                        "actor_loss": actor_loss,
-                        "critic_loss": critic_loss,
+                        "step": self.total_timesteps,
+                        "epoch": epoch,
+                        "step/actor_loss": avg_actor_loss,
+                        "step/critic_loss": avg_critic_loss,
+                        "step/learning_episode_rewards": avg_reward,
+                        "step/eval_reward": eval_reward,
+                        "epoch/actor_loss": avg_actor_loss,
+                        "epoch/critic_loss": avg_critic_loss,
+                        "epoch/learning_episode_rewards": avg_reward,
+                        "epoch/eval_reward": eval_reward,
                     }
                 )
 
-            actor_loss_hist.append(actor_loss.detach().cpu())
-            critic_loss_hist.append(critic_loss.detach().cpu())
-
+            # Update the target network
             self.soft_network_update()
-            self.save()
 
-        print(np.array(actor_loss_hist[-20:]).mean())
-        print(np.array(critic_loss_hist[-20:]).mean())
+        # run_dir = f"runs/{self.date}"
+        # if not os.path.exists(run_dir):
+        #     os.makedirs(run_dir)
+
+        with open(f"{self.run_dir}/data.pkl", "wb") as f:
+            data = {
+                "timesteps": self.timestep_hist,
+                "rewards": self.eval_reward_hist,
+                "times": self.realtime_hist,
+            }
+            pickle.dump(data, f)
+
+    @torch.no_grad()
+    def evaluate_policy(self):
+        self.actor.eval()
+        self.timestep_hist.append(self.total_timesteps)
+        state, _ = self.eval_env.reset(seed=self.seed)
+        done = False
+        truncated = False
+        eval_reward = 0
+
+        while not done and not truncated:
+            if isinstance(state, np.ndarray):
+                state = torch.tensor(state, device=self.device)
+
+            action = self.actor(state).cpu().detach().numpy()
+            state, reward, done, truncated, _ = self.eval_env.step(action)
+
+            eval_reward += reward
+
+        print(f"Final evaluation reward: {eval_reward} \n")
+        self.eval_reward_hist.append(eval_reward)
+        self.realtime_hist.append(time.time() - self.start_time)
+        self.actor.train()
+
+        return eval_reward
 
     def rollout(self, states: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
         """
         Performs num_steps rollouts. It takes in the intial states and then returns the GAE returns
         and the final states of each environment.
         """
-        running_rewards = torch.zeros(
-            (self.config.num_steps + 1, self.config.num_envs), dtype=torch.float32
-        ).to(self.device)
-        gamma = torch.ones(self.config.num_envs, dtype=torch.float32).to(self.device)
-        next_values = torch.zeros(
-            (self.config.num_steps + 1, self.config.num_envs), dtype=torch.float32
-        ).to(self.device)
-
-        actor_loss = torch.tensor(0.0, dtype=torch.float32).to(self.device)
-
-        for step in range(self.config.num_steps):
-            # Add the states to the replay buffer (used for critic training)
-            self.states_buf[step] = states
-
-            # Get the actions from the actor and step through the environment
-            actions = self.actor(states).detach().cpu().numpy()
-            states, rewards, dones, truncateds, info = self.envs.step(actions)
-
-            # Convert environment numpy arrays to tensors
-            states, rewards, dones, truncateds = utils.np_to_tensor(
-                device=self.device, arrays=[states, rewards, dones, truncateds]
+        with torch.autograd.set_detect_anomaly(True):
+            running_rewards = torch.zeros(
+                (self.params.num_steps + 1, self.params.num_envs), dtype=torch.float32
+            ).to(self.device)
+            gamma = torch.ones(self.params.num_envs, dtype=torch.float32).to(
+                self.device
             )
+            next_values = torch.zeros(
+                (self.params.num_steps + 1, self.params.num_envs), dtype=torch.float32
+            ).to(self.device)
 
-            # Add the rewards to the replay buffer (used for critic training)
-            self.rewards_buf[step] = rewards
+            actor_loss = torch.tensor(0.0, dtype=torch.float32).to(self.device)
 
-            # Get the IDs of all the environments that terminated/truncated this step
-            done_ids = torch.nonzero(dones, as_tuple=False).squeeze(-1)
-            truncated_ids = torch.nonzero(truncateds, as_tuple=False).squeeze(-1)
+            self.envs.clear_grad()
+            for step in range(self.params.num_steps):
+                with torch.no_grad():
+                    # Add the states to the replay buffer (used for critic training)
+                    self.states_buf[step] = states
 
-            # Get the estimated critic value of the next state, and set the terminated states to 0
-            next_values[step + 1] = self.target_critic(states).squeeze(-1)
-            next_values[step + 1, done_ids] = 0.0
+                # Get the actions from the actor and step through the environment
+                actions = self.actor(states)
+                states, rewards, dones, truncateds, info = self.envs.step(actions)
 
-            # Change the next value of truncated states to use their final observation rather than the reset observation
-            if ("final_observation") in info and len(truncated_ids) != 0:
-                # Mask out the None values to get the truncated states
-                truncated_states = info["final_observation"]
-                truncated_states = [arr for arr in truncated_states if arr is not None]
+                # Get the IDs of all the environments that terminated/truncated this step
+                done_ids = torch.nonzero(dones, as_tuple=False).squeeze(-1)
+                truncated_ids = torch.nonzero(truncateds, as_tuple=False).squeeze(-1)
 
-                # Turn the array of arrays of states into a single 2D tensor
-                truncated_states = np.vstack(truncated_states)
-                truncated_states = utils.np_to_tensor(
-                    device=self.device, arrays=[truncated_states]
-                )
+                # Get the estimated critic value of the next state, and set the terminated states to 0
+                next_values[step + 1] = self.target_critic(states).squeeze(-1)
+                next_values[step + 1, done_ids] = 0.0
 
-                # Updated the next values to accurately reflect the final observation of the truncated state
-                next_values[step + 1, truncated_ids] = self.target_critic(
-                    truncated_states
-                ).squeeze(-1)
+                # Change the next value of truncated states to use their final observation rather than the reset observation
+                if ("final_observation") in info and len(truncated_ids) != 0:
+                    # Get the states before the environments were reset
+                    truncated_states = info["final_observation"]
 
-                if self.config.do_wandb_logging:
-                    # Log and reset episode rewards
-                    wandb.log(
-                        {"episode_rewards": self.episode_reward / self.config.num_envs}
-                    )
+                    # Updated the next values to accurately reflect the final observation of the truncated state
+                    next_values[step + 1, truncated_ids] = self.target_critic(
+                        truncated_states
+                    ).squeeze(-1)
+
                     self.episode_reward = 0
 
-            # Update the running rewards
-            running_rewards[step + 1, :] = (
-                running_rewards[step, :] + self.config.gamma * rewards
-            )
+                # Update the running rewards
+                running_rewards[step + 1, :] = (
+                    running_rewards[step, :] + self.params.gamma * rewards
+                )
 
-            # Get the estimated value of all states for the last timestep in the trajectory
-            if step < self.config.num_steps - 1:
-                actor_loss = actor_loss + (
-                    (
+                # Get the estimated value of all states for the last timestep in the trajectory
+                if step < self.params.num_steps - 1:
+                    actor_loss = actor_loss + (
                         (
-                            running_rewards[step + 1, done_ids]
-                            + self.config.gamma
-                            * gamma[done_ids]
-                            * next_values[step + 1, done_ids]
-                        )
-                    ).sum()
-                )
-            else:
-                actor_loss = (
-                    actor_loss
-                    + (
-                        running_rewards[step + 1, :]
-                        + self.config.gamma * gamma * next_values[step + 1, :]
-                    ).sum()
-                )
+                            (
+                                running_rewards[step + 1, done_ids]
+                                + self.params.gamma
+                                * gamma[done_ids]
+                                * next_values[step + 1, done_ids]
+                            )
+                        ).sum()
+                    )
+                else:
+                    actor_loss = (
+                        actor_loss
+                        + (
+                            running_rewards[step + 1, :]
+                            + self.params.gamma * gamma * next_values[step + 1, :]
+                        ).sum()
+                    )
 
-            # Calculate gamma for the next step
-            gamma = gamma * self.config.gamma
+                # Calculate gamma for the next step
+                gamma = gamma * self.params.gamma
 
-            # Reset gamma and returns for done environments
-            gamma[done_ids] = 1.0
-            running_rewards[step + 1, done_ids] = 0.0
+                # Reset gamma and returns for done environments
+                gamma[done_ids] = 1.0
+                running_rewards[step + 1, done_ids] = 0.0
 
-            # Update data for critic training
-            if step < self.config.num_steps - 1:
-                # Update the done mask for the terminated environments
-                self.done_mask[step, done_ids] = 1.0
-            else:
-                self.done_mask[step, :] = 1.0
+                with torch.no_grad():
+                    # Update data for critic training
+                    self.rewards_buf[step] = rewards.clone()
 
-            self.total_timesteps += self.config.num_envs
-            self.episode_reward += rewards.sum().item()
+                    if step < self.params.num_steps - 1:
+                        # Update the done mask for the terminated environments
+                        self.done_mask[step] = dones.clone().to(torch.float32)
+                    else:
+                        self.done_mask[step, :] = 1.0
 
-        return actor_loss, states
+                    self.episode_reward += rewards.sum().item()
+
+                self.total_timesteps += self.params.num_envs
+                episode_reward = self.episode_reward / self.params.num_envs
+
+            return actor_loss, states, episode_reward
 
     def learning_rate_scheduler(self, lr: float, decay: str) -> list:
         if decay == "constant":
-            schedule = [lr for _ in range(self.config.max_epochs)]
+            schedule = [lr for _ in range(self.max_epochs)]
         elif decay == "linear":
             schedule = [
-                lr * (self.config.max_epochs - i) / self.config.max_epochs
-                for i in range(self.config.max_epochs)
+                lr * (self.max_epochs - i) / self.max_epochs
+                for i in range(self.max_epochs)
             ]
 
         return schedule
@@ -303,20 +395,22 @@ class SHAC:
 
         for param, target_param in zip(params, target_params):
             target_param.data.copy_(
-                target_param.data * self.config.tau + (1 - self.config.tau) * param.data
+                target_param.data * self.params.tau + (1 - self.params.tau) * param.data
             )
 
     def save(self, filename=None):
         if filename is None:
-            filename = "best_policy.pt"
+            filename = self.run_dir
 
-        torch.save([self.actor, self.critic, self.target_critic], filename)
+        if not os.path.exists(filename):
+            os.makedirs(filename)
 
-    def load(self, filename=None):
-        if filename is None:
-            filename = "best_policy.pt"
+        torch.save(
+            [self.actor, self.critic, self.target_critic], f"{filename}/best_policy.pt"
+        )
 
-        checkpoint = torch.load(filename)
+    def load(self, filename: str) -> None:
+        checkpoint = torch.load(filename, map_location=self.device)
         self.actor = checkpoint[0].to(self.device)
         self.critic = checkpoint[1].to(self.device)
         self.target_critic = checkpoint[2].to(self.device)

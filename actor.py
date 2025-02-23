@@ -1,4 +1,6 @@
 import torch
+
+torch.manual_seed(0)
 import torch.nn as nn
 from torch.distributions import Normal
 
@@ -49,6 +51,7 @@ class StochasticActor(nn.Module):
         for param_group in self.optimizer.param_groups:
             param_group["lr"] = learning_rate
 
-        self.optimizer.zero_grad()
-        loss.backward()
-        self.optimizer.step()
+        with torch.autograd.set_detect_anomaly(True):
+            self.optimizer.zero_grad()
+            loss.backward()
+            self.optimizer.step()
